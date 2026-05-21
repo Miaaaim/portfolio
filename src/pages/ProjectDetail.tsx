@@ -1089,7 +1089,8 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
     category: "物流 / 履约工具",
     desc: "针对物流骑手的定位优化、履约质量管理与管理规范系统化落地工具。",
     impact: ["定位偏移率降低 80%", "履约超时率下降 12%", "管理成本降低 45%"],
-    content: "解决了物流末端配送中的定位不准、路线复杂与管理低效等痛点。",
+    content:
+      "国内领先的外卖及物流服务平台，拥有庞大骑手配送网络，覆盖全国主要城市，提供订单接单、路线导航、实时定位及绩效管理等核心能力。聚焦物流履约中的核心痛点（定位不准、效率低、管理成本高），通过系统性优化定位链路与运营机制，提升用户体验、配送效率与运营效益。",
     tags: [
       {
         label: "全链路治理",
@@ -1115,45 +1116,99 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
     challengeAndGoals: {
       challenges: [
         {
-          title: "定位异常频发",
-          desc: "高密度楼宇和复杂街区场景下，定位偏移导致找址成本高，直接影响履约时效与用户体验；",
+          title: "定位系统问题｜链路分散",
+          desc: "用户端（饿了么C端、手淘外卖）提供定位，物流端负责消费与派单，上下游系统割裂，定位异常难以及时发现与修正；",
         },
         {
-          title: "派单体验不稳定",
-          desc: "骑手对派单路径、距离与商家出餐节奏感知不一致，拒单与超时风险提升；",
+          title: "定位系统问题｜地址准确率低",
+          desc: "用户地址准确率仅96.7%，定位不准导致骑手找不到地址，产生超时、配送失败、判欺诈等问题；",
         },
         {
-          title: "反馈治理效率低",
-          desc: "App、客服、工单等多渠道反馈分散，问题流转慢、优先级不清晰，难形成闭环；",
+          title: "定位系统问题｜用户反馈多",
+          desc: "相关投诉反馈占比58%（约800条），严重影响用户满意度与配送口碑；",
         },
         {
-          title: "管理规范落地难",
-          desc: "着装、补贴、活动规则依赖人工执行与线下沟通，执行波动大、维护成本高；",
+          title: "定位系统问题｜跨部门协作缺失",
+          desc: "问题涉及用户端、物流端、手淘外卖团队，缺少统一的责任制和问题闭环机制。",
+        },
+        {
+          title: "骑手管理问题｜着装管理低效",
+          desc: "缺乏系统化监管手段，着装率仅60%，需依赖人工抽检，成本高（每周投入2人力+上万元）；",
+        },
+        {
+          title: "骑手管理问题｜调度策略不优",
+          desc: "派单准确率不理想，骑手频繁拒单或投诉，满意度偏低；",
+        },
+        {
+          title: "骑手管理问题｜成本与效率矛盾",
+          desc: "如何在保证服务质量前提下降低运营成本。",
         },
       ],
       goals: [
-        "建立定位异常监控与纠偏机制，降低偏移带来的履约风险；",
-        "优化派单策略与骑手端信息反馈，提升接单效率与履约稳定性；",
-        "打通多渠道反馈并形成标准化问题闭环，提升响应与解决效率；",
-        "将高频管理动作工具化配置，降低人力成本并提升规则执行一致性。",
+        "从系统侧解决定位不准问题，提升用户地址准确率至99%+，相关反馈降至10%以下；",
+        "建立定位问题的全链路监控与快速闭环机制，确保异常能及时发现与修正；",
+        "通过机制创新与技术赋能降低骑手着装监管成本，同时提升骑手体验与满意度；",
+        "优化调度策略与派单准确率，提升骑手效率与用户时效体验。",
       ],
     },
     features: [
       {
-        title: "定位系统全链路优化（履约侧）",
-        desc: `- 建立定位异常监控面板，实时识别偏移热点区域与高频问题订单；\n- 增加用户地址报备与骑手纠偏入口，缩短定位异常处理链路；\n- 引入异常地址库和服务端反查机制，在履约前预警高风险订单；\n- 通过多图商冗余与降级策略，降低单点地图服务波动对业务的影响。`,
+        title: "定位系统全链路优化（物流侧核心工作）",
+        desc: `#### 1.1 建立全链路数据监控报表
+
+- 设计了从"用户下单地址 → 物流端接收坐标 → 骑手导航位置 → 实际送达点"的完整追踪路径；
+- 建立实时监控看板，按城市、业务线、配送中心维度展示定位异常占比、反馈量与趋势；
+- 支持按地址分类统计（社区、学校、商场、偏远地区等），快速定位问题地址库；
+- 通过数据分析识别"高风险地址"（重复出现定位问题的地点），优先级处理。
+
+#### 1.2 定位报备与异常地址库建设
+
+- 与运营团队合作，在骑手端上线"定位报备"功能，允许骑手在实际到达后标记真实位置；
+- 自动对比"系统预判位置"与"骑手报备位置"的偏差，偏差>100m则自动标记为异常地址；
+- 建立异常地址库，按优先级列出高频问题地址，输出修正建议给用户端与运营团队；
+- 形成"发现异常 → 建库记录 → 协议修正 → 效果验证"的持续改进闭环。
+
+#### 1.3 图商切换与服务端增强
+
+- 分析发现部分地区的地图数据与实际POI位置偏差较大，推动图商切换测试，对比精准度；
+- 在配送系统服务端增加"地址反查逻辑"：当用户当前位置与目标POI偏差>阈值时，自动生成修正提示给用户确认；
+- 通过服务端智能纠正，实现定位异常的"先发制人"，显著降低骑手到达后的困难场景。
+
+#### 1.4 跨部门协同机制
+
+- 建立"定位问题周报"制度，每周同步物流、用户端、手淘外卖团队的发现与进展；
+- 明确责任分工：物流侧负责报备与异常库建设，用户端负责地址规范化与POI准确性，图商负责数据更新；
+- 设定共同KPI：地址准确率目标99%+，反馈量降至10%以下，规划3个月达成；
+- 定期复盘会议，评估各项优化动作的效果贡献，并持续调整优先级。`,
       },
       {
-        title: "派单策略与执行体验优化（调度侧）",
-        desc: `- 设计骑手派单反馈标签，沉淀“距离不合理、取餐等待、路线绕行”等结构化问题；\n- 推动派单策略引入区域偏好、商家出餐预估、骑手实时负载等变量；\n- 优化接单页信息层级，明确距离、预估时长与风险提示，减少误接与拒单；\n- 配合算法分组实验，对拒单率、超时率与满意度进行持续追踪。`,
+        title: "骑手着装监管系统设计与落地",
+        desc: `#### 2.1 着装监管体系构建
+
+- **机制设计**：在骑手每日上班时进行着装自拍认证，系统通过图像识别技术判断着装是否符合标准（统一着装、工号清晰可见等）；
+- **处理规则**：未通过认证的骑手限制接单，直到完成着装整改并重新认证；
+- **激励机制**：着装达标的骑手在月度结算时获得额外补贴或评分加分，鼓励主动遵守。
+
+#### 2.2 运营成本优化
+
+- **人力降本**：从每周抽检2人优化为系统自动化认证，节省2人力成本；
+- **时间降本**：从被动发现问题转为主动预防，缩短处理周期，避免因着装问题导致的配送纠纷；
+- **精准性提升**：系统认证覆盖100%骑手，相比抽检的覆盖率大幅提升，着装率从60%快速提升至95%。
+
+#### 2.3 数据驱动的迭代
+
+- 建立着装监管数据看板，追踪每日通过率、拒单率、整改时间等指标；
+- 按配送中心维度分析着装达标率，对低于平均水平的中心进行专项指导；
+- 定期收集骑手反馈，持续优化认证逻辑与激励机制，避免过度约束导致人员流失。`,
       },
       {
-        title: "骑手反馈闭环与管理工具建设（运营侧）",
-        desc: `- 汇聚 App、客服、工单反馈渠道，建立统一分类与优先级机制；\n- 建立“发现-分派-处理-验证-销号”端到端流程，明确责任人和响应 SLA；\n- 将补贴、奖励、活动规则配置化，支持运营按场景快速发布与回收；\n- 优化骑手收益明细可读性，减少因规则理解偏差引发的咨询与申诉。`,
-      },
-      {
-        title: "骑手体验研究与产品迭代（体验侧）",
-        desc: `- 组织季度沉浸式随单体验，持续收集一线场景中的高价值问题；\n- 输出结构化体验报告，联动产研制定改版优先级与版本计划；\n- 迭代导航、取餐、结算等核心流程交互，降低骑手操作负担；\n- 建立体验研究常态化机制，确保关键问题可持续跟踪与复盘。`,
+        title: "调度策略与派单准确率优化",
+        desc: `- **问题识别**：通过分析派单数据发现拒单率与超时率相关，主要原因是派单距离过远或类型不匹配；
+- **策略优化**：
+  - 引入"骑手能力与偏好标签"（热点区域偏好、订单类型偏好等），提升派单匹配度；
+  - 优化配送距离与时间窗口算法，减少不合理派单；
+  - 建立派单质量评分机制，对派单系统进行持续反馈与优化。
+- **效果**：派单准确率提升，骑手拒单率与投诉率同步下降，整体满意度改善。`,
       },
     ],
     qas: [
@@ -1195,6 +1250,63 @@ const cleanModalContent = (content: string) => {
   return content.replace(/^\*\*[^*]+\*\*[：:]\s*/, "");
 };
 
+const formatFeatureDescWithCircledSubsections = (
+  desc: string,
+  featureIndex: number,
+  projectId?: string,
+) => {
+  if (projectId !== "rider-app" || featureIndex > 1) {
+    return desc;
+  }
+
+  const circledNumbers = [
+    "①",
+    "②",
+    "③",
+    "④",
+    "⑤",
+    "⑥",
+    "⑦",
+    "⑧",
+    "⑨",
+    "⑩",
+  ];
+  let subsectionIndex = 0;
+
+  return desc.replace(/^####\s+\d+\.\d+\s+(.+)$/gm, (_match, title: string) => {
+    const marker =
+      circledNumbers[subsectionIndex] || `(${subsectionIndex + 1})`;
+    subsectionIndex += 1;
+    return `#### ${marker} ${title}`;
+  });
+};
+
+const groupChallengesByCategory = (challenges: any[]) => {
+  const grouped: { category: string; points: string[] }[] = [];
+
+  challenges.forEach((item) => {
+    const [rawCategory, rawPoint] = String(item.title || "").split("｜");
+    const hasCategory = Boolean(rawCategory && rawPoint);
+    const category = hasCategory ? rawCategory.trim() : "其他挑战";
+    const pointTitle = hasCategory ? rawPoint.trim() : String(item.title || "").trim();
+    const pointDesc = String(item.desc || "").trim();
+    const pointText = pointDesc ? `${pointTitle}：${pointDesc}` : pointTitle;
+
+    const existed = grouped.find((group) => group.category === category);
+    if (existed) {
+      existed.points.push(pointText);
+      return;
+    }
+
+    grouped.push({
+      category,
+      points: [pointText],
+    });
+  });
+
+  return grouped;
+};
+
 export default function ProjectDetail() {
   const { openModal } = useModal();
   const { id } = useParams();
@@ -1206,6 +1318,13 @@ export default function ProjectDetail() {
     null,
   );
   const [hoveredFlow, setHoveredFlow] = useState<number | null>(null);
+  const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
+  const useGroupedChallenges = rawChallenges.some((item: any) =>
+    String(item?.title || "").includes("｜"),
+  );
+  const groupedChallenges = (project as any)?.challengeAndGoals?.challenges
+    ? groupChallengesByCategory((project as any).challengeAndGoals.challenges)
+    : [];
 
   if (!project)
     return (
@@ -1386,21 +1505,40 @@ export default function ProjectDetail() {
                         <h3 className="text-xl font-bold">挑战</h3>
                       </div>
                       <div className="space-y-4">
-                        {(project as any).challengeAndGoals.challenges.map(
-                          (item: any, index: number) => (
-                            <div
-                              key={index}
-                              className="bg-zinc-900/40 p-6 rounded-[2rem] border border-white/5 space-y-3 hover:border-brand-orange/30 transition-all"
-                            >
-                              <h4 className="font-bold text-brand-orange">
-                                {item.title}
-                              </h4>
-                              <p className="text-gray-400 text-sm leading-relaxed">
-                                {item.desc}
-                              </p>
-                            </div>
-                          ),
-                        )}
+                        {useGroupedChallenges
+                          ? groupedChallenges.map((group, groupIndex) => (
+                              <div
+                                key={groupIndex}
+                                className="bg-zinc-900/40 p-6 rounded-[2rem] border border-white/5 space-y-4 hover:border-brand-orange/30 transition-all"
+                              >
+                                <h4 className="font-bold text-brand-orange">
+                                  {group.category}
+                                </h4>
+                                <div className="space-y-3">
+                                  {group.points.map((point, pointIndex) => (
+                                    <div key={pointIndex} className="flex gap-3">
+                                      <div className="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2.5 shrink-0" />
+                                      <p className="text-gray-400 text-sm leading-relaxed">
+                                        {point}
+                                      </p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))
+                          : rawChallenges.map((item: any, index: number) => (
+                              <div
+                                key={index}
+                                className="bg-zinc-900/40 p-6 rounded-[2rem] border border-white/5 space-y-3 hover:border-brand-orange/30 transition-all"
+                              >
+                                <h4 className="font-bold text-brand-orange">
+                                  {item.title}
+                                </h4>
+                                <p className="text-gray-400 text-sm leading-relaxed">
+                                  {item.desc}
+                                </p>
+                              </div>
+                            ))}
                       </div>
                     </div>
 
@@ -1827,8 +1965,25 @@ export default function ProjectDetail() {
                               >
                                 <div className="px-8 pb-8">
                                   <div className="pt-8 border-t border-white/5 text-gray-300 text-[15px] leading-[1.8] font-medium markdown-content max-w-4xl">
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                      {(feature as any).desc}
+                                    <ReactMarkdown
+                                      remarkPlugins={[remarkGfm]}
+                                      components={
+                                        id === "rider-app"
+                                          ? {
+                                              h4: ({ children }) => (
+                                                <h4 className="text-brand-orange font-bold text-base mt-10 mb-5">
+                                                  {children}
+                                                </h4>
+                                              ),
+                                            }
+                                          : undefined
+                                      }
+                                    >
+                                      {formatFeatureDescWithCircledSubsections(
+                                        (feature as any).desc,
+                                        index,
+                                        id,
+                                      )}
                                     </ReactMarkdown>
                                   </div>
 
