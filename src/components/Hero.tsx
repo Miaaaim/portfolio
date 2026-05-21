@@ -100,7 +100,7 @@ export default function Hero() {
             className="relative z-10 w-full aspect-[4/5] rounded-[4rem] overflow-hidden bg-brand-orange/10 border-8 border-white shadow-2xl"
           >
             <img 
-              src="/src/assets/images/hero_portrait_1779087699645.png" 
+              src="/src/assets/images/cv_photo.png" 
               alt="Jenny Portrait" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
