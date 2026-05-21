@@ -15,7 +15,7 @@ const posts = [
   },
   {
     title: '太鼓达人',
-    image: '/src/assets/images/more_sides_sports_taiko_1779111382673.png',
+    image: '/src/assets/images/more_sides_sports_taiko_1779111382673.webp',
   },
   {
     title: '徒步',
