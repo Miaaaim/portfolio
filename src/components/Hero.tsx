@@ -150,14 +150,14 @@ export default function Hero() {
                   href="https://github.com/FriesI23/mhabit" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-brand-orange hover:opacity-80 transition-all"
+                  className="text-gray-500 hover:opacity-80 transition-all"
                   title="GitHub"
                 >
                   <Github size={24} />
                 </a>
                 <button 
                   onClick={() => setShowWechat(true)}
-                  className="text-brand-orange hover:opacity-80 transition-all"
+                  className="text-gray-500 hover:opacity-80 transition-all"
                   title="WeChat"
                 >
                   <MessageCircle size={24} />
