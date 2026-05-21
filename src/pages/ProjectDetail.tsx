@@ -1501,6 +1501,15 @@ export default function ProjectDetail() {
                   <p className="text-lg text-gray-400 leading-relaxed">
                     {project.content}
                   </p>
+                  {id === "saas-system" && (
+                    <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-xl">
+                      <img
+                        src="/src/assets/images/lengkang_project_saas_background.png"
+                        alt="校园SaaS项目背景"
+                        className="block w-full h-auto object-contain"
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1584,6 +1593,15 @@ export default function ProjectDetail() {
                       </div>
                     </div>
                   </div>
+                  {id === "growth-hacker" && (
+                    <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-xl">
+                      <img
+                        src="/src/assets/images/netease_project_target.png"
+                        alt="增长黑客挑战与目标"
+                        className="block w-full h-auto object-contain"
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1980,6 +1998,15 @@ export default function ProjectDetail() {
                               >
                                 <div className="px-8 pb-8">
                                   <div className="pt-8 border-t border-white/5 text-gray-300 text-[15px] leading-[1.8] font-medium markdown-content max-w-4xl">
+                                    {id === "growth-hacker" && index === 1 && (
+                                      <div className="mb-6 w-full rounded-2xl overflow-hidden border border-white/10">
+                                        <img
+                                          src="/src/assets/images/netease_project_label.png"
+                                          alt="用户数据打通与 CRM 标签化运营"
+                                          className="block w-full h-auto object-contain"
+                                        />
+                                      </div>
+                                    )}
                                     <ReactMarkdown
                                       remarkPlugins={[remarkGfm]}
                                       components={
