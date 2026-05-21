@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 'ai-skills',
-    title: '提示词',
+    title: 'Skills/Prompt',
     category: 'AI Logic / 结构化能力',
     image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop',
     desc: '基于 AI 大模型能力构建结构化 Prompt / Skills 能力库，进行提示词与 Skills 的收集、设计、调优及场景化封装，能够结合业务需求持续迭代 AI 工作流，提升内容生成质量、输出稳定性与使用效率。'

@@ -181,7 +181,7 @@ const projects = {
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop",
   },
   "ai-skills": {
-    title: "AI 提示词",
+    title: "Skills/Prompt",
     category: "AI Logic / 结构化能力",
     desc: "基于 AI 大模型能力构建结构化 Prompt / Skills 能力库，进行提示词与 Skills 的收集、设计、调优及场景化封装，能够结合业务需求持续迭代 AI 工作流，提升内容生成质量、输出稳定性与使用效率。",
     content:
@@ -195,7 +195,7 @@ const projects = {
       {
         title: "prd撰写",
         subtitle: "Prompt Skill",
-        desc: "在原skill中补充“上线验证标准”部分",
+        desc: "结构化prd，提示补充缺失模块，强调上线验证",
         prompt: `---
 name: create-prd
 description: "使用包含 8 个核心章节的完整模板创建产品需求文档（PRD），涵盖问题、目标、市场细分、价值主张、解决方案、上线验证标准和版本规划等内容。适用于编写 PRD、整理产品需求、准备功能规格说明，或评审已有 PRD。"
