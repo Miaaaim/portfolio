@@ -89,18 +89,6 @@ export default function Hero() {
               </span>
             </h1>
           </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="relative pl-8 border-l-2 border-brand-orange/30 italic text-gray-500 max-w-sm"
-          >
-            <Quote className="absolute -left-3 -top-2 text-brand-orange fill-brand-orange" size={24} />
-            <p className="text-lg">
-              B端产品经理；熟悉后台、App、小程序多端协同
-            </p>
-          </motion.div>
         </div>
 
         {/* Center: Image */}
@@ -150,9 +138,13 @@ export default function Hero() {
 
            <div className="space-y-4">
               <div className="w-16 h-1 bg-brand-orange ml-auto" />
-              <p className="text-gray-400 max-w-[240px] text-right font-medium">
-                经验覆盖SaaS系统、CRM、企业数字化场景
-              </p>
+              <div className="flex flex-wrap justify-end gap-2">
+                {['SaaS', 'CRM', '企业数字化', '增长黑客', '后台', 'APP', '小程序', '数据分析'].map((tag) => (
+                  <span key={tag} className="px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-medium border border-brand-orange/30">
+                    {tag}
+                  </span>
+                ))}
+              </div>
               <div className="flex justify-end gap-6 pt-2">
                 <a 
                   href="https://github.com/FriesI23/mhabit" 
