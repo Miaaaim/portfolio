@@ -1,27 +1,37 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, Calendar, User } from 'lucide-react';
 
 const posts = [
   {
-    title: '多巴胺的分泌：不仅是运动，更是对生活节奏的掌控',
-    category: '运动',
-    date: '2024年',
-    author: 'Mia',
+    title: '羽毛球',
+    image: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: '网球',
+    image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: '游泳',
+    image: 'https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: '太鼓达人',
     image: '/src/assets/images/more_sides_sports_taiko_1779111382673.png',
   },
   {
-    title: '毛孩子们的日常：在这个小生命的世界里，耐心是最高级的爱',
-    category: '铲屎官',
-    date: '2024年',
-    author: 'Mia',
+    title: '徒步',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: '两只猫',
     image: '/src/assets/images/more_sides_two_cats_1779111400698.png',
   },
   {
-    title: '指尖上的流转：在手工创造中寻找那份独有的内心宁静',
-    category: '手工创造',
-    date: '2024年',
-    author: 'Mia',
+    title: '手工房子',
     image: '/src/assets/images/more_sides_mini_house_1779111416032.png',
+  },
+  {
+    title: '美食',
+    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80',
   },
 ];
 
@@ -34,14 +44,14 @@ export default function Blog() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {posts.map((post, i) => (
           <motion.article 
             key={i}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="group cursor-pointer space-y-6"
+            className="group space-y-6"
           >
             <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-lg">
                <img 
@@ -50,24 +60,11 @@ export default function Blog() {
                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                  referrerPolicy="no-referrer"
                />
-               <div className="absolute bottom-4 left-4 flex gap-2">
-                  <span className="bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold uppercase">
-                    {post.category}
+               <div className="absolute bottom-4 left-4">
+                  <span className="bg-white/90 backdrop-blur px-4 py-1 rounded-full text-sm font-bold text-brand-dark">
+                    {post.title}
                   </span>
                </div>
-               <button className="absolute bottom-4 right-4 w-12 h-12 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-brand-dark opacity-0 group-hover:opacity-100 transition-opacity">
-                 <ArrowUpRight size={20} />
-               </button>
-            </div>
-            
-            <div className="space-y-4 px-2">
-               <div className="flex items-center gap-4 text-xs font-bold uppercase text-gray-400">
-                  <span className="flex items-center gap-1"><User size={14} className="text-brand-orange" /> {post.author}</span>
-                  <span className="flex items-center gap-1"><Calendar size={14} className="text-brand-orange" /> {post.date}</span>
-               </div>
-               <h3 className="text-2xl font-bold leading-tight group-hover:text-brand-orange transition-colors">
-                 {post.title}
-               </h3>
             </div>
           </motion.article>
         ))}
