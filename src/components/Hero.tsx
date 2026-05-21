@@ -1,0 +1,163 @@
+import { motion } from 'motion/react';
+import { Star, ArrowUpRight, Quote, Download, Send, Github, MessageCircle, X } from 'lucide-react';
+import { useModal } from '../context/ModalContext';
+import { useState } from 'react';
+
+export default function Hero() {
+  const { openModal } = useModal();
+  const [showWechat, setShowWechat] = useState(false);
+  return (
+    <section id="home" className="pt-32 pb-20 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        {/* Left Side: Text and Quote */}
+        <div className="lg:col-span-4 space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-4">
+               <div className="relative inline-block">
+                 <span className="bg-brand-gray px-4 py-2 rounded-full text-sm font-medium border border-gray-200">Hello!</span>
+                 <motion.div 
+                   animate={{ rotate: [0, 10, 0] }}
+                   transition={{ duration: 2, repeat: Infinity }}
+                   className="absolute -top-6 -right-6 text-brand-orange"
+                 >
+                   <ArrowUpRight size={24} />
+                 </motion.div>
+               </div>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tight">
+              I'm <span className="text-brand-orange">Mia</span>, <br />
+              <span className="text-4xl md:text-6xl">产品经理</span>
+            </h1>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="relative pl-8 border-l-2 border-brand-orange/30 italic text-gray-500 max-w-sm"
+          >
+            <Quote className="absolute -left-3 -top-2 text-brand-orange fill-brand-orange" size={24} />
+            <p className="text-lg">
+              B端产品经理；熟悉后台、App、小程序多端协同
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Center: Image */}
+        <div className="lg:col-span-4 flex justify-center relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative z-10 w-full aspect-[4/5] rounded-[4rem] overflow-hidden bg-brand-orange/10 border-8 border-white shadow-2xl"
+          >
+            <img 
+              src="/src/assets/images/hero_portrait_1779087699645.png" 
+              alt="Jenny Portrait" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+          
+          {/* Decorative circles */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-orange/5 rounded-full -z-1" />
+          
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-4 items-center whitespace-nowrap">
+             <button 
+              onClick={openModal}
+              className="bg-brand-orange text-white px-12 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-transform border border-brand-orange flex items-center gap-2"
+            >
+               <Send size={20} />
+               联系我
+             </button>
+          </div>
+        </div>
+
+        {/* Right Side: Stats */}
+        <div className="lg:col-span-4 flex flex-col justify-between items-end space-y-12">
+           <motion.div 
+             initial={{ opacity: 0, x: 50 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             className="text-right"
+           >
+             <div className="flex gap-1 justify-end text-brand-orange mb-2">
+                {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
+             </div>
+             <div className="text-6xl font-bold">10年+</div>
+             <div className="text-gray-400 text-lg uppercase tracking-widest font-bold">行业经验</div>
+           </motion.div>
+
+           <div className="space-y-4">
+              <div className="w-16 h-1 bg-brand-orange ml-auto" />
+              <p className="text-gray-400 max-w-[240px] text-right font-medium">
+                经验覆盖SaaS系统、CRM、企业数字化场景
+              </p>
+              <div className="flex justify-end gap-6 pt-2">
+                <a 
+                  href="https://github.com/FriesI23/mhabit" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-brand-orange hover:opacity-80 transition-all"
+                  title="GitHub"
+                >
+                  <Github size={24} />
+                </a>
+                <button 
+                  onClick={() => setShowWechat(true)}
+                  className="text-brand-orange hover:opacity-80 transition-all"
+                  title="WeChat"
+                >
+                  <MessageCircle size={24} />
+                </button>
+              </div>
+           </div>
+
+           {/* WeChat Modal */}
+           {showWechat && (
+             <div 
+               className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/80 backdrop-blur-sm p-6"
+               onClick={() => setShowWechat(false)}
+             >
+               <motion.div 
+                 initial={{ scale: 0.9, opacity: 0 }}
+                 animate={{ scale: 1, opacity: 1 }}
+                 className="bg-white p-8 rounded-3xl max-w-sm w-full relative"
+                 onClick={e => e.stopPropagation()}
+               >
+                 <button 
+                   onClick={() => setShowWechat(false)}
+                   className="absolute top-4 right-4 text-gray-400 hover:text-brand-dark transition-colors"
+                 >
+                   <X size={24} />
+                 </button>
+                 <div className="text-center space-y-6">
+                   <h3 className="text-2xl font-bold text-brand-dark">扫码添加微信</h3>
+                   <div className="aspect-square bg-gray-50 rounded-2xl p-4 border-2 border-gray-100">
+                     <img 
+                       src="/src/assets/images/wechat_qr.png" 
+                       alt="WeChat QR Code" 
+                       className="w-full h-full object-contain"
+                       referrerPolicy="no-referrer"
+                     />
+                   </div>
+                   <p className="text-gray-500 text-sm">
+                     如果您有任何想法或建议，欢迎微信沟通
+                   </p>
+                 </div>
+               </motion.div>
+             </div>
+           )}
+        </div>
+
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Mia Portfolio",
+  "description": "A professional portfolio website for Mia, a Product Designer, showcasing work experience, services, and projects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
