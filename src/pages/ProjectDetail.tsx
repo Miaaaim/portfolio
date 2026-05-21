@@ -1302,11 +1302,11 @@ export default function ProjectDetail() {
               </div>
 
               {id !== "ai-image" && id !== "ai-skills" && id !== "ai-apps" && (
-                <div className="aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
+                <div className="w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="block w-full h-auto object-contain"
                   />
                 </div>
               )}
