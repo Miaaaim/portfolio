@@ -1,11 +1,56 @@
 import { motion } from 'motion/react';
 import { Star, ArrowUpRight, Quote, Download, Send, Github, MessageCircle, X } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const TYPING_TEXTS = ['产品经理', '产品运营', 'vibe coder'];
 
 export default function Hero() {
   const { openModal } = useModal();
   const [showWechat, setShowWechat] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  useEffect(() => {
+    const blinkTimer = window.setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 500);
+
+    return () => window.clearInterval(blinkTimer);
+  }, []);
+
+  useEffect(() => {
+    const currentText = TYPING_TEXTS[currentTextIndex];
+    let timer: number | undefined;
+
+    if (!isDeleting && displayText.length < currentText.length) {
+      timer = window.setTimeout(() => {
+        setDisplayText(currentText.slice(0, displayText.length + 1));
+      }, 120);
+    } else if (!isDeleting && displayText.length === currentText.length) {
+      timer = window.setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && displayText.length > 0) {
+      timer = window.setTimeout(() => {
+        setDisplayText(currentText.slice(0, displayText.length - 1));
+      }, 80);
+    } else if (isDeleting && displayText.length === 0) {
+      timer = window.setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentTextIndex((prev) => (prev + 1) % TYPING_TEXTS.length);
+      }, 200);
+    }
+
+    return () => {
+      if (timer !== undefined) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [currentTextIndex, displayText, isDeleting]);
+
   return (
     <section id="home" className="pt-32 pb-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -33,7 +78,15 @@ export default function Hero() {
             
             <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tight">
               I'm <span className="text-brand-orange">Mia</span>, <br />
-              <span className="text-4xl md:text-6xl">产品经理</span>
+              <span className="text-4xl md:text-6xl inline-flex items-center min-h-[1.25em] min-w-[10ch]">
+                <span>{displayText || '\u00A0'}</span>
+                <span
+                  aria-hidden="true"
+                  className={`ml-1 transition-opacity duration-100 ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  |
+                </span>
+              </span>
             </h1>
           </motion.div>
 
