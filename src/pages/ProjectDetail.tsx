@@ -1943,6 +1943,8 @@ export default function ProjectDetail() {
   const aiAppsMobileDemoRef = useRef<HTMLVideoElement | null>(null);
   const [playAiAppsWebDemo, setPlayAiAppsWebDemo] = useState(false);
   const aiAppsWebDemoRef = useRef<HTMLVideoElement | null>(null);
+  const [playAiAgentDemo, setPlayAiAgentDemo] = useState(false);
+  const aiAgentDemoRef = useRef<HTMLVideoElement | null>(null);
 
   const handlePlayAiAppsMobileDemo = () => {
     setPlayAiAppsMobileDemo(true);
@@ -1950,6 +1952,10 @@ export default function ProjectDetail() {
 
   const handlePlayAiAppsWebDemo = () => {
     setPlayAiAppsWebDemo(true);
+  };
+
+  const handlePlayAiAgentDemo = () => {
+    setPlayAiAgentDemo(true);
   };
 
   useEffect(() => {
@@ -1979,6 +1985,20 @@ export default function ProjectDetail() {
       });
     }
   }, [playAiAppsWebDemo]);
+
+  useEffect(() => {
+    if (!playAiAgentDemo) return;
+
+    const video = aiAgentDemoRef.current;
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      void playPromise.catch(() => {
+        setPlayAiAgentDemo(false);
+      });
+    }
+  }, [playAiAgentDemo]);
   const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
   const useGroupedChallenges = rawChallenges.some((item: any) =>
     String(item?.title || "").includes("｜"),
@@ -2130,11 +2150,43 @@ export default function ProjectDetail() {
 
               {id !== "ai-skills" && id !== "ai-apps" && id !== "ai-image" && (
                 <div className="w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="block w-full h-auto object-contain"
-                  />
+                  {id === "ai-agent" ? (
+                    <div className="relative">
+                      <video
+                        ref={aiAgentDemoRef}
+                        src="/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4"
+                        controls={playAiAgentDemo}
+                        autoPlay={playAiAgentDemo}
+                        muted={!playAiAgentDemo}
+                        className="block w-full h-auto object-contain"
+                        playsInline
+                        preload="metadata"
+                        poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
+                      />
+
+                      {!playAiAgentDemo && (
+                        <button
+                          type="button"
+                          aria-label="播放 AI Agent 演示视频"
+                          onClick={handlePlayAiAgentDemo}
+                          className="absolute inset-0 bg-black/45 transition-opacity duration-300 flex flex-col items-center justify-center gap-3"
+                        >
+                          <div className="w-14 h-14 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg">
+                            <Play size={22} fill="currentColor" className="ml-0.5" />
+                          </div>
+                          <span className="text-xs text-white font-bold tracking-widest uppercase">
+                            点击播放演示视频
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="block w-full h-auto object-contain"
+                    />
+                  )}
                 </div>
               )}
 
@@ -3312,7 +3364,13 @@ export default function ProjectDetail() {
                   <hr className="border-white/10" />
 
                   <button
-                    onClick={id === "ai-agent" ? openAgentModal : openModal}
+                    onClick={() => {
+                      if (id === "ai-agent") {
+                        openAgentModal();
+                        return;
+                      }
+                      openModal();
+                    }}
                     className="w-full bg-brand-orange text-white py-5 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white hover:text-brand-dark transition-all"
                   >
                     {id === "ai-agent" ? "立即体验" : "了解更多"}{" "}
