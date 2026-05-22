@@ -2100,7 +2100,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Background Section */}
-              {id !== "ai-skills" && id !== "ai-apps" && (
+              {id !== "ai-skills" && id !== "ai-apps" && id !== "ai-image" && (
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     项目背景 <div className="h-0.5 flex-1 bg-white/10" />
@@ -2524,10 +2524,6 @@ export default function ProjectDetail() {
                   </h2>
                   <div className="space-y-8">
                     <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-sm text-gray-400">
-                        <span className="font-bold text-white">前 6 张</span>
-                        <span>hover 查看提示词并可直接复制</span>
-                      </div>
                       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
                         {(project as any).gallery
                           .slice(0, 6)
@@ -2589,10 +2585,6 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-sm text-gray-400">
-                        <span className="font-bold text-white">后 12 张</span>
-                        <span>纯图片展示，一行 6 张</span>
-                      </div>
                       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
                         {(project as any).gallery
                           .slice(6)
@@ -2615,7 +2607,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Features Section */}
-              {id !== "ai-apps" && (
+              {id !== "ai-apps" && id !== "ai-image" && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     {id === "ai-agent" ? "配置介绍" : "核心功能"}{" "}
