@@ -2057,7 +2057,7 @@ export default function ProjectDetail() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`${id === "ai-image" || id === "ai-skills" || id === "ai-apps" ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
+              className={`${id === "ai-skills" || id === "ai-apps" ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
             >
               <div className="space-y-6">
                 <div className="inline-block bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
@@ -2089,7 +2089,7 @@ export default function ProjectDetail() {
                 )}
               </div>
 
-              {id !== "ai-image" && id !== "ai-skills" && id !== "ai-apps" && (
+              {id !== "ai-skills" && id !== "ai-apps" && (
                 <div className="w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img
                     src={project.image}
@@ -2100,7 +2100,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Background Section */}
-              {id !== "ai-image" && id !== "ai-skills" && id !== "ai-apps" && (
+              {id !== "ai-skills" && id !== "ai-apps" && (
                 <div className="space-y-8">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     项目背景 <div className="h-0.5 flex-1 bg-white/10" />
@@ -2121,7 +2121,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Challenges & Goals Section */}
-              {id !== "ai-image" && (project as any).challengeAndGoals && (
+              {(project as any).challengeAndGoals && (
                 <div className="space-y-12">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     挑战与目标 <div className="h-0.5 flex-1 bg-white/10" />
@@ -2487,8 +2487,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Legacy Challenges Section */}
-              {id !== "ai-image" &&
-                !(project as any).challengeAndGoals &&
+              {!(project as any).challengeAndGoals &&
                 (project as any).challenges && (
                   <div className="space-y-10">
                     <h2 className="text-3xl font-bold flex items-center gap-4">
@@ -2517,8 +2516,61 @@ export default function ProjectDetail() {
                   </div>
                 )}
 
+              {/* AI Image Gallery Section */}
+              {id === "ai-image" && (project as any).gallery && (
+                <div className="space-y-10">
+                  <h2 className="text-3xl font-bold flex items-center gap-4">
+                    案例图集与提示词 <div className="h-0.5 flex-1 bg-white/10" />
+                  </h2>
+                  <div className="grid grid-cols-1 gap-8">
+                    {(project as any).gallery.map((item: any, index: number) => (
+                      <div
+                        key={index}
+                        className="bg-zinc-900/40 p-6 rounded-[2.5rem] border border-white/5 space-y-5"
+                      >
+                        <div className="w-full rounded-[1.5rem] overflow-hidden border border-white/10">
+                          <img
+                            src={item.url}
+                            alt={`AI 图片案例 ${index + 1}`}
+                            className="block w-full h-auto object-contain"
+                          />
+                        </div>
+
+                        {item.prompt ? (
+                          <div className="space-y-4">
+                            <div className="flex items-center justify-between gap-4">
+                              <div className="flex items-center gap-2 text-brand-orange">
+                                <Info size={16} />
+                                <span className="text-xs font-bold uppercase tracking-widest">
+                                  提示词内容
+                                </span>
+                              </div>
+                              <button
+                                onClick={() =>
+                                  navigator.clipboard.writeText(item.prompt)
+                                }
+                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white text-xs font-bold transition-all border border-white/5"
+                              >
+                                <Copy size={14} /> 复制提示词
+                              </button>
+                            </div>
+                            <div className="bg-black/50 rounded-2xl p-6 border border-white/5 overflow-x-auto custom-scrollbar">
+                              <pre className="text-sm text-gray-400 font-mono whitespace-pre-wrap leading-relaxed">
+                                {item.prompt}
+                              </pre>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-sm text-gray-500">该图片暂无提示词</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Features Section */}
-              {id !== "ai-image" && id !== "ai-apps" && (
+              {id !== "ai-apps" && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     {id === "ai-agent" ? "配置介绍" : "核心功能"}{" "}
@@ -2703,7 +2755,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Experience & Methodology Section */}
-              {id !== "ai-image" && (project as any).methodology && (
+              {(project as any).methodology && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     经验与方法论沉淀{" "}
@@ -2736,7 +2788,7 @@ export default function ProjectDetail() {
               )}
 
               {/* Case Q&A Section */}
-              {id !== "ai-image" && (project as any).qas && (
+              {(project as any).qas && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     案例 Q&A <div className="h-0.5 flex-1 bg-white/10" />
@@ -3239,7 +3291,7 @@ export default function ProjectDetail() {
             </motion.div>
 
             {/* Project Sidebar / ROI */}
-            {id !== "ai-image" && id !== "ai-skills" && id !== "ai-apps" && (
+            {id !== "ai-skills" && id !== "ai-apps" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
