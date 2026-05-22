@@ -12,72 +12,14 @@ interface CloudLayout {
   rightEdge: number;
 }
 
-type WordPosition = { x: number; y: number };
-
-// 手动词位坐标（百分比）：可直接修改 x/y 来调整每个词位置
-const strengthWordPositions: Record<string, WordPosition> = {
-  '结果导向': { x: 10, y: 14 },
-  '结构化': { x: 22, y: 14 },
-  '数据驱动': { x: 34, y: 14 },
-  '用户洞察': { x: 46, y: 14 },
-  '需求拆解': { x: 58, y: 14 },
-  '增长思维': { x: 70, y: 14 },
-  '闭环意识': { x: 82, y: 14 },
-  '跨团队协同': { x: 10, y: 30 },
-  '推进力强': { x: 22, y: 30 },
-  '优先级判断': { x: 34, y: 30 },
-  '执行稳定': { x: 46, y: 30 },
-  '项目管理': { x: 58, y: 30 },
-  '主动担当': { x: 70, y: 30 },
-  '目标拆解': { x: 82, y: 30 },
-  '文档清晰': { x: 10, y: 46 },
-  '沟通对齐': { x: 22, y: 46 },
-  '学习敏捷': { x: 34, y: 46 },
-  '复盘迭代': { x: 46, y: 46 },
-  '指标设计': { x: 58, y: 46 },
-  '流程优化': { x: 70, y: 46 },
-  '风险识别': { x: 82, y: 46 },
-  '问题定义': { x: 10, y: 62 },
-  '业务理解': { x: 22, y: 62 },
-  '资源整合': { x: 34, y: 62 },
-  '竞品分析': { x: 46, y: 62 },
-  'A/B测试意识': { x: 58, y: 62 },
-  'B端场景理解': { x: 70, y: 62 },
-  'AI工具应用': { x: 82, y: 62 },
-  '口径统一': { x: 10, y: 78 },
-  '责任心强': { x: 22, y: 78 },
-  '抗压稳定': { x: 34, y: 78 },
-  '情绪稳定': { x: 46, y: 78 },
-  '同理心强': { x: 58, y: 78 },
-  '自驱成长': { x: 70, y: 78 },
-  '开放反馈': { x: 82, y: 78 },
-};
-
-const weaknessWordPositions: Record<string, WordPosition> = {
-  '赛道深耕弱': { x: 12, y: 16 },
-  'AI实战偏浅': { x: 26, y: 16 },
-  '战略表达弱': { x: 40, y: 16 },
-  '商业化偏弱': { x: 54, y: 16 },
-  'ToC经验少': { x: 68, y: 16 },
-  '前期抠细节': { x: 82, y: 16 },
-  '完美主义倾向': { x: 12, y: 32 },
-  '行业跨度大': { x: 26, y: 32 },
-  '授权不足': { x: 40, y: 32 },
-  '风险前置弱': { x: 54, y: 32 },
-  '技术深度一般': { x: 68, y: 32 },
-  '财务模型薄弱': { x: 82, y: 32 },
-  '品牌运营经验少': { x: 12, y: 48 },
-  '海外市场经验少': { x: 26, y: 48 },
-  '大团队管理经验少': { x: 40, y: 48 },
-  '复杂博弈经验少': { x: 54, y: 48 },
-  '创新方法沉淀不足': { x: 68, y: 48 },
-  '公开演讲偏弱': { x: 82, y: 48 },
-  '中长期规划偏弱': { x: 12, y: 64 },
-  '生态合作经验少': { x: 26, y: 64 },
-  '对冲突敏感': { x: 40, y: 64 },
-  '决策前求稳': { x: 54, y: 64 },
-  '对失败容忍低': { x: 68, y: 64 },
-};
+interface OccupiedWord {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  targetX: number;
+  targetY: number;
+}
 
 const wordData: WordData[] = [
   // 优势
@@ -229,28 +171,145 @@ export default function StrengthsWeaknesses() {
     };
   };
 
-  const createCloudLayoutFromManualPositions = (words: WordData[]): CloudLayout => {
+  const createAutoCloudLayout = (words: WordData[]): CloudLayout => {
     const edgePaddingLeft = 3;
     const edgePaddingRight = 10;
     const edgePaddingY = 7;
     const debugEdgeBuffer = 0.5;
-    const positionMap = words[0]?.type === 'strength' ? strengthWordPositions : weaknessWordPositions;
+    const isStrengthCloud = words[0]?.type === 'strength';
+    const count = words.length;
+    const cols = Math.ceil(Math.sqrt(count * 1.25));
+    const rows = Math.ceil(count / cols);
+    const xSpan = 100 - edgePaddingLeft - edgePaddingRight;
+    const ySpan = 100 - edgePaddingY * 2;
+    const xStep = xSpan / (cols + 1);
+    const yStep = ySpan / (rows + 1);
+    const minGapX = isStrengthCloud ? 1.15 : 0.85;
+    const minGapY = isStrengthCloud ? 0.95 : 0.72;
 
-    const occupied = words.map(word => {
-      const box = estimateWordBox(word);
-      const manual = positionMap[word.text] || { x: 50, y: 50 };
+    const clampPoint = (x: number, y: number, box: { width: number; height: number }) => {
       const minX = edgePaddingLeft + box.width / 2;
       const maxX = 100 - edgePaddingRight - box.width / 2;
       const minY = edgePaddingY + box.height / 2;
       const maxY = 100 - edgePaddingY - box.height / 2;
 
       return {
-        x: Math.min(maxX, Math.max(minX, manual.x)),
-        y: Math.min(maxY, Math.max(minY, manual.y)),
+        x: Math.min(maxX, Math.max(minX, x)),
+        y: Math.min(maxY, Math.max(minY, y)),
+      };
+    };
+
+    const intersects = (a: OccupiedWord, b: OccupiedWord) => {
+      return (
+        Math.abs(a.x - b.x) < (a.width + b.width) / 2 + minGapX &&
+        Math.abs(a.y - b.y) < (a.height + b.height) / 2 + minGapY
+      );
+    };
+
+    const occupied: OccupiedWord[] = [];
+    words.forEach((word, index) => {
+      const row = Math.floor(index / cols);
+      const col = index % cols;
+      const targetX = edgePaddingLeft + (col + 1) * xStep;
+      const targetY = edgePaddingY + (row + 1) * yStep;
+      const box = estimateWordBox(word);
+
+      let placed = clampPoint(targetX, targetY, box);
+      let found = false;
+      const radialStep = Math.max(0.9, Math.min(xStep, yStep) * 0.33);
+
+      for (let layer = 0; layer <= 24 && !found; layer += 1) {
+        const radius = layer * radialStep;
+        const checks = Math.max(8, 10 + layer * 3);
+
+        for (let s = 0; s < checks; s += 1) {
+          const angle = (Math.PI * 2 * s) / checks;
+          const candidatePoint = clampPoint(
+            targetX + Math.cos(angle) * radius,
+            targetY + Math.sin(angle) * radius,
+            box
+          );
+
+          const candidate: OccupiedWord = {
+            x: candidatePoint.x,
+            y: candidatePoint.y,
+            width: box.width,
+            height: box.height,
+            targetX,
+            targetY,
+          };
+
+          if (!occupied.some(item => intersects(candidate, item))) {
+            placed = candidatePoint;
+            found = true;
+            break;
+          }
+        }
+      }
+
+      occupied.push({
+        x: placed.x,
+        y: placed.y,
         width: box.width,
         height: box.height,
-      };
+        targetX,
+        targetY,
+      });
     });
+
+    // 迭代松弛：重叠推离 + 轻量回拉到目标网格，兼顾不重叠与均匀分布
+    const maxIterations = isStrengthCloud ? 120 : 90;
+    for (let iter = 0; iter < maxIterations; iter += 1) {
+      let moved = false;
+
+      for (let i = 0; i < occupied.length; i += 1) {
+        for (let j = i + 1; j < occupied.length; j += 1) {
+          const a = occupied[i];
+          const b = occupied[j];
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const overlapX = (a.width + b.width) / 2 + minGapX - Math.abs(dx);
+          const overlapY = (a.height + b.height) / 2 + minGapY - Math.abs(dy);
+
+          if (overlapX > 0 && overlapY > 0) {
+            moved = true;
+            const pushX = overlapX / 2;
+            const pushY = overlapY / 2;
+            const dirX = dx >= 0 ? 1 : -1;
+            const dirY = dy >= 0 ? 1 : -1;
+
+            if (overlapX < overlapY) {
+              a.x -= dirX * pushX * 0.52;
+              b.x += dirX * pushX * 0.52;
+            } else {
+              a.y -= dirY * pushY * 0.52;
+              b.y += dirY * pushY * 0.52;
+            }
+
+            const aClamped = clampPoint(a.x, a.y, a);
+            const bClamped = clampPoint(b.x, b.y, b);
+            a.x = aClamped.x;
+            a.y = aClamped.y;
+            b.x = bClamped.x;
+            b.y = bClamped.y;
+          }
+        }
+      }
+
+      for (let i = 0; i < occupied.length; i += 1) {
+        const item = occupied[i];
+        const pull = isStrengthCloud ? 0.022 : 0.03;
+        item.x += (item.targetX - item.x) * pull;
+        item.y += (item.targetY - item.y) * pull;
+        const clamped = clampPoint(item.x, item.y, item);
+        item.x = clamped.x;
+        item.y = clamped.y;
+      }
+
+      if (!moved && iter > 25) {
+        break;
+      }
+    }
 
     const points = occupied.map(item => ({
       x: item.x,
@@ -318,8 +377,8 @@ export default function StrengthsWeaknesses() {
     });
   };
 
-  const strengthLayout = createCloudLayoutFromManualPositions(strengths);
-  const weaknessLayout = createCloudLayoutFromManualPositions(weaknesses);
+  const strengthLayout = createAutoCloudLayout(strengths);
+  const weaknessLayout = createAutoCloudLayout(weaknesses);
 
   return (
     <section className="py-24 bg-white">
