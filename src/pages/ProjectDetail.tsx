@@ -3205,11 +3205,9 @@ export default function ProjectDetail() {
                             <div className="flex gap-1.5">
                               <span className="w-2 h-2 rounded-full bg-red-500/80" />
                               <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                              <button
-                                type="button"
-                                aria-label="播放电脑端演示录屏"
-                                onClick={handlePlayAiAppsWebDemo}
-                                className="w-2 h-2 rounded-full bg-green-500/80 hover:bg-green-400 transition-colors"
+                              <span
+                                className="w-2 h-2 rounded-full bg-zinc-600"
+                                title="视频资源待补充"
                               />
                             </div>
                             <div className="bg-zinc-950 text-[8px] text-gray-500 px-6 py-0.5 rounded-md border border-white/5 tracking-wider font-mono">
@@ -3218,11 +3216,21 @@ export default function ProjectDetail() {
                             <div className="w-10" />
                           </div>
 
-                          {/* Screen Video */}
+                          {/* Screen Cover */}
                           <div className="absolute inset-x-0 top-6 bottom-0 bg-zinc-950">
-                            <div className="w-full h-full flex items-center justify-center text-center p-6 bg-zinc-900/70">
-                              <p className="text-xs text-gray-400 leading-relaxed">
-                                该模块视频与封面资源尚未上传，当前先展示静态占位。
+                            <img
+                              src="/src/assets/images/ai-apps-personal-portfolio-cover-v1.png"
+                              alt="AI 辅助全栈网页开发云平台封面"
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                e.currentTarget.src =
+                                  "/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png";
+                              }}
+                            />
+
+                            <div className="absolute inset-0 bg-black/35 flex items-end p-4">
+                              <p className="text-[11px] text-gray-200 font-medium tracking-wide">
+                                视频资源暂未提供
                               </p>
                             </div>
                           </div>
