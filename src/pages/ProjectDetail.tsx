@@ -20,7 +20,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Header from "../components/Header";
@@ -1940,6 +1940,13 @@ export default function ProjectDetail() {
     null,
   );
   const [hoveredFlow, setHoveredFlow] = useState<number | null>(null);
+  const [playAiAppsWebDemo, setPlayAiAppsWebDemo] = useState(false);
+  const aiAppsWebDemoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handlePlayAiAppsWebDemo = () => {
+    setPlayAiAppsWebDemo(true);
+    void aiAppsWebDemoRef.current?.play();
+  };
   const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
   const useGroupedChallenges = rawChallenges.some((item: any) =>
     String(item?.title || "").includes("｜"),
@@ -3200,13 +3207,18 @@ export default function ProjectDetail() {
                     >
                       {/* Left side: PC browser frame mock preview (takes 6 cols as it is desktop aspect ratio) */}
                       <div className="lg:col-span-6 flex justify-center">
-                        <div className="relative w-full aspect-[16/10] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
+                        <div className="relative w-full aspect-[16/12.5] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
                           {/* Browser Window Bar */}
                           <div className="h-6 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between z-20 relative shrink-0">
                             <div className="flex gap-1.5">
                               <span className="w-2 h-2 rounded-full bg-red-500/80" />
                               <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                              <span className="w-2 h-2 rounded-full bg-green-500/80" />
+                              <button
+                                type="button"
+                                aria-label="播放电脑端演示录屏"
+                                onClick={handlePlayAiAppsWebDemo}
+                                className="w-2 h-2 rounded-full bg-green-500/80 hover:bg-green-400 transition-colors"
+                              />
                             </div>
                             <div className="bg-zinc-950 text-[8px] text-gray-500 px-6 py-0.5 rounded-md border border-white/5 tracking-wider font-mono">
                               https://aistudio.deployment
@@ -3214,68 +3226,41 @@ export default function ProjectDetail() {
                             <div className="w-10" />
                           </div>
 
-                          {/* Screen Dashboard Interface */}
-                          <div className="absolute inset-0 pt-6 flex bg-zinc-950 text-white font-sans text-xs">
-                            {/* Simple left sidebar layout */}
-                            <div className="w-12 bg-zinc-900 border-r border-white/5 p-2 flex flex-col gap-2 pt-4 shrink-0 font-sans">
-                              <div className="w-full h-3 bg-brand-orange/20 rounded-md border border-brand-orange/20" />
-                              <div className="w-full h-3 bg-zinc-800/60 rounded-md" />
-                              <div className="w-full h-3 bg-zinc-800/60 rounded-md" />
-                            </div>
-
-                            {/* Main content grid */}
-                            <div className="flex-1 p-3.5 grid grid-cols-3 gap-3 overflow-hidden font-sans">
-                              <div className="col-span-2 bg-zinc-900/90 rounded-xl border border-white/5 p-3 flex flex-col justify-between">
-                                <div>
-                                  <span className="text-[7px] text-gray-500 uppercase tracking-widest font-bold">
-                                    AI Studio Integration
-                                  </span>
-                                  <h4 className="text-[10px] font-black text-white mt-0.5">
-                                    Automated Deployment Flow
-                                  </h4>
-                                </div>
-                                <div className="h-8 border-b border-white/5 flex items-end gap-1 pb-1">
-                                  <span className="bg-brand-orange/40 w-full h-3 rounded-sm animate-pulse" />
-                                  <span className="bg-brand-orange/60 w-full h-5 rounded-sm" />
-                                  <span className="bg-brand-orange/45 w-full h-2 rounded-sm animate-pulse" />
-                                  <span className="bg-brand-orange w-full h-7 rounded-sm" />
-                                  <span className="bg-zinc-800 w-full h-1 rounded-sm" />
-                                </div>
-                                <div className="text-[7px] text-zinc-400 font-sans">
-                                  Responsive cycle:{" "}
-                                  <span className="text-brand-orange font-bold">
-                                    99.8% Perfect
-                                  </span>
-                                </div>
-                              </div>
-
-                              <div className="bg-zinc-900/90 rounded-xl border border-white/5 p-3 flex flex-col justify-center items-center gap-1 text-center font-sans">
-                                <div className="w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange">
-                                  <CheckCircle2 size={12} />
-                                </div>
-                                <span className="text-[8px] font-bold">
-                                  AI Studio
-                                </span>
-                                <span className="text-[6px] text-emerald-400 font-mono animate-pulse">
-                                  ● Connected
-                                </span>
-                              </div>
-                            </div>
+                          {/* Screen Video */}
+                          <div className="absolute inset-x-0 top-6 bottom-0 bg-zinc-950">
+                            <video
+                              ref={aiAppsWebDemoRef}
+                              src="/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4"
+                              controls={playAiAppsWebDemo}
+                              autoPlay={playAiAppsWebDemo}
+                              muted={!playAiAppsWebDemo}
+                              className="w-full h-full object-contain"
+                              loop
+                              playsInline
+                              preload="metadata"
+                              poster="/src/assets/images/ui_project_1_1779087714360.png"
+                            />
                           </div>
 
-                          {/* Video Play Overlay */}
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30">
-                            <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                              <Play
-                                size={20}
-                                fill="currentColor"
-                                className="ml-0.5"
-                              />
-                            </div>
-                            <span className="text-[10px] text-white font-bold opacity-80 uppercase tracking-widest font-sans">
-                              播放电脑端演示录屏
-                            </span>
-                          </div>
+                          {!playAiAppsWebDemo && (
+                            <button
+                              type="button"
+                              aria-label="播放电脑端演示录屏"
+                              onClick={handlePlayAiAppsWebDemo}
+                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
+                            >
+                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
+                                <Play
+                                  size={20}
+                                  fill="currentColor"
+                                  className="ml-0.5"
+                                />
+                              </div>
+                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest font-sans">
+                                播放电脑端演示录屏
+                              </span>
+                            </button>
+                          )}
 
                           <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
                         </div>
