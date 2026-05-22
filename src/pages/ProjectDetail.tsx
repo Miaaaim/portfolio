@@ -3258,16 +3258,13 @@ export default function ProjectDetail() {
                     >
                       {/* Left side: PC browser frame mock preview (takes 6 cols as it is desktop aspect ratio) */}
                       <div className="lg:col-span-6 flex justify-center">
-                        <div className="relative w-full aspect-[16/13.2] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
+                        <div className="relative w-full aspect-[16/10.5] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
                           {/* Browser Window Bar */}
                           <div className="h-6 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between z-20 relative shrink-0">
                             <div className="flex gap-1.5">
                               <span className="w-2 h-2 rounded-full bg-red-500/80" />
                               <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                              <span
-                                className="w-2 h-2 rounded-full bg-zinc-600"
-                                title="视频资源待补充"
-                              />
+                              <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
                             </div>
                             <div className="bg-zinc-950 text-[8px] text-gray-500 px-6 py-0.5 rounded-md border border-white/5 tracking-wider font-mono">
                               https://aistudio.deployment
@@ -3275,23 +3272,17 @@ export default function ProjectDetail() {
                             <div className="w-10" />
                           </div>
 
-                          {/* Screen Cover */}
+                          {/* Screen Video */}
                           <div className="absolute inset-x-0 top-6 bottom-0 bg-zinc-950">
-                            <img
-                              src="/src/assets/images/ai-apps-personal-portfolio-cover-v1.png"
-                              alt="AI 辅助全栈网页开发云平台封面"
+                            <video
+                              src="/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4"
+                              poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
                               className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.currentTarget.src =
-                                  "/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png";
-                              }}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
                             />
-
-                            <div className="absolute inset-0 bg-black/35 flex items-end p-4">
-                              <p className="text-[11px] text-gray-200 font-medium tracking-wide">
-                                视频资源暂未提供
-                              </p>
-                            </div>
                           </div>
 
                           <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
