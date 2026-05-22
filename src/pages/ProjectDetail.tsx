@@ -2162,30 +2162,14 @@ export default function ProjectDetail() {
                       <video
                         ref={aiAgentDemoRef}
                         src="/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4"
-                        controls={playAiAgentDemo}
-                        autoPlay={playAiAgentDemo}
-                        muted={!playAiAgentDemo}
+                        controls
+                        autoPlay
+                        muted
                         className="block w-full h-auto object-contain"
                         playsInline
                         preload="metadata"
                         poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
                       />
-
-                      {!playAiAgentDemo && (
-                        <button
-                          type="button"
-                          aria-label="播放 AI Agent 演示视频"
-                          onClick={handlePlayAiAgentDemo}
-                          className="absolute inset-0 bg-black/45 transition-opacity duration-300 flex flex-col items-center justify-center gap-3"
-                        >
-                          <div className="w-14 h-14 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg">
-                            <Play size={22} fill="currentColor" className="ml-0.5" />
-                          </div>
-                          <span className="text-xs text-white font-bold tracking-widest uppercase">
-                            点击播放演示视频
-                          </span>
-                        </button>
-                      )}
                     </div>
                   ) : (
                     <img
