@@ -8,7 +8,6 @@ import {
   Info,
   X,
   Copy,
-  Smartphone,
   Monitor,
   Play,
   CheckCircle2,
@@ -20,7 +19,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Header from "../components/Header";
@@ -1947,13 +1946,39 @@ export default function ProjectDetail() {
 
   const handlePlayAiAppsMobileDemo = () => {
     setPlayAiAppsMobileDemo(true);
-    void aiAppsMobileDemoRef.current?.play();
   };
 
   const handlePlayAiAppsWebDemo = () => {
     setPlayAiAppsWebDemo(true);
-    void aiAppsWebDemoRef.current?.play();
   };
+
+  useEffect(() => {
+    if (!playAiAppsMobileDemo) return;
+
+    const video = aiAppsMobileDemoRef.current;
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      void playPromise.catch(() => {
+        setPlayAiAppsMobileDemo(false);
+      });
+    }
+  }, [playAiAppsMobileDemo]);
+
+  useEffect(() => {
+    if (!playAiAppsWebDemo) return;
+
+    const video = aiAppsWebDemoRef.current;
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      void playPromise.catch(() => {
+        setPlayAiAppsWebDemo(false);
+      });
+    }
+  }, [playAiAppsWebDemo]);
   const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
   const useGroupedChallenges = rawChallenges.some((item: any) =>
     String(item?.title || "").includes("｜"),
@@ -2908,79 +2933,43 @@ export default function ProjectDetail() {
                             <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 absolute right-4" />
                           </div>
 
-                          {/* App Interface UI Mock */}
-                          <div className="absolute inset-0 p-5 pt-10 flex flex-col justify-between bg-zinc-900 text-white font-sans text-xs">
-                            {/* App Header */}
-                            <div className="flex justify-between items-center pb-2 border-b border-white/5">
-                              <div>
-                                <p className="font-bold text-[10px] text-brand-orange uppercase tracking-wider">
-                                  AI Habit
-                                </p>
-                                <p className="text-[8px] text-gray-500">
-                                  Self-Discipline Engine
-                                </p>
-                              </div>
-                              <Smartphone size={14} className="text-gray-400" />
-                            </div>
-
-                            {/* App Center Panel (Interactive feel) */}
-                            <div className="flex-1 py-4 flex flex-col justify-center gap-3 font-sans">
-                              <div className="bg-zinc-800/80 p-3 rounded-2xl border border-white/5 text-center space-y-1">
-                                <span className="text-[10px] text-gray-400">
-                                  🔥 每日自律打卡连击
-                                </span>
-                                <h4 className="text-lg font-black text-brand-orange font-mono">
-                                  12 Days Streak
-                                </h4>
-                              </div>
-
-                              {/* Progress circle simulation */}
-                              <div className="relative w-20 h-20 mx-auto flex items-center justify-center">
-                                <svg className="w-full h-full transform -rotate-90">
-                                  <circle
-                                    cx="40"
-                                    cy="40"
-                                    r="32"
-                                    className="stroke-zinc-800 stroke-[5] fill-none"
-                                  />
-                                  <circle
-                                    cx="40"
-                                    cy="40"
-                                    r="32"
-                                    className="stroke-brand-orange stroke-[5] fill-none"
-                                    strokeDasharray="200"
-                                    strokeDashoffset="40"
-                                  />
-                                </svg>
-                                <div className="absolute flex flex-col items-center">
-                                  <span className="text-[14px] font-bold">
-                                    80%
-                                  </span>
-                                  <span className="text-[7px] text-gray-500">
-                                    今日完成
-                                  </span>
-                                </div>
-                              </div>
-
-                              <div className="bg-brand-orange/10 p-2.5 rounded-xl border border-brand-orange/20 text-[9px] text-gray-300 italic text-center leading-relaxed font-sans">
-                                "AI 模式分析：您在下午 3
-                                点的专注度最高，建议安排核心学习任务。"
-                              </div>
-                            </div>
-
-                            {/* App Footer Actions */}
-                            <div className="flex gap-2 justify-between pt-2 border-t border-white/5 text-[9px] font-sans">
-                              <span className="text-zinc-500 text-[8px]">
-                                ID: User_902
-                              </span>
-                              <span className="text-brand-orange font-bold text-[8px]">
-                                查看周报 →
-                              </span>
-                            </div>
+                          {/* Screen Video */}
+                          <div className="absolute inset-0 bg-zinc-950">
+                            <video
+                              ref={aiAppsMobileDemoRef}
+                              src="/src/assets/images/ai-apps-habit-pattern-demo-v1.mp4"
+                              controls={playAiAppsMobileDemo}
+                              autoPlay={playAiAppsMobileDemo}
+                              muted={!playAiAppsMobileDemo}
+                              className="w-full h-full object-cover"
+                              loop
+                              playsInline
+                              preload="metadata"
+                              poster="/src/assets/images/ai-apps-habit-pattern-cover-v1.png"
+                            />
                           </div>
 
-                          {/* Video Play Overlay */}
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30">
+                          {!playAiAppsMobileDemo && (
+                            <button
+                              type="button"
+                              aria-label="播放手机端演示录屏"
+                              onClick={handlePlayAiAppsMobileDemo}
+                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
+                            >
+                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
+                                <Play
+                                  size={20}
+                                  fill="currentColor"
+                                  className="ml-0.5"
+                                />
+                              </div>
+                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest">
+                                播放内部演示录屏
+                              </span>
+                            </button>
+                          )}
+
+                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30 pointer-events-none">
                             <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
                               <Play
                                 size={20}
@@ -2989,7 +2978,7 @@ export default function ProjectDetail() {
                               />
                             </div>
                             <span className="text-[10px] text-white font-bold opacity-80 uppercase tracking-widest">
-                              播放演示录屏
+                              播放内部演示录屏
                             </span>
                           </div>
 
@@ -3110,11 +3099,11 @@ export default function ProjectDetail() {
                           {/* Screen Video */}
                           <div className="absolute inset-0 bg-zinc-950">
                             <video
-                              ref={aiAppsMobileDemoRef}
+                              ref={aiAppsWebDemoRef}
                               src="/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4"
-                              controls={playAiAppsMobileDemo}
-                              autoPlay={playAiAppsMobileDemo}
-                              muted={!playAiAppsMobileDemo}
+                              controls={playAiAppsWebDemo}
+                              autoPlay={playAiAppsWebDemo}
+                              muted={!playAiAppsWebDemo}
                               className="w-full h-full object-cover"
                               loop
                               playsInline
@@ -3123,11 +3112,11 @@ export default function ProjectDetail() {
                             />
                           </div>
 
-                          {!playAiAppsMobileDemo && (
+                          {!playAiAppsWebDemo && (
                             <button
                               type="button"
                               aria-label="播放手机端演示录屏"
-                              onClick={handlePlayAiAppsMobileDemo}
+                              onClick={handlePlayAiAppsWebDemo}
                               className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
                             >
                               <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
@@ -3231,39 +3220,12 @@ export default function ProjectDetail() {
 
                           {/* Screen Video */}
                           <div className="absolute inset-x-0 top-6 bottom-0 bg-zinc-950">
-                            <video
-                              ref={aiAppsWebDemoRef}
-                              src="/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4"
-                              controls={playAiAppsWebDemo}
-                              autoPlay={playAiAppsWebDemo}
-                              muted={!playAiAppsWebDemo}
-                              className="w-full h-full object-cover"
-                              loop
-                              playsInline
-                              preload="metadata"
-                              poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
-                            />
+                            <div className="w-full h-full flex items-center justify-center text-center p-6 bg-zinc-900/70">
+                              <p className="text-xs text-gray-400 leading-relaxed">
+                                该模块视频与封面资源尚未上传，当前先展示静态占位。
+                              </p>
+                            </div>
                           </div>
-
-                          {!playAiAppsWebDemo && (
-                            <button
-                              type="button"
-                              aria-label="播放电脑端演示录屏"
-                              onClick={handlePlayAiAppsWebDemo}
-                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
-                            >
-                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
-                                <Play
-                                  size={20}
-                                  fill="currentColor"
-                                  className="ml-0.5"
-                                />
-                              </div>
-                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest font-sans">
-                                播放电脑端演示录屏
-                              </span>
-                            </button>
-                          )}
 
                           <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
                         </div>
