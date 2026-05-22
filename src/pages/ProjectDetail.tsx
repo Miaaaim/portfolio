@@ -1934,7 +1934,9 @@ export default function ProjectDetail() {
   const project = projects[id as keyof typeof projects];
   const [activeTag, setActiveTag] = useState<any>(null);
   const [activeMethodology, setActiveMethodology] = useState<any>(null);
-  const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
+  const [expandedFeature, setExpandedFeature] = useState<number | null>(
+    id === "ai-agent" ? 0 : null,
+  );
   const [expandedDesignItem, setExpandedDesignItem] = useState<number | null>(
     null,
   );
@@ -1999,6 +2001,11 @@ export default function ProjectDetail() {
       });
     }
   }, [playAiAgentDemo]);
+
+  useEffect(() => {
+    setExpandedFeature(id === "ai-agent" ? 0 : null);
+  }, [id]);
+
   const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
   const useGroupedChallenges = rawChallenges.some((item: any) =>
     String(item?.title || "").includes("｜"),
@@ -2717,7 +2724,7 @@ export default function ProjectDetail() {
                             isDetail && setExpandedFeature(index)
                           }
                           onMouseLeave={() =>
-                            isDetail && setExpandedFeature(null)
+                            isDetail && id !== "ai-agent" && setExpandedFeature(null)
                           }
                           className={`bg-zinc-900 rounded-[2rem] border transition-all duration-300 overflow-hidden ${
                             isExpanded
