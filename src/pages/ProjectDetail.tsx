@@ -168,15 +168,39 @@ const projects = {
   "ai-agent": {
     title: "Agent",
     category: "AI Automation / 生产力",
-    desc: "定制化的 AI 智能体，能够理解复杂指令并自主完成特定任务流。",
+    desc: "使用coze搭建本人分身agent，服务于面试前信息沟通。",
     content:
-      "构建了可配置的 Agent 平台，支持用户通过自然语言定义工作流。集成了多款常用 SaaS 工具，实现真正意义上的办公自动化。",
+      "想要用项目成果展示实操能力，可以点击我的分身体验效果。",
     impact: [
-      "企业办公效率提升 60%",
-      "复杂流程配置成本降低 90%",
-      "支持 100+ 种三方插件集成",
+      "介绍工作经历",
+      "邀请留资",
+      "调用知识库",
+      "存储沟通记录",
     ],
-    features: ["任务自主编排", "多模型适配能力", "记忆记忆与反思机制"],
+    features: [
+      {
+        title: "工作流",
+        subtitle: "Workflow",
+        desc: "工作流文案待补充，后续可在此处更新完整流程说明。",
+        image:
+          "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop",
+      },
+      {
+        title: "提示词1：意图识别",
+        subtitle: "Prompt",
+        desc: "意图识别文案待补充，后续可在此处更新完整提示词说明。",
+      },
+      {
+        title: "提示词2：候选人经历相关咨询",
+        subtitle: "Prompt",
+        desc: "候选人经历相关咨询文案待补充，后续可在此处更新完整提示词说明。",
+      },
+      {
+        title: "提示词3：非候选人经历相关咨询",
+        subtitle: "Prompt",
+        desc: "非候选人经历相关咨询文案待补充，后续可在此处更新完整提示词说明。",
+      },
+    ],
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop",
   },
@@ -1696,7 +1720,7 @@ const groupChallengesByCategory = (challenges: any[]) => {
 };
 
 export default function ProjectDetail() {
-  const { openModal } = useModal();
+  const { openModal, openAgentModal } = useModal();
   const { id } = useParams();
   const project = projects[id as keyof typeof projects];
   const [activeTag, setActiveTag] = useState<any>(null);
@@ -2287,7 +2311,8 @@ export default function ProjectDetail() {
               {id !== "ai-image" && id !== "ai-apps" && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-bold flex items-center gap-4">
-                    核心功能 <div className="h-0.5 flex-1 bg-white/10" />
+                    {id === "ai-agent" ? "配置介绍" : "核心功能"}{" "}
+                    <div className="h-0.5 flex-1 bg-white/10" />
                   </h2>
                   <div className="space-y-4">
                     {project.features.map((feature, index) => {
@@ -2371,6 +2396,15 @@ export default function ProjectDetail() {
                               >
                                 <div className="px-8 pb-8">
                                   <div className="pt-8 border-t border-white/5 text-gray-300 text-[15px] leading-[1.8] font-medium markdown-content max-w-4xl">
+                                    {(feature as any).image && (
+                                      <div className="mb-6 w-full rounded-2xl overflow-hidden border border-white/10">
+                                        <img
+                                          src={(feature as any).image}
+                                          alt={isDetail ? (feature as any).title : "功能配图"}
+                                          className="block w-full h-auto object-contain"
+                                        />
+                                      </div>
+                                    )}
                                     {id === "growth-hacker" && index === 1 && (
                                       <div className="mb-6 w-full rounded-2xl overflow-hidden border border-white/10">
                                         <img
@@ -3003,7 +3037,7 @@ export default function ProjectDetail() {
               >
                 <div className="bg-zinc-900 p-8 rounded-[3rem] border border-white/5 space-y-8 sticky top-32">
                   <h3 className="text-2xl font-bold text-brand-orange">
-                    项目成果
+                    {id === "ai-agent" ? "Agent功能" : "项目成果"}
                   </h3>
                   <div className="space-y-6">
                     {project.impact.map((item, index) => (
@@ -3021,10 +3055,11 @@ export default function ProjectDetail() {
                   <hr className="border-white/10" />
 
                   <button
-                    onClick={openModal}
+                    onClick={id === "ai-agent" ? openAgentModal : openModal}
                     className="w-full bg-brand-orange text-white py-5 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white hover:text-brand-dark transition-all"
                   >
-                    了解更多 <ExternalLink size={18} />
+                    {id === "ai-agent" ? "立即体验" : "了解更多"}{" "}
+                    <ExternalLink size={18} />
                   </button>
                 </div>
               </motion.div>

@@ -1,17 +1,15 @@
-import { useState } from 'react';
-import { Bot, ExternalLink, X } from 'lucide-react';
+import { Bot } from 'lucide-react';
 import catRobot from '../assets/images/cat_robot.png';
-
-const AGENT_URL = 'https://www.coze.cn/store/agent/7629182401524236298?bot_id=true';
+import { useModal } from '../context/ModalContext';
 
 export default function AgentFloatingEntry() {
-  const [open, setOpen] = useState(false);
+  const { openAgentModal } = useModal();
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={openAgentModal}
         className="fixed right-4 bottom-5 sm:right-6 sm:bottom-6 z-[90] flex flex-col items-center gap-2 focus:outline-none"
         aria-label="打开 AI 机器人"
       >
@@ -35,43 +33,6 @@ export default function AgentFloatingEntry() {
           Mia分身 点我咨询
         </span>
       </button>
-
-      {open && (
-        <div className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm p-3 sm:p-6">
-          <div className="relative w-full h-full max-w-3xl sm:h-[80vh] mx-auto bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20">
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-white/95 border border-gray-200 text-gray-700 hover:bg-brand-orange hover:text-white transition-colors flex items-center justify-center"
-              aria-label="关闭弹窗"
-            >
-              <X size={18} />
-            </button>
-
-            <div className="h-full flex flex-col">
-              <div className="h-14 border-b border-gray-100 px-5 flex items-center justify-between gap-3 bg-white/95">
-                <p className="text-sm sm:text-base font-semibold text-brand-dark truncate">AI 助手</p>
-                <a
-                  href={AGENT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-brand-orange font-semibold inline-flex items-center gap-1 hover:opacity-80"
-                >
-                  新窗口打开
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-
-              <iframe
-                src={AGENT_URL}
-                title="Coze Agent"
-                className="w-full flex-1 border-0"
-                allow="clipboard-read; clipboard-write; microphone; camera"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
