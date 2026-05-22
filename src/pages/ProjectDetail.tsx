@@ -1940,8 +1940,15 @@ export default function ProjectDetail() {
     null,
   );
   const [hoveredFlow, setHoveredFlow] = useState<number | null>(null);
+  const [playAiAppsMobileDemo, setPlayAiAppsMobileDemo] = useState(false);
+  const aiAppsMobileDemoRef = useRef<HTMLVideoElement | null>(null);
   const [playAiAppsWebDemo, setPlayAiAppsWebDemo] = useState(false);
   const aiAppsWebDemoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handlePlayAiAppsMobileDemo = () => {
+    setPlayAiAppsMobileDemo(true);
+    void aiAppsMobileDemoRef.current?.play();
+  };
 
   const handlePlayAiAppsWebDemo = () => {
     setPlayAiAppsWebDemo(true);
@@ -3100,48 +3107,44 @@ export default function ProjectDetail() {
                             <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 absolute right-4" />
                           </div>
 
-                          {/* App Interface UI Mock */}
-                          <div className="absolute inset-0 p-5 pt-10 flex flex-col justify-between bg-zinc-900 text-white font-sans text-xs">
-                            {/* App Header */}
-                            <div className="flex justify-between items-center pb-2 border-b border-white/5">
-                              <div>
-                                <p className="font-bold text-[10px] text-amber-500 uppercase tracking-wider">
-                                  CBT Therapist
-                                </p>
-                                <p className="text-[8px] text-gray-500">
-                                  Cognitive Companion
-                                </p>
-                              </div>
-                              <Smartphone size={14} className="text-gray-500" />
-                            </div>
-
-                            {/* App Center Panel (Blueprint / Google Stitch Wireframe representation) */}
-                            <div className="flex-1 py-4 flex flex-col justify-center items-center relative font-sans">
-                              {/* Tech grid blueprint background */}
-                              <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:10px_10px]" />
-
-                              <div className="z-10 text-center space-y-3.5 px-2">
-                                <div className="w-10 h-10 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto text-amber-500 animate-pulse">
-                                  <Clock size={18} />
-                                </div>
-                                <p className="font-mono text-[8px] text-gray-400">
-                                  Google Stitch Prototyping...
-                                </p>
-                                <div className="h-0.5 w-12 bg-amber-500/30 mx-auto" />
-                                <p className="text-[9px] text-gray-400 leading-relaxed italic font-sans animate-none">
-                                  "智能化心理共鸣与辅助平台"
-                                </p>
-                              </div>
-                            </div>
-
-                            {/* App Footer Actions */}
-                            <div className="flex justify-center pt-2 border-t border-white/5 text-[8px] text-zinc-500 font-sans">
-                              <span>PRE-LAUNCH BETA ENGINE v0.9.1</span>
-                            </div>
+                          {/* Screen Video */}
+                          <div className="absolute inset-0 bg-zinc-950">
+                            <video
+                              ref={aiAppsMobileDemoRef}
+                              src="/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4"
+                              controls={playAiAppsMobileDemo}
+                              autoPlay={playAiAppsMobileDemo}
+                              muted={!playAiAppsMobileDemo}
+                              className="w-full h-full object-cover"
+                              loop
+                              playsInline
+                              preload="metadata"
+                              poster="/src/assets/images/ai-apps-emotion-healing-mobile-cover-v1.png"
+                            />
                           </div>
 
-                          {/* Video Play Overlay */}
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30">
+                          {!playAiAppsMobileDemo && (
+                            <button
+                              type="button"
+                              aria-label="播放手机端演示录屏"
+                              onClick={handlePlayAiAppsMobileDemo}
+                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
+                            >
+                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
+                                <Play
+                                  size={20}
+                                  fill="currentColor"
+                                  className="ml-0.5"
+                                />
+                              </div>
+                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest">
+                                播放内部演示录屏
+                              </span>
+                            </button>
+                          )}
+
+                          {/* Hover overlay before playing */}
+                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30 pointer-events-none">
                             <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
                               <Play
                                 size={20}
