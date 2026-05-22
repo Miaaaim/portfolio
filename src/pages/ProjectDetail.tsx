@@ -1941,9 +1941,9 @@ export default function ProjectDetail() {
     null,
   );
   const [hoveredFlow, setHoveredFlow] = useState<number | null>(null);
-  const [playAiAppsMobileDemo, setPlayAiAppsMobileDemo] = useState(false);
+  const [playAiAppsMobileDemo, setPlayAiAppsMobileDemo] = useState(true);
   const aiAppsMobileDemoRef = useRef<HTMLVideoElement | null>(null);
-  const [playAiAppsWebDemo, setPlayAiAppsWebDemo] = useState(false);
+  const [playAiAppsWebDemo, setPlayAiAppsWebDemo] = useState(true);
   const aiAppsWebDemoRef = useRef<HTMLVideoElement | null>(null);
   const [playAiAgentDemo, setPlayAiAgentDemo] = useState(false);
   const aiAgentDemoRef = useRef<HTMLVideoElement | null>(null);
@@ -2999,7 +2999,7 @@ export default function ProjectDetail() {
                               src="/src/assets/images/ai-apps-habit-pattern-demo-v1.mp4"
                               controls={playAiAppsMobileDemo}
                               autoPlay={playAiAppsMobileDemo}
-                              muted={!playAiAppsMobileDemo}
+                              muted
                               className="w-full h-full object-cover"
                               loop
                               playsInline
@@ -3162,7 +3162,7 @@ export default function ProjectDetail() {
                               src="/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4"
                               controls={playAiAppsWebDemo}
                               autoPlay={playAiAppsWebDemo}
-                              muted={!playAiAppsWebDemo}
+                              muted
                               className="w-full h-full object-cover"
                               loop
                               playsInline
