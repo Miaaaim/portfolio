@@ -506,6 +506,19 @@ export default function ExperienceDetail() {
                         />
                       </motion.div>
                     )}
+                   {exp.company === '饿了么' && (
+                     <motion.div 
+                       initial={{ opacity: 0, y: 20 }}
+                       whileInView={{ opacity: 1, y: 0 }}
+                       className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
+                     >
+                       <img 
+                         src="/src/assets/images/ele_platform.png" 
+                         alt="饿了么物流侧骑手管理与履约体系" 
+                         className="w-full h-auto"
+                       />
+                     </motion.div>
+                   )}
                  {exp.company === '网易数帆' && (
                    <motion.div 
                      initial={{ opacity: 0, y: 20 }}
