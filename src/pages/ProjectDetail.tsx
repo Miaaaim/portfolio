@@ -3256,8 +3256,8 @@ export default function ProjectDetail() {
                       viewport={{ once: true }}
                       className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-zinc-900/20 p-8 rounded-[3rem] border border-white/5 hover:border-brand-orange/20 transition-all duration-300"
                     >
-                      {/* Left side: PC browser frame mock preview (takes 6 cols as it is desktop aspect ratio) */}
-                      <div className="lg:col-span-6 flex justify-center">
+                      {/* Left side: PC browser frame mock preview (wider layout for desktop demo) */}
+                      <div className="lg:col-span-7 flex justify-center">
                         <div className="relative w-full aspect-[16/10.5] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
                           {/* Browser Window Bar */}
                           <div className="h-6 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between z-20 relative shrink-0">
@@ -3278,6 +3278,7 @@ export default function ProjectDetail() {
                               src="/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4"
                               poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
                               className="w-full h-full object-cover"
+                              controls
                               autoPlay
                               muted
                               loop
@@ -3290,7 +3291,7 @@ export default function ProjectDetail() {
                       </div>
 
                       {/* Right side: Detailed descriptions */}
-                      <div className="lg:col-span-6 space-y-6 flex flex-col justify-center">
+                      <div className="lg:col-span-5 space-y-6 flex flex-col justify-center">
                         <div className="flex flex-wrap items-center gap-4">
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 shadow-sm shadow-emerald-500/5">
                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
