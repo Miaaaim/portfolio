@@ -60,7 +60,7 @@ const wordData: WordData[] = [
   { text: '开放反馈', frequency: 9, type: 'strength' },
   // 劣势
   { text: '赛道深耕弱', frequency: 42, type: 'weakness' },
-  { text: 'AI实战偏浅', frequency: 38, type: 'weakness' },
+  { text: 'AI理论基础较弱', frequency: 38, type: 'weakness' },
   { text: '战略表达弱', frequency: 35, type: 'weakness' },
   { text: '商业化偏弱', frequency: 30, type: 'weakness' },
   { text: 'ToC经验少', frequency: 28, type: 'weakness' },
@@ -469,7 +469,7 @@ export default function StrengthsWeaknesses() {
           <p className="text-gray-600 text-center">
             <span className="text-blue-700 font-semibold">冷色</span> 代表优势，
             <span className="text-orange-700 font-semibold">暖色</span> 代表需要改进的方向。
-            词汇大小代表相对的权重或出现频率。
+            词汇大小代表相对的权重。
           </p>
         </motion.div>
       </div>
