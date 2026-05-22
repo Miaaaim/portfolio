@@ -12,17 +12,71 @@ interface CloudLayout {
   rightEdge: number;
 }
 
-type WordOffset = { dx: number; dy: number };
+type WordPosition = { x: number; y: number };
 
-// 手动微调词位置：
-// dx > 0 向右，dx < 0 向左
-// dy > 0 向下，dy < 0 向上
-const strengthWordFineTuneOffsets: Record<string, WordOffset> = {
-  '结构化': { dx: -0.1, dy: 2 },
-  '需求拆解': { dx: -1.8, dy: 1.8 },
-  '项目管理': { dx: -1.9, dy: -1.7 },
-  '文档清晰': { dx: 1.8, dy: 0 },
-  '执行稳定': { dx: 1.8, dy: 0 },
+// 手动词位坐标（百分比）：可直接修改 x/y 来调整每个词位置
+const strengthWordPositions: Record<string, WordPosition> = {
+  '结果导向': { x: 10, y: 14 },
+  '结构化': { x: 22, y: 14 },
+  '数据驱动': { x: 34, y: 14 },
+  '用户洞察': { x: 46, y: 14 },
+  '需求拆解': { x: 58, y: 14 },
+  '增长思维': { x: 70, y: 14 },
+  '闭环意识': { x: 82, y: 14 },
+  '跨团队协同': { x: 10, y: 30 },
+  '推进力强': { x: 22, y: 30 },
+  '优先级判断': { x: 34, y: 30 },
+  '执行稳定': { x: 46, y: 30 },
+  '项目管理': { x: 58, y: 30 },
+  '主动担当': { x: 70, y: 30 },
+  '目标拆解': { x: 82, y: 30 },
+  '文档清晰': { x: 10, y: 46 },
+  '沟通对齐': { x: 22, y: 46 },
+  '学习敏捷': { x: 34, y: 46 },
+  '复盘迭代': { x: 46, y: 46 },
+  '指标设计': { x: 58, y: 46 },
+  '流程优化': { x: 70, y: 46 },
+  '风险识别': { x: 82, y: 46 },
+  '问题定义': { x: 10, y: 62 },
+  '业务理解': { x: 22, y: 62 },
+  '资源整合': { x: 34, y: 62 },
+  '竞品分析': { x: 46, y: 62 },
+  'A/B测试意识': { x: 58, y: 62 },
+  'B端场景理解': { x: 70, y: 62 },
+  'AI工具应用': { x: 82, y: 62 },
+  '口径统一': { x: 10, y: 78 },
+  '责任心强': { x: 22, y: 78 },
+  '抗压稳定': { x: 34, y: 78 },
+  '情绪稳定': { x: 46, y: 78 },
+  '同理心强': { x: 58, y: 78 },
+  '自驱成长': { x: 70, y: 78 },
+  '开放反馈': { x: 82, y: 78 },
+};
+
+const weaknessWordPositions: Record<string, WordPosition> = {
+  '赛道深耕弱': { x: 12, y: 16 },
+  'AI实战偏浅': { x: 26, y: 16 },
+  '战略表达弱': { x: 40, y: 16 },
+  '商业化偏弱': { x: 54, y: 16 },
+  'ToC经验少': { x: 68, y: 16 },
+  '前期抠细节': { x: 82, y: 16 },
+  '完美主义倾向': { x: 12, y: 32 },
+  '行业跨度大': { x: 26, y: 32 },
+  '授权不足': { x: 40, y: 32 },
+  '风险前置弱': { x: 54, y: 32 },
+  '技术深度一般': { x: 68, y: 32 },
+  '财务模型薄弱': { x: 82, y: 32 },
+  '品牌运营经验少': { x: 12, y: 48 },
+  '海外市场经验少': { x: 26, y: 48 },
+  '大团队管理经验少': { x: 40, y: 48 },
+  '复杂博弈经验少': { x: 54, y: 48 },
+  '创新方法沉淀不足': { x: 68, y: 48 },
+  '公开演讲偏弱': { x: 82, y: 48 },
+  '中长期规划偏弱': { x: 12, y: 64 },
+  '生态合作经验少': { x: 26, y: 64 },
+  '对冲突敏感': { x: 40, y: 64 },
+  '决策前求稳': { x: 54, y: 64 },
+  '对失败容忍低': { x: 68, y: 64 },
 };
 
 const wordData: WordData[] = [
@@ -159,217 +213,51 @@ export default function StrengthsWeaknesses() {
     }
   })();
 
-  const createCloudPoints = (words: WordData[], seedOffset: number): CloudLayout => {
-    const isStrengthCloud = words.length > 0 && words[0].type === 'strength';
-    const count = words.length;
-    const cols = Math.ceil(Math.sqrt(count * 1.5));
-    const rows = Math.ceil(count / cols);
-    const xStep = 100 / (cols + 1);
-    const yStep = 100 / (rows + 1);
-    const points: Array<{ x: number; y: number; rotate: number }> = new Array(count);
-    const occupied: Array<{ x: number; y: number; width: number; height: number }> = [];
+  const estimateWordBox = (word: WordData) => {
+    const fontSize = getFontSizeValue(word.frequency) * (word.type === 'strength' ? 0.9 : 1);
+    const cjkCount = (word.text.match(/[\u3400-\u9fff]/g) || []).length;
+    const latinCount = word.text.length - cjkCount;
+    const visualLength = cjkCount * 1 + latinCount * 0.58;
+    const weightFactor = 1 + ((word.frequency / maxFreq) * 0.22);
+    const percentPerPxX = 3.9;
+    const extraTextPaddingPx = 10;
+    const estimatedTextPx = (visualLength * fontSize * 1.05) + extraTextPaddingPx;
+
+    return {
+      width: Math.max(11.5, (estimatedTextPx / percentPerPxX) * weightFactor),
+      height: Math.max(4.8, (fontSize * 1.28) / 4),
+    };
+  };
+
+  const createCloudLayoutFromManualPositions = (words: WordData[]): CloudLayout => {
     const edgePaddingLeft = 3;
     const edgePaddingRight = 10;
     const edgePaddingY = 7;
-    // 词云容器在不同断点宽度不同，这里使用保守换算，确保边界线能包住实际文字
-    const percentPerPxX = 3.9;
-    const extraTextPaddingPx = 10;
+    const debugEdgeBuffer = 0.5;
+    const positionMap = words[0]?.type === 'strength' ? strengthWordPositions : weaknessWordPositions;
 
-    const estimateWordBox = (word: WordData) => {
-      const fontSize = getFontSizeValue(word.frequency);
-      const cjkCount = (word.text.match(/[\u3400-\u9fff]/g) || []).length;
-      const latinCount = word.text.length - cjkCount;
-      const visualLength = cjkCount * 1 + latinCount * 0.58;
-      const weightFactor = 1 + ((word.frequency / maxFreq) * 0.22);
-      const estimatedTextPx = (visualLength * fontSize * 1.05) + extraTextPaddingPx;
-
-      return {
-        // 适度放大估算宽高，给高字重与中英文混排留出安全空间
-        width: Math.max(11.5, (estimatedTextPx / percentPerPxX) * weightFactor),
-        height: Math.max(4.8, (fontSize * 1.28) / 4),
-      };
-    };
-
-    const intersects = (a: { x: number; y: number; width: number; height: number }, b: { x: number; y: number; width: number; height: number }) => {
-      return (
-        Math.abs(a.x - b.x) < (a.width + b.width) / 2 &&
-        Math.abs(a.y - b.y) < (a.height + b.height) / 2
-      );
-    };
-
-    const findSpot = (
-      preferredX: number,
-      preferredY: number,
-      box: { width: number; height: number },
-      startAngle: number
-    ) => {
+    const occupied = words.map(word => {
+      const box = estimateWordBox(word);
+      const manual = positionMap[word.text] || { x: 50, y: 50 };
       const minX = edgePaddingLeft + box.width / 2;
       const maxX = 100 - edgePaddingRight - box.width / 2;
       const minY = edgePaddingY + box.height / 2;
       const maxY = 100 - edgePaddingY - box.height / 2;
 
-      const tryCandidate = (x: number, y: number) => {
-        const candidate = {
-          x: Math.min(maxX, Math.max(minX, x)),
-          y: Math.min(maxY, Math.max(minY, y)),
-          width: box.width,
-          height: box.height,
-        };
-
-        const hasCollision = occupied.some(item => intersects(candidate, item));
-        return hasCollision ? null : candidate;
-      };
-
-      const direct = tryCandidate(preferredX, preferredY);
-      if (direct) {
-        return direct;
-      }
-
-      const radialStep = Math.max(1.2, Math.min(xStep, yStep) * (isStrengthCloud ? 0.72 : 0.62));
-      const maxLayers = isStrengthCloud ? 18 : 12;
-      for (let layer = 1; layer <= maxLayers; layer += 1) {
-        const radius = layer * radialStep;
-        const checks = 12 + layer * 3;
-        for (let s = 0; s < checks; s += 1) {
-          const angle = startAngle + (Math.PI * 2 * s) / checks;
-          const x = preferredX + Math.cos(angle) * radius;
-          const y = preferredY + Math.sin(angle) * radius;
-          const candidate = tryCandidate(x, y);
-          if (candidate) {
-            return candidate;
-          }
-        }
-      }
-
       return {
-        x: Math.min(maxX, Math.max(minX, preferredX)),
-        y: Math.min(maxY, Math.max(minY, preferredY)),
+        x: Math.min(maxX, Math.max(minX, manual.x)),
+        y: Math.min(maxY, Math.max(minY, manual.y)),
         width: box.width,
         height: box.height,
       };
-    };
+    });
 
-    for (let i = 0; i < count; i += 1) {
-      const row = Math.floor(i / cols);
-      const col = i % cols;
-      const baseX = (col + 1) * xStep;
-      const baseY = (row + 1) * yStep;
-      const box = estimateWordBox(words[i]);
+    const points = occupied.map(item => ({
+      x: item.x,
+      y: item.y,
+      rotate: 0,
+    }));
 
-      // 轻微抖动，让分布更自然，同时确保整体仍铺满容器
-      const jitterX = (((i + seedOffset) % 5) - 2) * (xStep * 0.1);
-      const jitterY = ((((i * 2) + seedOffset) % 5) - 2) * (yStep * 0.1);
-      const rotate = 0;
-      const startAngle = ((i + seedOffset) % 8) * (Math.PI / 4);
-
-      const placed = findSpot(baseX + jitterX, baseY + jitterY, box, startAngle);
-
-      points[i] = {
-        x: placed.x,
-        y: placed.y,
-        rotate,
-      };
-
-      occupied.push(placed);
-    }
-
-    // 迭代消解重叠：优先移动低频词，尽量保持高频词位置稳定
-    const resolveCollisions = () => {
-      const minGapX = isStrengthCloud ? 1.25 : 0.8;
-      const minGapY = isStrengthCloud ? 1.0 : 0.65;
-      const maxIterations = isStrengthCloud ? 96 : 60;
-
-      for (let iter = 0; iter < maxIterations; iter += 1) {
-        let hasOverlap = false;
-
-        for (let i = 0; i < occupied.length; i += 1) {
-          for (let j = i + 1; j < occupied.length; j += 1) {
-            const a = occupied[i];
-            const b = occupied[j];
-            const dx = b.x - a.x;
-            const dy = b.y - a.y;
-            const overlapX = (a.width + b.width) / 2 + minGapX - Math.abs(dx);
-            const overlapY = (a.height + b.height) / 2 + minGapY - Math.abs(dy);
-
-            if (overlapX > 0 && overlapY > 0) {
-              hasOverlap = true;
-
-              const moveLowFreqMoreA = i < j ? 0.28 : 0.72;
-              const moveLowFreqMoreB = 1 - moveLowFreqMoreA;
-
-              if (overlapX < overlapY) {
-                const push = overlapX / 2;
-                const direction = dx >= 0 ? 1 : -1;
-                a.x -= direction * push * moveLowFreqMoreA;
-                b.x += direction * push * moveLowFreqMoreB;
-              } else {
-                const push = overlapY / 2;
-                const direction = dy >= 0 ? 1 : -1;
-                a.y -= direction * push * moveLowFreqMoreA;
-                b.y += direction * push * moveLowFreqMoreB;
-              }
-
-              const clampToBounds = (item: { x: number; y: number; width: number; height: number }) => {
-                const minX = edgePaddingLeft + item.width / 2;
-                const maxX = 100 - edgePaddingRight - item.width / 2;
-                const minY = edgePaddingY + item.height / 2;
-                const maxY = 100 - edgePaddingY - item.height / 2;
-
-                item.x = Math.min(maxX, Math.max(minX, item.x));
-                item.y = Math.min(maxY, Math.max(minY, item.y));
-              };
-
-              clampToBounds(a);
-              clampToBounds(b);
-            }
-          }
-        }
-
-        if (!hasOverlap) {
-          break;
-        }
-      }
-    };
-
-    resolveCollisions();
-
-    // 二次校正：将整组词汇的几何中心拉回容器中心，避免整体偏向某一侧
-    if (occupied.length > 0) {
-      const centroidX = occupied.reduce((sum, item) => sum + item.x, 0) / occupied.length;
-      const centroidY = occupied.reduce((sum, item) => sum + item.y, 0) / occupied.length;
-      const shiftX = 0;
-      const shiftY = 50 - centroidY;
-
-      for (let i = 0; i < occupied.length; i += 1) {
-        const item = occupied[i];
-        const minX = edgePaddingLeft + item.width / 2;
-        const maxX = 100 - edgePaddingRight - item.width / 2;
-        const minY = edgePaddingY + item.height / 2;
-        const maxY = 100 - edgePaddingY - item.height / 2;
-
-        const recenteredX = Math.min(maxX, Math.max(minX, item.x + shiftX));
-        const recenteredY = Math.min(maxY, Math.max(minY, item.y + shiftY));
-
-        points[i] = {
-          ...points[i],
-          x: recenteredX,
-          y: recenteredY,
-        };
-
-        occupied[i] = {
-          ...item,
-          x: recenteredX,
-          y: recenteredY,
-        };
-      }
-
-      void centroidX;
-
-      // 垂直居中后再跑一轮轻量消解，避免回弹造成局部重叠
-      resolveCollisions();
-    }
-
-    const debugEdgeBuffer = 0.5;
     const leftEdge = occupied.length > 0
       ? Math.max(0, Math.min(...occupied.map(item => item.x - item.width / 2)) - debugEdgeBuffer)
       : edgePaddingLeft;
@@ -385,25 +273,14 @@ export default function StrengthsWeaknesses() {
   };
 
   const renderShapeCloud = (words: WordData[], points: Array<{ x: number; y: number; rotate: number }>, containerKey: string) => {
-    const getFineTuneOffset = (word: WordData): { dx: number; dy: number } => {
-      if (word.type !== 'strength') {
-        return { dx: 0, dy: 0 };
-      }
-
-      return strengthWordFineTuneOffsets[word.text] || { dx: 0, dy: 0 };
-    };
 
     return words.map((word, index) => {
       const colors = getColor(word.type, word.frequency);
       const point = points[index];
-      const fineTune = getFineTuneOffset(word);
 
       if (!point) {
         return null;
       }
-
-      const adjustedX = Math.max(2, Math.min(98, point.x + fineTune.dx));
-      const adjustedY = Math.max(3, Math.min(97, point.y + fineTune.dy));
 
       return (
         <motion.span
@@ -414,8 +291,8 @@ export default function StrengthsWeaknesses() {
           transition={{ delay: index * 0.05, duration: 0.45 }}
           viewport={{ once: true }}
           style={{
-            left: `${adjustedX}%`,
-            top: `${adjustedY}%`,
+            left: `${point.x}%`,
+            top: `${point.y}%`,
             transform: `translate(-50%, -50%) rotate(${point.rotate}deg)`,
             fontSize: `${getFontSizeValue(word.frequency) * (word.type === 'strength' ? 0.9 : 1)}px`,
             fontWeight: 500 + Math.floor((word.frequency / maxFreq) * 300),
@@ -441,8 +318,8 @@ export default function StrengthsWeaknesses() {
     });
   };
 
-  const strengthLayout = createCloudPoints(strengths, 1);
-  const weaknessLayout = createCloudPoints(weaknesses, 3);
+  const strengthLayout = createCloudLayoutFromManualPositions(strengths);
+  const weaknessLayout = createCloudLayoutFromManualPositions(weaknesses);
 
   return (
     <section className="py-24 bg-white">
