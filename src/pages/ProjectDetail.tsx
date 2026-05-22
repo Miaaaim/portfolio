@@ -2535,7 +2535,7 @@ export default function ProjectDetail() {
                               <img
                                 src={item.url}
                                 alt={`AI 图片案例 ${index + 1}`}
-                                className="block h-full w-full object-cover"
+                                className="block h-full w-full object-cover group-hover:scale-105 transition-transform duration-1000"
                               />
 
                               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -2591,12 +2591,12 @@ export default function ProjectDetail() {
                           .map((item: any, index: number) => (
                             <div
                               key={index + 6}
-                              className="aspect-square overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/50"
+                              className="group aspect-square overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/50"
                             >
                               <img
                                 src={item.url}
                                 alt={`AI 图片案例 ${index + 7}`}
-                                className="block h-full w-full object-cover"
+                                className="block h-full w-full object-cover group-hover:scale-105 transition-transform duration-1000"
                               />
                             </div>
                           ))}

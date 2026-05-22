@@ -493,6 +493,19 @@ export default function ExperienceDetail() {
                       />
                     </motion.div>
                   )}
+                    {exp.company === '接力棒科技' && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
+                      >
+                        <img 
+                          src="/src/assets/images/JLB_platform.png" 
+                          alt="接力棒 CRM 与增长平台" 
+                          className="w-full h-auto"
+                        />
+                      </motion.div>
+                    )}
                  {exp.company === '网易数帆' && (
                    <motion.div 
                      initial={{ opacity: 0, y: 20 }}
