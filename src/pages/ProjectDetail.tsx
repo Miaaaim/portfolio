@@ -2057,7 +2057,7 @@ export default function ProjectDetail() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`${id === "ai-skills" || id === "ai-apps" ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
+              className={`${id === "ai-skills" || id === "ai-apps" || id === "ai-image" ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
             >
               <div className="space-y-6">
                 <div className="inline-block bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
@@ -2089,7 +2089,7 @@ export default function ProjectDetail() {
                 )}
               </div>
 
-              {id !== "ai-skills" && id !== "ai-apps" && (
+              {id !== "ai-skills" && id !== "ai-apps" && id !== "ai-image" && (
                 <div className="w-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img
                     src={project.image}
@@ -2522,49 +2522,94 @@ export default function ProjectDetail() {
                   <h2 className="text-3xl font-bold flex items-center gap-4">
                     案例图集与提示词 <div className="h-0.5 flex-1 bg-white/10" />
                   </h2>
-                  <div className="grid grid-cols-1 gap-8">
-                    {(project as any).gallery.map((item: any, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-zinc-900/40 p-6 rounded-[2.5rem] border border-white/5 space-y-5"
-                      >
-                        <div className="w-full rounded-[1.5rem] overflow-hidden border border-white/10">
-                          <img
-                            src={item.url}
-                            alt={`AI 图片案例 ${index + 1}`}
-                            className="block w-full h-auto object-contain"
-                          />
-                        </div>
-
-                        {item.prompt ? (
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between gap-4">
-                              <div className="flex items-center gap-2 text-brand-orange">
-                                <Info size={16} />
-                                <span className="text-xs font-bold uppercase tracking-widest">
-                                  提示词内容
-                                </span>
-                              </div>
-                              <button
-                                onClick={() =>
-                                  navigator.clipboard.writeText(item.prompt)
-                                }
-                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 hover:bg-brand-orange hover:text-white text-xs font-bold transition-all border border-white/5"
-                              >
-                                <Copy size={14} /> 复制提示词
-                              </button>
-                            </div>
-                            <div className="bg-black/50 rounded-2xl p-6 border border-white/5 overflow-x-auto custom-scrollbar">
-                              <pre className="text-sm text-gray-400 font-mono whitespace-pre-wrap leading-relaxed">
-                                {item.prompt}
-                              </pre>
-                            </div>
-                          </div>
-                        ) : (
-                          <p className="text-sm text-gray-500">该图片暂无提示词</p>
-                        )}
+                  <div className="space-y-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 text-sm text-gray-400">
+                        <span className="font-bold text-white">前 6 张</span>
+                        <span>hover 查看提示词并可直接复制</span>
                       </div>
-                    ))}
+                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                        {(project as any).gallery
+                          .slice(0, 6)
+                          .map((item: any, index: number) => (
+                            <div
+                              key={index}
+                              className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900/50 shadow-[0_24px_60px_rgba(0,0,0,0.25)]"
+                            >
+                              <img
+                                src={item.url}
+                                alt={`AI 图片案例 ${index + 1}`}
+                                className="block h-full w-full object-cover"
+                              />
+
+                              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/65 to-black/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                              <div className="absolute inset-0 flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                <div className="mb-3 flex items-center justify-between gap-3">
+                                  <div className="flex items-center gap-2 text-brand-orange drop-shadow-sm">
+                                    <Info size={16} />
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.28em]">
+                                      提示词内容
+                                    </span>
+                                  </div>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      const promptText = item.prompt;
+                                      navigator.clipboard.writeText(promptText);
+                                      const target = e.currentTarget;
+                                      const originalHTML = target.innerHTML;
+                                      target.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg> 已复制!`;
+                                      target.classList.add(
+                                        "text-green-400",
+                                        "bg-green-400/10",
+                                      );
+                                      setTimeout(() => {
+                                        target.innerHTML = originalHTML;
+                                        target.classList.remove(
+                                          "text-green-400",
+                                          "bg-green-400/10",
+                                        );
+                                      }, 2000);
+                                    }}
+                                    className="pointer-events-auto flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-[11px] font-bold text-white transition-all hover:border-brand-orange/40 hover:bg-brand-orange hover:text-white"
+                                  >
+                                    <Copy size={14} /> 复制提示词
+                                  </button>
+                                </div>
+                                <div className="pointer-events-auto max-h-[58%] overflow-auto rounded-2xl border border-white/10 bg-black/70 p-4 custom-scrollbar">
+                                  <pre className="whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-gray-200">
+                                    {item.prompt}
+                                  </pre>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 text-sm text-gray-400">
+                        <span className="font-bold text-white">后 12 张</span>
+                        <span>纯图片展示，一行 6 张</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+                        {(project as any).gallery
+                          .slice(6)
+                          .map((item: any, index: number) => (
+                            <div
+                              key={index + 6}
+                              className="aspect-square overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/50"
+                            >
+                              <img
+                                src={item.url}
+                                alt={`AI 图片案例 ${index + 7}`}
+                                className="block h-full w-full object-cover"
+                              />
+                            </div>
+                          ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -3291,7 +3336,7 @@ export default function ProjectDetail() {
             </motion.div>
 
             {/* Project Sidebar / ROI */}
-            {id !== "ai-skills" && id !== "ai-apps" && (
+            {id !== "ai-skills" && id !== "ai-apps" && id !== "ai-image" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
