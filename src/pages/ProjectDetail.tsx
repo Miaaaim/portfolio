@@ -3207,7 +3207,7 @@ export default function ProjectDetail() {
                     >
                       {/* Left side: PC browser frame mock preview (takes 6 cols as it is desktop aspect ratio) */}
                       <div className="lg:col-span-6 flex justify-center">
-                        <div className="relative w-full aspect-[16/12.5] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
+                        <div className="relative w-full aspect-[16/13.2] bg-zinc-950 rounded-[1.5rem] border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
                           {/* Browser Window Bar */}
                           <div className="h-6 bg-zinc-900 border-b border-white/5 px-4 flex items-center justify-between z-20 relative shrink-0">
                             <div className="flex gap-1.5">
@@ -3234,11 +3234,11 @@ export default function ProjectDetail() {
                               controls={playAiAppsWebDemo}
                               autoPlay={playAiAppsWebDemo}
                               muted={!playAiAppsWebDemo}
-                              className="w-full h-full object-contain"
+                              className="w-full h-full object-cover"
                               loop
                               playsInline
                               preload="metadata"
-                              poster="/src/assets/images/ui_project_1_1779087714360.png"
+                              poster="/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
                             />
                           </div>
 
