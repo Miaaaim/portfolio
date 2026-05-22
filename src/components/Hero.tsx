@@ -139,7 +139,7 @@ export default function Hero() {
            <div className="space-y-4">
               <div className="w-16 h-1 bg-brand-orange ml-auto" />
               <div className="flex flex-wrap justify-end gap-2">
-                {['SaaS', 'CRM', '企业数字化', '增长黑客', '后台', 'APP', '小程序', '数据分析'].map((tag) => (
+                {['Agent', 'AI应用', 'SaaS', 'CRM', '企业数字化', '增长黑客', '数据分析', '后台', 'APP', '小程序'].map((tag) => (
                   <span key={tag} className="px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-medium border border-brand-orange/30">
                     {tag}
                   </span>
