@@ -88,6 +88,33 @@ export default function Hero() {
                 </span>
               </span>
             </h1>
+            <div className="relative inline-block pr-12 pb-8 mt-3">
+              <motion.p
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                className="text-base md:text-lg text-gray-500 font-medium"
+              >
+                你看到的网站是我vibe coding的成果
+              </motion.p>
+
+              <div className="absolute right-0 bottom-0 pointer-events-none" aria-hidden="true">
+                <motion.span
+                  animate={{ y: [0, -6, 0], opacity: [0.45, 0.8, 0.45] }}
+                  transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -right-1 -bottom-1 w-3 h-3 rounded-full bg-brand-orange/90 shadow-[0_0_14px_rgba(249,115,22,0.45)]"
+                />
+                <motion.span
+                  animate={{ y: [0, -4, 0], opacity: [0.3, 0.65, 0.3] }}
+                  transition={{ duration: 2.1, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
+                  className="absolute -right-6 -bottom-5 w-2.5 h-2.5 rounded-full bg-brand-orange/75 shadow-[0_0_10px_rgba(249,115,22,0.35)]"
+                />
+                <motion.span
+                  animate={{ y: [0, -5, 0], opacity: [0.25, 0.55, 0.25] }}
+                  transition={{ duration: 2.9, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                  className="absolute -right-3 -bottom-9 w-2 h-2 rounded-full bg-brand-orange/65 shadow-[0_0_8px_rgba(249,115,22,0.28)]"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
 
