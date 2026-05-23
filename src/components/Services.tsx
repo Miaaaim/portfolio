@@ -11,21 +11,21 @@ const serviceGroups = [
       link: '/project/growth-hacker',
     },
     {
-      title: '校园SaaS平台',
-      image: '/src/assets/images/project-cover-campus-saas-platform.png',
-      link: '/project/saas-system',
-    },
-    {
       title: '运动APP/小程序',
       image: '/src/assets/images/project-cover-sports-app-mini-program.png',
       link: '/project/sports-app',
     },
-  ],
-  [
     {
       title: 'CRM系统',
       image: '/src/assets/images/project-cover-crm-system.png',
       link: '/project/crm-system',
+    },
+  ],
+  [
+    {
+      title: '校园SaaS平台',
+      image: '/src/assets/images/project-cover-campus-saas-platform.png',
+      link: '/project/saas-system',
     },
     {
       title: '骑手APP',
