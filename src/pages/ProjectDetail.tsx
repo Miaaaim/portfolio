@@ -2906,6 +2906,70 @@ export default function ProjectDetail() {
                 </div>
               )}
 
+              {/* Sports App Architecture & Product Demo Section */}
+              {id === "sports-app" && (
+                <div className="space-y-16">
+                  {/* Architecture Diagram */}
+                  <div className="space-y-8">
+                    <h2 className="text-3xl font-bold flex items-center gap-4">
+                      产品架构图 <div className="h-0.5 flex-1 bg-white/10" />
+                    </h2>
+                    <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                      <img
+                        src="/src/assets/images/sports_app_architecture.png"
+                        alt="运动APP产品架构图"
+                        className="block w-full h-auto object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Product Demo Horizontal Scroll Gallery */}
+                  <div className="space-y-8">
+                    <h2 className="text-3xl font-bold flex items-center gap-4">
+                      产品演示 <div className="h-0.5 flex-1 bg-white/10" />
+                    </h2>
+                    <div
+                      className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar"
+                      style={{ scrollSnapType: "x mandatory" }}
+                    >
+                      {[
+                        { src: "/src/assets/images/sports_enter_class.png", alt: "进入课程" },
+                        { src: "/src/assets/images/sports_home.png", alt: "首页" },
+                        { src: "/src/assets/images/sports_booking.png", alt: "预约体测" },
+                        { src: "/src/assets/images/sports_order_exam.png", alt: "报名体测" },
+                        { src: "/src/assets/images/sports_exam_selection.png", alt: "考试项目选择" },
+                        { src: "/src/assets/images/sports_exam_results.png", alt: "体测成绩" },
+                        { src: "/src/assets/images/sports_exam_results2.png", alt: "体测成绩详情" },
+                        { src: "/src/assets/images/sports_get_report.png", alt: "获取报告" },
+                        { src: "/src/assets/images/sports_report.png", alt: "体质报告" },
+                        { src: "/src/assets/images/sports_exercise_report.png", alt: "运动报告" },
+                        { src: "/src/assets/images/sports_jumping_rope.png", alt: "跳绳训练" },
+                        { src: "/src/assets/images/sports_jumping_rope_report.png", alt: "跳绳报告" },
+                        { src: "/src/assets/images/sports_jumping_jacks.png", alt: "开合跳" },
+                        { src: "/src/assets/images/sports_sit-up.png", alt: "仰卧起坐" },
+                        { src: "/src/assets/images/sports_vital_capacity.png", alt: "肺活量" },
+                        { src: "/src/assets/images/sports_video.png", alt: "视频训练" },
+                        { src: "/src/assets/images/sports_wristband.png", alt: "手环设备" },
+                        { src: "/src/assets/images/sports_shopping.png", alt: "运动商城" },
+                        { src: "/src/assets/images/sports_get_doll.png", alt: "获取奖励" },
+                      ].map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex-shrink-0 w-[180px] rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg"
+                          style={{ scrollSnapAlign: "start" }}
+                        >
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            className="block w-full h-auto object-contain"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Case Q&A Section */}
               {(project as any).qas && (
                 <div className="space-y-10">
