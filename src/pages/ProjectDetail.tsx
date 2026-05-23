@@ -2919,6 +2919,7 @@ export default function ProjectDetail() {
                       style={{ scrollSnapType: "x mandatory" }}
                     >
                       {[
+                        { src: "/src/assets/images/sports_report.png", alt: "体质报告" },
                         { src: "/src/assets/images/sports_enter_class.png", alt: "进入课程" },
                         { src: "/src/assets/images/sports_home.png", alt: "首页" },
                         { src: "/src/assets/images/sports_booking.png", alt: "预约体测" },
@@ -2927,7 +2928,6 @@ export default function ProjectDetail() {
                         { src: "/src/assets/images/sports_exam_results.png", alt: "体测成绩" },
                         { src: "/src/assets/images/sports_exam_results2.png", alt: "体测成绩详情" },
                         { src: "/src/assets/images/sports_get_report.png", alt: "获取报告" },
-                        { src: "/src/assets/images/sports_report.png", alt: "体质报告" },
                         { src: "/src/assets/images/sports_exercise_report.png", alt: "运动报告" },
                         { src: "/src/assets/images/sports_jumping_rope.png", alt: "跳绳训练" },
                         { src: "/src/assets/images/sports_jumping_rope_report.png", alt: "跳绳报告" },
@@ -2938,19 +2938,27 @@ export default function ProjectDetail() {
                         { src: "/src/assets/images/sports_wristband.png", alt: "手环设备" },
                         { src: "/src/assets/images/sports_shopping.png", alt: "运动商城" },
                         { src: "/src/assets/images/sports_get_doll.png", alt: "获取奖励" },
-                      ].map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex-shrink-0 w-[180px] h-[405px] rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg"
-                          style={{ scrollSnapAlign: "start" }}
-                        >
-                          <img
-                            src={item.src}
-                            alt={item.alt}
-                            className="block h-full w-full object-contain"
-                          />
-                        </div>
-                      ))}
+                      ].map((item, index) => {
+                        const isSportsReport = item.src.includes("sports_report.png");
+
+                        return (
+                          <div
+                            key={index}
+                            className={`flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg ${
+                              isSportsReport ? "w-[260px] h-[380px]" : "w-[180px] h-[380px]"
+                            }`}
+                            style={{ scrollSnapAlign: "start" }}
+                          >
+                            <img
+                              src={item.src}
+                              alt={item.alt}
+                              className={`block h-full w-full ${
+                                isSportsReport ? "object-contain" : "object-cover"
+                              }`}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
