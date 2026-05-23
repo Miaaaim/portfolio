@@ -142,7 +142,7 @@ const projects = {
           "- **场景**：投放渠道杂、链路长，难以评估各环节增量贡献；\n- **方法**：U-ID 映射 + 多点触达归因 + 转化价值建模；\n- **结果**：ROI 提升 25%，营销预算分配更趋合理；\n- **重点**：\n\t- **统一 ID**：打通官网、小程序、APP 及 CRM 数据，实现跨端用户行为序列化；\n\t- **模型选择**：平衡首次触达、末次触达与线性归因，识别“助攻”渠道的潜在价值；\n\t- **价值回传**：将转化信号实时反馈给投放端，优化算法模型质量。",
       },
     ],
-    image: "/src/assets/images/ui_project_1_1779087714360.png",
+    image: "/src/assets/images/project-cover-growth-hacker.png",
   },
   "ai-apps": {
     title: "APP/网页",
@@ -162,7 +162,7 @@ const projects = {
       "AI 情感共鸣引擎",
       "匿名私密聊愈",
     ],
-    image: "/src/assets/images/ui_project_1_1779087714360.png",
+    image: "/src/assets/images/project-cover-growth-hacker.png",
   },
   "ai-agent": {
     title: "Agent",
@@ -1688,7 +1688,7 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
     features: ["AI 体质分析", "智能运动推荐", "家校分享墙"],
     content:
       "作为 C 端的核心接触点，APP 承载了用户对体质数据的深度解读需求，并提供科学的提升方案。",
-    image: "/src/assets/images/branding_project_1779102314777.png",
+    image: "/src/assets/images/project-cover-branding.png",
   },
   "rider-app": {
     title: "骑手端 APP",
@@ -1849,7 +1849,7 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
           "- 场景：运营侧面临成本压力（人力成本高），用户侧面临体验压力（定位不准导致投诉）；\n- 方法：\n\t- 问题重新定义：不是\"人工抽检 vs 不抽检\"，而是\"如何用更低成本提供更好体验\"；\n\t- 技术与机制结合：用图像识别替代人工判断（降成本），用激励机制强化自觉（提体验）；\n\t- 结果可量化：清晰的成本节省（2人力 + 万元/周 → 0.5人力 + 千元/周）与体验提升（着装率60% → 95%）。\n- 重点：**最好的方案往往不是在两个极端中选择，而是通过重新定义问题，找到\"成本与体验的第三种可能\"**。",
       },
     ],
-    image: "/src/assets/images/dashboard_project_2_1779102334050.png",
+    image: "/src/assets/images/project-cover-rider-app.png",
   },
 };
 

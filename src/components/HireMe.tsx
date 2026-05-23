@@ -13,7 +13,7 @@ export default function HireMe() {
           className="relative aspect-square md:aspect-auto md:h-[500px] rounded-[3rem] overflow-hidden"
         >
            <img 
-              src="/src/assets/images/hero_portrait_1779087699645.png" 
+              src="/src/assets/images/hero-portrait.png" 
               alt="联系 Mia" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"

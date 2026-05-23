@@ -7,29 +7,29 @@ const serviceGroups = [
   [
     {
       title: '增长黑客',
-      image: '/src/assets/images/ui_project_1_1779087714360.png',
+      image: '/src/assets/images/project-cover-growth-hacker.png',
       link: '/project/growth-hacker',
     },
     {
       title: '校园SaaS平台',
-      image: '/src/assets/images/ui_project_3_1779087749714.png',
+      image: '/src/assets/images/project-cover-campus-saas-platform.png',
       link: '/project/saas-system',
     },
     {
       title: '运动APP/小程序',
-      image: '/src/assets/images/ui_project_2_1779087728757.png',
+      image: '/src/assets/images/project-cover-sports-app-mini-program.png',
       link: '/project/sports-app',
     },
   ],
   [
     {
       title: 'CRM系统',
-      image: '/src/assets/images/mobile_ui_project_1779102298356.png',
+      image: '/src/assets/images/project-cover-crm-system.png',
       link: '/project/crm-system',
     },
     {
       title: '骑手APP',
-      image: '/src/assets/images/dashboard_project_2_1779102334050.png',
+      image: '/src/assets/images/project-cover-rider-app.png',
       link: '/project/rider-app',
     },
   ]

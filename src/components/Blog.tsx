@@ -15,7 +15,7 @@ const posts = [
   },
   {
     title: '太鼓达人',
-    image: '/src/assets/images/more_sides_sports_taiko_1779111382673.webp',
+    image: '/src/assets/images/blog-cover-sports-taiko.webp',
   },
   {
     title: '徒步',
@@ -23,11 +23,11 @@ const posts = [
   },
   {
     title: '两只猫',
-    image: '/src/assets/images/more_sides_two_cats_1779111400698.png',
+    image: '/src/assets/images/blog-cover-two-cats.png',
   },
   {
     title: '手工房子',
-    image: '/src/assets/images/more_sides_mini_house_1779111416032.png',
+    image: '/src/assets/images/blog-cover-mini-house.png',
   },
   {
     title: '美食',

@@ -7,7 +7,7 @@ const projects = [
     id: 'ai-apps',
     title: 'APP/网页',
     category: 'AI Product / 多端协同',
-    image: '/src/assets/images/ui_project_1_1779087714360.png',
+    image: '/src/assets/images/project-cover-growth-hacker.png',
     desc: '包含 AI 习惯追踪工具与心理健康辅助平台，探索人工智能在个人成长与情绪健康领域的深度应用。'
   },
   {
