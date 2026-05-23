@@ -2258,6 +2258,53 @@ export default function ProjectDetail() {
                 </div>
               )}
 
+              {/* SaaS System Product Demo Section */}
+              {id === "saas-system" && (
+                <div className="space-y-16">
+                  <div className="space-y-8">
+                    <h2 className="text-3xl font-bold flex items-center gap-4">
+                      产品演示 <div className="h-0.5 flex-1 bg-white/10" />
+                    </h2>
+                    <div
+                      className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar"
+                      style={{ scrollSnapType: "x mandatory" }}
+                    >
+                      {[
+                        { src: "/src/assets/images/saas-home-final.png", alt: "系统首页" },
+                        { src: "/src/assets/images/saas-student-mgmt.png", alt: "学生管理" },
+                        { src: "/src/assets/images/saas-exam-project-mgmt.png", alt: "考试项目管理" },
+                        { src: "/src/assets/images/saas-exam-mgmt-workbench.png", alt: "考试管理工作台" },
+                        { src: "/src/assets/images/saas-exam-plan-list-loading.png", alt: "考试计划列表" },
+                        { src: "/src/assets/images/saas-exam-plan-data-overview.png", alt: "考试数据总览" },
+                        { src: "/src/assets/images/saas-exam-plan-data-progress.png", alt: "考试进度数据" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-checkin.png", alt: "计划检录" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-score-details.png", alt: "计划成绩详情" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-score-upload.png", alt: "成绩上传记录" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-audit.png", alt: "报名报项审核" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-ticket.png", alt: "准考证管理" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-ticket-qr.png", alt: "准考证二维码" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-staff-mgmt.png", alt: "考务人员管理" },
+                        { src: "/src/assets/images/saas-exam-plan-workbench-student-mgmt.png", alt: "考生管理" },
+                      ].map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg w-[320px] aspect-[8/5]"
+                            style={{ scrollSnapAlign: "start" }}
+                          >
+                            <img
+                              src={item.src}
+                              alt={item.alt}
+                              className={`block h-full w-full object-cover ${index === 7 ? "object-top" : ""}`}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Challenges & Goals Section */}
               {(project as any).challengeAndGoals && (
                 <div className="space-y-12">
