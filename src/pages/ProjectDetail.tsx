@@ -2906,23 +2906,9 @@ export default function ProjectDetail() {
                 </div>
               )}
 
-              {/* Sports App Architecture & Product Demo Section */}
+              {/* Sports App Product Demo Section */}
               {id === "sports-app" && (
                 <div className="space-y-16">
-                  {/* Architecture Diagram */}
-                  <div className="space-y-8">
-                    <h2 className="text-3xl font-bold flex items-center gap-4">
-                      产品架构图 <div className="h-0.5 flex-1 bg-white/10" />
-                    </h2>
-                    <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
-                      <img
-                        src="/src/assets/images/sports_app_architecture.png"
-                        alt="运动APP产品架构图"
-                        className="block w-full h-auto object-contain"
-                      />
-                    </div>
-                  </div>
-
                   {/* Product Demo Horizontal Scroll Gallery */}
                   <div className="space-y-8">
                     <h2 className="text-3xl font-bold flex items-center gap-4">
@@ -2955,13 +2941,13 @@ export default function ProjectDetail() {
                       ].map((item, index) => (
                         <div
                           key={index}
-                          className="flex-shrink-0 w-[180px] rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg"
+                          className="flex-shrink-0 w-[180px] h-[405px] rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg"
                           style={{ scrollSnapAlign: "start" }}
                         >
                           <img
                             src={item.src}
                             alt={item.alt}
-                            className="block w-full h-auto object-contain"
+                            className="block h-full w-full object-contain"
                           />
                         </div>
                       ))}
