@@ -28,7 +28,7 @@ const projects = [
     id: 'ai-image',
     title: '图片',
     category: 'Generative AI / 图像生成',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=2000&auto=format&fit=crop',
     desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作，可独立完成文章配图、宣传海报、社交头像等设计制作，具备良好的审美能力与创意表达能力。'
   }
 ];

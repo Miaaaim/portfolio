@@ -22,7 +22,7 @@ const posts = [
     image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    title: '两只猫',
+    title: '铲屎官',
     image: '/src/assets/images/blog-cover-two-cats.png',
   },
   {
