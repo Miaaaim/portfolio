@@ -86,7 +86,7 @@ export default function Services() {
                 const Content = (
                   <>
                     <h3 className="text-2xl font-bold">{service.title}</h3>
-                    <div className="relative aspect-[16/10] bg-zinc-800 rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="relative aspect-[16/10] bg-zinc-100 rounded-3xl overflow-hidden shadow-2xl">
                       <img 
                         src={service.image} 
                         alt={service.title} 
