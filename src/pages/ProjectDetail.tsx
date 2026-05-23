@@ -1853,6 +1853,85 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
   },
 };
 
+type ProductDemoItem = {
+  src: string;
+  alt: string;
+  cardClassName: string;
+  imageClassName?: string;
+};
+
+type ProductDemoSection = {
+  items: ProductDemoItem[];
+  emptyState?: {
+    title: string;
+    description: string;
+  };
+};
+
+const productDemoSections: Record<string, ProductDemoSection> = {
+  "sports-app": {
+    items: [
+      { src: "/src/assets/images/sports_report.png", alt: "体质报告", cardClassName: "w-[260px] h-[380px]" },
+      { src: "/src/assets/images/sports_enter_class.png", alt: "进入课程", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_home.png", alt: "首页", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_booking.png", alt: "预约体测", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_order_exam.png", alt: "报名体测", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_exam_selection.png", alt: "考试项目选择", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_exam_results.png", alt: "体测成绩", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_exam_results2.png", alt: "体测成绩详情", cardClassName: "w-[180px] h-[380px]", imageClassName: "object-top" },
+      { src: "/src/assets/images/sports_get_report.png", alt: "获取报告", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_exercise_report.png", alt: "运动报告", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_jumping_rope.png", alt: "跳绳训练", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_jumping_rope_report.png", alt: "跳绳报告", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_jumping_jacks.png", alt: "开合跳", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_sit-up.png", alt: "仰卧起坐", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_vital_capacity.png", alt: "肺活量", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_video.png", alt: "视频训练", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_wristband.png", alt: "手环设备", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_shopping.png", alt: "运动商城", cardClassName: "w-[180px] h-[380px]" },
+      { src: "/src/assets/images/sports_get_doll.png", alt: "获取奖励", cardClassName: "w-[180px] h-[380px]" },
+    ],
+  },
+  "saas-system": {
+    items: [
+      { src: "/src/assets/images/saas-home-final.png", alt: "系统首页", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-student-mgmt.png", alt: "学生管理", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-project-mgmt.png", alt: "考试项目管理", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-mgmt-workbench.png", alt: "考试管理工作台", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-list-loading.png", alt: "考试计划列表", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-data-overview.png", alt: "考试数据总览", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-data-progress.png", alt: "考试进度数据", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-checkin.png", alt: "计划检录", cardClassName: "w-[320px] aspect-[8/5]", imageClassName: "object-top" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-score-details.png", alt: "计划成绩详情", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-score-upload.png", alt: "成绩上传记录", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-audit.png", alt: "报名报项审核", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-ticket.png", alt: "准考证管理", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-ticket-qr.png", alt: "准考证二维码", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-staff-mgmt.png", alt: "考务人员管理", cardClassName: "w-[320px] aspect-[8/5]" },
+      { src: "/src/assets/images/saas-exam-plan-workbench-student-mgmt.png", alt: "考生管理", cardClassName: "w-[320px] aspect-[8/5]" },
+    ],
+  },
+  "crm-system": {
+    items: [
+      { src: "/src/assets/images/crm-system-h5-signup-page.png", alt: "H5 报名页", cardClassName: "w-[240px] aspect-[9/19]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-h5-campus-time-selection.png", alt: "H5 选校区和上课时间", cardClassName: "w-[240px] aspect-[9/19]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-h5-course-detail.png", alt: "H5 课程详情", cardClassName: "w-[240px] aspect-[9/19]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-h5-my-courses.png", alt: "H5 我的课程", cardClassName: "w-[240px] aspect-[9/21]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-h5-storefront.png", alt: "H5 商城页", cardClassName: "w-[240px] aspect-[9/19]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-h5-course-share-poster.png", alt: "H5 课程分享海报", cardClassName: "w-[240px] aspect-[9/16]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-mini-user-form.png", alt: "小程序用户填写", cardClassName: "w-[240px] aspect-[9/21]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-mini-activity-code.jpg", alt: "小程序员工查看活动码", cardClassName: "w-[240px] aspect-[10/21]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-mini-staff-dashboard.png", alt: "小程序员工查看数据", cardClassName: "w-[240px] aspect-[9/19]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-admin-store-builder.png", alt: "后台店铺搭建", cardClassName: "w-[360px] aspect-[8/5]" },
+      { src: "/src/assets/images/crm-system-admin-page-config.png", alt: "后台页面配置", cardClassName: "w-[360px] aspect-[3/2]" },
+      { src: "/src/assets/images/crm-system-admin-campaign-list.png", alt: "后台活动列表", cardClassName: "w-[360px] aspect-[8/5]" },
+      { src: "/src/assets/images/crm-system-admin-data-overview.png", alt: "后台查看数据", cardClassName: "w-[360px] aspect-[8/5]" },
+      { src: "/src/assets/images/crm-system-admin-data-longpage.png", alt: "后台查看数据长页", cardClassName: "w-[360px] aspect-[8/5]", imageClassName: "object-top" },
+      { src: "/src/assets/images/crm-system-admin-editor-longpage.png", alt: "后台编辑页", cardClassName: "w-[360px] aspect-[8/5]", imageClassName: "object-top" },
+    ],
+  },
+};
+
 const renderImpactText = (text: string) => {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, index) => {
@@ -1932,6 +2011,9 @@ export default function ProjectDetail() {
   const { openModal, openAgentModal } = useModal();
   const { id } = useParams();
   const project = projects[id as keyof typeof projects];
+  const productDemoSection = id
+    ? productDemoSections[id as keyof typeof productDemoSections]
+    : undefined;
   const [activeTag, setActiveTag] = useState<any>(null);
   const [activeMethodology, setActiveMethodology] = useState<any>(null);
   const [expandedFeature, setExpandedFeature] = useState<number | null>(
@@ -2202,64 +2284,7 @@ export default function ProjectDetail() {
                 </div>
               )}
 
-              {/* Sports App Product Demo Section */}
-              {id === "sports-app" && (
-                <div className="space-y-16">
-                  {/* Product Demo Horizontal Scroll Gallery */}
-                  <div className="space-y-8">
-                    <h2 className="text-3xl font-bold flex items-center gap-4">
-                      产品演示 <div className="h-0.5 flex-1 bg-white/10" />
-                    </h2>
-                    <div
-                      className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar"
-                      style={{ scrollSnapType: "x mandatory" }}
-                    >
-                      {[
-                        { src: "/src/assets/images/sports_report.png", alt: "体质报告" },
-                        { src: "/src/assets/images/sports_enter_class.png", alt: "进入课程" },
-                        { src: "/src/assets/images/sports_home.png", alt: "首页" },
-                        { src: "/src/assets/images/sports_booking.png", alt: "预约体测" },
-                        { src: "/src/assets/images/sports_order_exam.png", alt: "报名体测" },
-                        { src: "/src/assets/images/sports_exam_selection.png", alt: "考试项目选择" },
-                        { src: "/src/assets/images/sports_exam_results.png", alt: "体测成绩" },
-                        { src: "/src/assets/images/sports_exam_results2.png", alt: "体测成绩详情" },
-                        { src: "/src/assets/images/sports_get_report.png", alt: "获取报告" },
-                        { src: "/src/assets/images/sports_exercise_report.png", alt: "运动报告" },
-                        { src: "/src/assets/images/sports_jumping_rope.png", alt: "跳绳训练" },
-                        { src: "/src/assets/images/sports_jumping_rope_report.png", alt: "跳绳报告" },
-                        { src: "/src/assets/images/sports_jumping_jacks.png", alt: "开合跳" },
-                        { src: "/src/assets/images/sports_sit-up.png", alt: "仰卧起坐" },
-                        { src: "/src/assets/images/sports_vital_capacity.png", alt: "肺活量" },
-                        { src: "/src/assets/images/sports_video.png", alt: "视频训练" },
-                        { src: "/src/assets/images/sports_wristband.png", alt: "手环设备" },
-                        { src: "/src/assets/images/sports_shopping.png", alt: "运动商城" },
-                        { src: "/src/assets/images/sports_get_doll.png", alt: "获取奖励" },
-                      ].map((item, index) => {
-                        const isSportsReport = item.src.includes("sports_report.png");
-
-                        return (
-                          <div
-                            key={index}
-                            className={`flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg ${
-                              isSportsReport ? "w-[260px] h-[380px]" : "w-[180px] h-[380px]"
-                            }`}
-                            style={{ scrollSnapAlign: "start" }}
-                          >
-                            <img
-                              src={item.src}
-                              alt={item.alt}
-                              className={`block h-full w-full object-cover ${index === 7 ? "object-top" : ""}`}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* SaaS System Product Demo Section */}
-              {id === "saas-system" && (
+              {productDemoSection && (
                 <div className="space-y-16">
                   <div className="space-y-8">
                     <h2 className="text-3xl font-bold flex items-center gap-4">
@@ -2269,37 +2294,54 @@ export default function ProjectDetail() {
                       className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar"
                       style={{ scrollSnapType: "x mandatory" }}
                     >
-                      {[
-                        { src: "/src/assets/images/saas-home-final.png", alt: "系统首页" },
-                        { src: "/src/assets/images/saas-student-mgmt.png", alt: "学生管理" },
-                        { src: "/src/assets/images/saas-exam-project-mgmt.png", alt: "考试项目管理" },
-                        { src: "/src/assets/images/saas-exam-mgmt-workbench.png", alt: "考试管理工作台" },
-                        { src: "/src/assets/images/saas-exam-plan-list-loading.png", alt: "考试计划列表" },
-                        { src: "/src/assets/images/saas-exam-plan-data-overview.png", alt: "考试数据总览" },
-                        { src: "/src/assets/images/saas-exam-plan-data-progress.png", alt: "考试进度数据" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-checkin.png", alt: "计划检录" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-score-details.png", alt: "计划成绩详情" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-score-upload.png", alt: "成绩上传记录" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-audit.png", alt: "报名报项审核" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-ticket.png", alt: "准考证管理" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-ticket-qr.png", alt: "准考证二维码" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-staff-mgmt.png", alt: "考务人员管理" },
-                        { src: "/src/assets/images/saas-exam-plan-workbench-student-mgmt.png", alt: "考生管理" },
-                      ].map((item, index) => {
-                        return (
+                      {productDemoSection.items.length > 0 ? (
+                        productDemoSection.items.map((item, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className={`flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg ${item.cardClassName}`}
+                              style={{ scrollSnapAlign: "start" }}
+                            >
+                              <img
+                                src={item.src}
+                                alt={item.alt}
+                                className={`block h-full w-full object-cover ${item.imageClassName || ""}`}
+                              />
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div
+                          className="flex-shrink-0 w-[320px] h-[380px] rounded-[1.5rem] border border-dashed border-white/15 bg-white/[0.03] p-8 text-left shadow-lg"
+                          style={{ scrollSnapAlign: "start" }}
+                        >
                           <div
-                            key={index}
-                            className="flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-900/50 shadow-lg w-[320px] aspect-[8/5]"
-                            style={{ scrollSnapAlign: "start" }}
+                            className="flex h-full flex-col justify-between rounded-[1.25rem] border border-white/8 bg-black/20 p-6"
                           >
-                            <img
-                              src={item.src}
-                              alt={item.alt}
-                              className={`block h-full w-full object-cover ${index === 7 ? "object-top" : ""}`}
-                            />
+                            <div className="space-y-4">
+                              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs tracking-[0.2em] text-gray-300 uppercase">
+                                Product Demo
+                              </div>
+                              <div className="space-y-2">
+                                <h3 className="text-2xl font-semibold text-white">
+                                  {productDemoSection.emptyState?.title || "演示待补充"}
+                                </h3>
+                                <p className="text-sm leading-7 text-gray-400">
+                                  {productDemoSection.emptyState?.description || "图片上传后会在这里按横向滑动方式展示。"}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-3 gap-3">
+                              {[1, 2, 3].map((placeholder) => (
+                                <div
+                                  key={placeholder}
+                                  className="aspect-[9/16] rounded-2xl border border-white/8 bg-white/[0.04]"
+                                />
+                              ))}
+                            </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
