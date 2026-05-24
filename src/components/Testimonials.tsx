@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
+import { resolveAssetUrl } from '../assetUrl';
 
 const testimonials = [
   {
@@ -87,7 +88,7 @@ export default function Testimonials() {
               
               <div className="flex items-center gap-6">
                  <img 
-                   src={testimonials[currentIndex].image} 
+                   src={resolveAssetUrl(testimonials[currentIndex].image)} 
                    alt={testimonials[currentIndex].name} 
                    className="w-20 h-20 rounded-2xl object-cover border-2 border-brand-orange/30 bg-white/5"
                    referrerPolicy="no-referrer"

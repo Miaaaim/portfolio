@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { resolveAssetUrl } from '../assetUrl';
 
 const posts = [
   {
@@ -55,7 +56,7 @@ export default function Blog() {
           >
             <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-lg">
                <img 
-                 src={post.image} 
+                 src={resolveAssetUrl(post.image)} 
                  alt={post.title} 
                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                  referrerPolicy="no-referrer"

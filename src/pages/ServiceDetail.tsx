@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { resolveAssetUrl } from '../assetUrl';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -108,7 +109,7 @@ export default function ServiceDetail() {
                   className={`relative aspect-square md:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl ${index % 2 !== 0 ? 'lg:order-1' : ''}`}
                 >
                   <img 
-                    src={step.image} 
+                    src={resolveAssetUrl(step.image)} 
                     alt={step.title} 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"

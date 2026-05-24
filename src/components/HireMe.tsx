@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { resolveAssetUrl } from '../assetUrl';
 import { useModal } from '../context/ModalContext';
 
 export default function HireMe() {
@@ -12,8 +13,8 @@ export default function HireMe() {
           viewport={{ once: true }}
           className="relative aspect-square md:aspect-auto md:h-[500px] rounded-[3rem] overflow-hidden"
         >
-           <img 
-              src="/portfolio/src/assets/images/hero-portrait.png" 
+            <img 
+              src={resolveAssetUrl('src/assets/images/hero-portrait.png')} 
               alt="联系 Mia" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Star, ArrowUpRight, Quote, Download, Send, Github, MessageCircle, X } from 'lucide-react';
+import { resolveAssetUrl } from '../assetUrl';
 import { useModal } from '../context/ModalContext';
 import { useEffect, useState } from 'react';
 
@@ -127,7 +128,7 @@ export default function Hero() {
             className="relative z-10 w-full aspect-[4/5] rounded-[4rem] overflow-hidden bg-brand-orange/10 border-8 border-white shadow-2xl"
           >
             <img 
-              src="/portfolio/src/assets/images/cv_photo.png" 
+              src={resolveAssetUrl('src/assets/images/cv_photo.png')} 
               alt="Jenny Portrait" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -214,7 +215,7 @@ export default function Hero() {
                    <h3 className="text-2xl font-bold text-brand-dark">扫码添加微信</h3>
                    <div className="aspect-square bg-gray-50 rounded-2xl p-4 border-2 border-gray-100">
                      <img 
-                       src="/portfolio/src/assets/images/wechat_qr.png" 
+                       src={resolveAssetUrl('src/assets/images/wechat_qr.png')} 
                        alt="WeChat QR Code" 
                        className="w-full h-full object-contain"
                        referrerPolicy="no-referrer"

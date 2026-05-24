@@ -22,6 +22,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { resolveAssetUrl } from "../assetUrl";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useModal } from "../context/ModalContext";
@@ -2243,19 +2244,19 @@ export default function ProjectDetail() {
                     <div className="relative">
                       <video
                         ref={aiAgentDemoRef}
-                        src="/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4"
+                        src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-demo-v1.mp4')}
                         controls
                         autoPlay
                         muted
                         className="block w-full h-auto object-contain"
                         playsInline
                         preload="metadata"
-                        poster="/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
+                        poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png')}
                       />
                     </div>
                   ) : (
                     <img
-                      src={project.image}
+                      src={resolveAssetUrl(project.image)}
                       alt={project.title}
                       className="block w-full h-auto object-contain"
                     />
@@ -2275,7 +2276,7 @@ export default function ProjectDetail() {
                   {id === "saas-system" && (
                     <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-xl">
                       <img
-                        src="/portfolio/src/assets/images/lengkang_project_saas_background.png"
+                        src={resolveAssetUrl('/portfolio/src/assets/images/lengkang_project_saas_background.png')}
                         alt="校园SaaS项目背景"
                         className="block w-full h-auto object-contain"
                       />
@@ -2303,7 +2304,7 @@ export default function ProjectDetail() {
                               style={{ scrollSnapAlign: "start" }}
                             >
                               <img
-                                src={item.src}
+                                src={resolveAssetUrl(item.src)}
                                 alt={item.alt}
                                 className={`block h-full w-full object-cover ${item.imageClassName || ""}`}
                               />
@@ -2430,7 +2431,7 @@ export default function ProjectDetail() {
                   {id === "growth-hacker" && (
                     <div className="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-xl">
                       <img
-                        src="/portfolio/src/assets/images/netease_project_target.png"
+                        src={resolveAssetUrl('/portfolio/src/assets/images/netease_project_target.png')}
                         alt="增长黑客挑战与目标"
                         className="block w-full h-auto object-contain"
                       />
@@ -2760,7 +2761,7 @@ export default function ProjectDetail() {
                               className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900/50 shadow-[0_24px_60px_rgba(0,0,0,0.25)]"
                             >
                               <img
-                                src={item.url}
+                                src={resolveAssetUrl(item.url)}
                                 alt={`AI 图片案例 ${index + 1}`}
                                 className="block h-full w-full object-cover group-hover:scale-105 transition-transform duration-1000"
                               />
@@ -2821,7 +2822,7 @@ export default function ProjectDetail() {
                               className="group aspect-square overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/50"
                             >
                               <img
-                                src={item.url}
+                                src={resolveAssetUrl(item.url)}
                                 alt={`AI 图片案例 ${index + 7}`}
                                 className="block h-full w-full object-cover group-hover:scale-105 transition-transform duration-1000"
                               />
@@ -2925,7 +2926,7 @@ export default function ProjectDetail() {
                                     {(feature as any).image && (
                                       <div className="mb-6 w-full rounded-2xl overflow-hidden border border-white/10">
                                         <img
-                                          src={(feature as any).image}
+                                          src={resolveAssetUrl((feature as any).image)}
                                           alt={isDetail ? (feature as any).title : "功能配图"}
                                           className="block w-full h-auto object-contain"
                                         />
@@ -2934,7 +2935,7 @@ export default function ProjectDetail() {
                                     {id === "growth-hacker" && index === 1 && (
                                       <div className="mb-6 w-full rounded-2xl overflow-hidden border border-white/10">
                                         <img
-                                          src="/portfolio/src/assets/images/netease_project_label.png"
+                                          src={resolveAssetUrl('/portfolio/src/assets/images/netease_project_label.png')}
                                           alt="用户数据打通与 CRM 标签化运营"
                                           className="block w-full h-auto object-contain"
                                         />
@@ -3125,7 +3126,7 @@ export default function ProjectDetail() {
                           <div className="absolute inset-0 bg-zinc-950">
                             <video
                               ref={aiAppsMobileDemoRef}
-                              src="/portfolio/src/assets/images/ai-apps-habit-pattern-demo-v1.mp4"
+                              src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-habit-pattern-demo-v1.mp4')}
                               controls={playAiAppsMobileDemo}
                               autoPlay={playAiAppsMobileDemo}
                               muted
@@ -3133,7 +3134,7 @@ export default function ProjectDetail() {
                               loop
                               playsInline
                               preload="metadata"
-                              poster="/portfolio/src/assets/images/ai-apps-habit-pattern-cover-v1.png"
+                              poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-habit-pattern-cover-v1.png')}
                             />
                           </div>
 
@@ -3288,7 +3289,7 @@ export default function ProjectDetail() {
                           <div className="absolute inset-0 bg-zinc-950">
                             <video
                               ref={aiAppsWebDemoRef}
-                              src="/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4"
+                              src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4')}
                               controls={playAiAppsWebDemo}
                               autoPlay={playAiAppsWebDemo}
                               muted
@@ -3296,7 +3297,7 @@ export default function ProjectDetail() {
                               loop
                               playsInline
                               preload="metadata"
-                              poster="/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-cover-v1.png"
+                              poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-cover-v1.png')}
                             />
                           </div>
 
@@ -3404,8 +3405,8 @@ export default function ProjectDetail() {
                           {/* Screen Video */}
                           <div className="absolute inset-x-0 top-6 bottom-0 bg-zinc-950">
                             <video
-                              src="/portfolio/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4"
-                              poster="/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png"
+                              src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4')}
+                              poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png')}
                               className="w-full h-full object-cover"
                               controls
                               autoPlay

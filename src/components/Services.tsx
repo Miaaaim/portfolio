@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { resolveAssetUrl } from '../assetUrl';
 
 const serviceGroups = [
   [
@@ -88,7 +89,7 @@ export default function Services() {
                     <h3 className="text-2xl font-bold">{service.title}</h3>
                     <div className="relative aspect-[16/10] bg-zinc-100 rounded-3xl overflow-hidden shadow-2xl">
                       <img 
-                        src={service.image} 
+                        src={resolveAssetUrl(service.image)} 
                         alt={service.title} 
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         referrerPolicy="no-referrer"

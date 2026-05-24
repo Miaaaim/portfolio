@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { resolveAssetUrl } from '../assetUrl';
 
 const projects = [
   {
@@ -60,7 +61,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <div className="relative rounded-[2rem] overflow-hidden shadow-md border border-gray-100 aspect-[4/3]">
                   <img 
-                    src={project.image} 
+                    src={resolveAssetUrl(project.image)} 
                     alt={project.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     referrerPolicy="no-referrer"

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, CheckCircle2, Calendar, MapPin, Building2, Sparkles } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
+import { resolveAssetUrl } from '../assetUrl';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useModal } from '../context/ModalContext';
@@ -487,7 +488,7 @@ export default function ExperienceDetail() {
                       className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                     >
                       <img 
-                        src="/portfolio/src/assets/images/lengkang_platform.png" 
+                        src={resolveAssetUrl('src/assets/images/lengkang_platform.png')} 
                         alt="平台架构与学生产品路径" 
                         className="w-full h-auto"
                       />
@@ -500,7 +501,7 @@ export default function ExperienceDetail() {
                         className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                       >
                         <img 
-                          src="/portfolio/src/assets/images/JLB_platform.png" 
+                          src={resolveAssetUrl('src/assets/images/JLB_platform.png')} 
                           alt="接力棒 CRM 与增长平台" 
                           className="w-full h-auto"
                         />
@@ -513,7 +514,7 @@ export default function ExperienceDetail() {
                        className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                      >
                        <img 
-                         src="/portfolio/src/assets/images/ele_platform.png" 
+                         src={resolveAssetUrl('src/assets/images/ele_platform.png')} 
                          alt="饿了么物流侧骑手管理与履约体系" 
                          className="w-full h-auto"
                        />
@@ -526,7 +527,7 @@ export default function ExperienceDetail() {
                      className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                    >
                      <img 
-                       src="/portfolio/src/assets/images/org_chart_growth.png" 
+                       src={resolveAssetUrl('src/assets/images/org_chart_growth.png')} 
                        alt="增长体系组织架构" 
                        className="w-full h-auto"
                      />
