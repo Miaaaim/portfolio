@@ -13,9 +13,11 @@ import { ModalProvider } from './context/ModalContext';
 import ContactModal from './components/ContactModal';
 
 export default function App() {
+  const routerBase = import.meta.env.BASE_URL || '/';
+
   return (
     <ModalProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={routerBase}>
         <ScrollToTop />
         <ContactModal />
         <Routes>
