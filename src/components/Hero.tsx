@@ -139,7 +139,7 @@ export default function Hero() {
           
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-4 items-center whitespace-nowrap">
              <button 
-              onClick={openModal}
+              onClick={() => openModal()}
               className="bg-brand-orange text-white px-12 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-transform border border-brand-orange flex items-center gap-2"
             >
                <Send size={20} />

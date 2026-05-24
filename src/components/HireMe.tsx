@@ -52,7 +52,7 @@ export default function HireMe() {
            </div>
 
            <button 
-            onClick={openModal}
+            onClick={() => openModal()}
             className="bg-brand-dark text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-brand-orange transition-colors"
           >
               联系我

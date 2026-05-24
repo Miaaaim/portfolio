@@ -52,7 +52,7 @@ export default function Header() {
         </ul>
 
         <button 
-          onClick={openModal}
+          onClick={() => openModal()}
           className="bg-brand-orange text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-all"
         >
           联系我

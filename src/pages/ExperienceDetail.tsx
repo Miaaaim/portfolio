@@ -649,8 +649,8 @@ export default function ExperienceDetail() {
                     <h3 className="text-4xl font-bold">想要获得同样的结果？</h3>
                     <p className="text-white/80 text-lg font-medium tracking-wide">让我们一起打造卓越产品。</p>
                  </div>
-                 <button 
-                  onClick={openModal}
+                  <button 
+                  onClick={() => openModal()}
                   className="bg-white text-brand-dark px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-dark hover:text-white transition-colors"
                  >
                     联系我
