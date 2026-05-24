@@ -75,11 +75,17 @@ git push -u gitee main
 4. 构建命令：`npm run build`
 5. 输出目录：`dist`
 6. Node 版本：`20`
+7. 若预览域名带子路径（如 `/portfolio/`），新增环境变量：`VITE_BASE_PATH=/portfolio/`
 
 预期结果：
 
 1. 自动触发首次部署。
 2. 获得临时访问域名并可打开首页。
+
+如果页面能打开但 CSS/JS 404：
+
+1. 检查预览 URL 是否包含子路径（例如 `/portfolio/`）。
+2. 若是，确认项目环境变量设置了 `VITE_BASE_PATH=/portfolio/` 并重新部署。
 
 ## 5. 绑定自定义域名与 HTTPS
 
