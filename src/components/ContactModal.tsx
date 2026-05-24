@@ -70,7 +70,9 @@ export default function ContactModal() {
                           alt="WeChat QR Code"
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WeChatID_Placeholder';
+                            const target = e.currentTarget;
+                            target.onerror = null;
+                            target.src = wechatQr;
                           }}
                         />
                      </div>

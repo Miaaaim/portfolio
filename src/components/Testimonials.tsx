@@ -6,37 +6,37 @@ const testimonials = [
   {
     name: '潘同学',
     role: '前端开发',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Pan&backgroundColor=b6e3f4',
+    image: '/src/assets/images/avatar-profile-01.png',
     text: '合作下来印象最深的就是她的文档。不是那种流于格式的东西，而是真的能把你想了解的问题一次说透。背景是什么、为什么这样决策、哪些边界需要注意、上线后要关注什么等等。这样研发测试运营拿到手就能对需求有清晰了解，使得评审更加高效。'
   },
   {
     name: '陈同学',
     role: '产品经理',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Chen&backgroundColor=ffdfbf',
+    image: '/src/assets/images/avatar-profile-02.png',
     text: '她会及时处理问题反馈。比如线上突然出了状况，第一时间她就把人拉齐、分清轻重，然后就是实时跟进直到问题解决。要的就是这种有始有终、虽然问题紧急但依然保持问题处理节奏的感觉。'
   },
   {
     name: '江同学',
     role: '测试工程师',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jiang&backgroundColor=c0aede',
+    image: '/src/assets/images/avatar-profile-01.png',
     text: '虽然产品岗，但她经常主动扛起项目协调的活。跨部门合作最怕的就是信息不对称，但和她一起的项目从来不会这样。她会提前想到各个环节可能的坑，主动协调资源，关键时刻能亲自顶上。这才是真的协作感觉。'
   },
   {
     name: '张同学',
     role: '高级设计师',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&backgroundColor=d1d4f9',
+    image: '/src/assets/images/avatar-profile-02.png',
     text: '学习能力真的强。新东西她总是主动去试，然后快速总结成大家能用的方法，分享给团队。公司很多现在用的流程、工具优化，都是她先吃螃蟹，走通了再推给大家的。这种人在团队里特别是个加号。'
   },
   {
     name: '封同学',
     role: '后端开发',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Feng&backgroundColor=ffd5dc',
+    image: '/src/assets/images/avatar-profile-01.png',
     text: '她特别会组织大家一起运动。这不仅让大家有机会一起健身减肥，还在过程中增进了感情、缓解了工作压力。她本身精力特别稳定，项目再紧张也能保持节奏，这样的正能量很容易感染整个团队，让大家都想跟着她保持健康的生活状态。'
   },
   {
     name: '龙同学',
     role: '运营专家',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Long&backgroundColor=b6e3f4',
+    image: '/src/assets/images/avatar-profile-02.png',
     text: '她特别会"带气氛"。复盘会、跨部门头脑风暴、团队活动，她都能把大家调动起来，让不同角色的人都愿意参与。共事下来就是舒服，工作效率高，人的感受也好。'
   }
 ];

@@ -7,28 +7,28 @@ const projects = [
     id: 'ai-apps',
     title: 'APP/网页',
     category: 'AI Product / 多端协同',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2000&auto=format&fit=crop',
+    image: '/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png',
     desc: '包含 AI 习惯追踪工具与心理健康辅助平台，探索人工智能在个人成长与情绪健康领域的深度应用。'
   },
   {
     id: 'ai-agent',
     title: 'Agent',
     category: 'AI Automation / 智能体',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop',
+    image: '/src/assets/images/Agent_workflow.png',
     desc: '定制化的 AI 智能体，能够理解复杂指令并自主完成跨平台的特定任务流。'
   },
   {
     id: 'ai-skills',
     title: 'Skills/Prompt',
     category: 'AI Logic / 结构化能力',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop',
+    image: '/src/assets/images/ai-apps-habit-pattern-cover-v1.png',
     desc: '基于 AI 大模型能力构建结构化 Prompt / Skills 能力库，进行提示词与 Skills 的收集、设计、调优及场景化封装，能够结合业务需求持续迭代 AI 工作流，提升内容生成质量、输出稳定性与使用效率。'
   },
   {
     id: 'ai-image',
     title: '图片',
     category: 'Generative AI / 图像生成',
-    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=2000&auto=format&fit=crop',
+    image: '/src/assets/images/ai_gen_7.png',
     desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作，可独立完成文章配图、宣传海报、社交头像等设计制作，具备良好的审美能力与创意表达能力。'
   }
 ];

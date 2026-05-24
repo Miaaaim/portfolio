@@ -411,7 +411,7 @@ const projects = {
       },
     ],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop",
+      "/src/assets/images/Agent_workflow.png",
   },
   "ai-skills": {
     title: "Skills/Prompt",
@@ -1108,7 +1108,7 @@ description: 面向大学生的一对一求职规划与咨询技能。基于职�
       },
     ],
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
+      "/src/assets/images/ai-apps-habit-pattern-cover-v1.png",
   },
   "ai-image": {
     title: "AI图片",
@@ -1123,7 +1123,7 @@ description: 面向大学生的一对一求职规划与咨询技能。基于职�
     ],
     features: ["高精风格化迁移", "智能无损扩图", "提示词自动优化"],
     image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop",
+      "/src/assets/images/ai_gen_7.png",
     gallery: [
       {
         url: "/src/assets/images/ai_gen_1.png",

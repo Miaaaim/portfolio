@@ -3,15 +3,15 @@ import { motion } from 'motion/react';
 const posts = [
   {
     title: '羽毛球',
-    image: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/blog-post-cover-01.png',
   },
   {
     title: '网球',
-    image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/blog-post-cover-02.png',
   },
   {
     title: '游泳',
-    image: 'https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/sports_video.png',
   },
   {
     title: '太鼓达人',
@@ -19,7 +19,7 @@ const posts = [
   },
   {
     title: '徒步',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/sports_booking.png',
   },
   {
     title: '铲屎官',
@@ -31,7 +31,7 @@ const posts = [
   },
   {
     title: '美食',
-    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80',
+    image: '/src/assets/images/sports_shopping.png',
   },
 ];
 
