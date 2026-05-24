@@ -3,15 +3,15 @@ import { motion } from 'motion/react';
 const posts = [
   {
     title: '羽毛球',
-    image: '/src/assets/images/blog-post-cover-01.png',
+    image: '/src/assets/images/external/unsplash-09.jpg',
   },
   {
     title: '网球',
-    image: '/src/assets/images/blog-post-cover-02.png',
+    image: '/src/assets/images/external/unsplash-08.jpg',
   },
   {
     title: '游泳',
-    image: '/src/assets/images/sports_video.png',
+    image: '/src/assets/images/external/unsplash-06.jpg',
   },
   {
     title: '太鼓达人',
@@ -19,7 +19,7 @@ const posts = [
   },
   {
     title: '徒步',
-    image: '/src/assets/images/sports_booking.png',
+    image: '/src/assets/images/external/unsplash-05.jpg',
   },
   {
     title: '铲屎官',
@@ -31,7 +31,7 @@ const posts = [
   },
   {
     title: '美食',
-    image: '/src/assets/images/sports_shopping.png',
+    image: '/src/assets/images/external/unsplash-02.jpg',
   },
 ];
 
