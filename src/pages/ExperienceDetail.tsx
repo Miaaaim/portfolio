@@ -487,7 +487,7 @@ export default function ExperienceDetail() {
                       className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                     >
                       <img 
-                        src="/src/assets/images/lengkang_platform.png" 
+                        src="/portfolio/src/assets/images/lengkang_platform.png" 
                         alt="平台架构与学生产品路径" 
                         className="w-full h-auto"
                       />
@@ -500,7 +500,7 @@ export default function ExperienceDetail() {
                         className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                       >
                         <img 
-                          src="/src/assets/images/JLB_platform.png" 
+                          src="/portfolio/src/assets/images/JLB_platform.png" 
                           alt="接力棒 CRM 与增长平台" 
                           className="w-full h-auto"
                         />
@@ -513,7 +513,7 @@ export default function ExperienceDetail() {
                        className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                      >
                        <img 
-                         src="/src/assets/images/ele_platform.png" 
+                         src="/portfolio/src/assets/images/ele_platform.png" 
                          alt="饿了么物流侧骑手管理与履约体系" 
                          className="w-full h-auto"
                        />
@@ -526,7 +526,7 @@ export default function ExperienceDetail() {
                      className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                    >
                      <img 
-                       src="/src/assets/images/org_chart_growth.png" 
+                       src="/portfolio/src/assets/images/org_chart_growth.png" 
                        alt="增长体系组织架构" 
                        className="w-full h-auto"
                      />

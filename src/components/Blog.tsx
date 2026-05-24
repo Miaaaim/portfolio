@@ -3,35 +3,35 @@ import { motion } from 'motion/react';
 const posts = [
   {
     title: '羽毛球',
-    image: '/src/assets/images/external/unsplash-09.jpg',
+    image: '/portfolio/src/assets/images/external/unsplash-09.jpg',
   },
   {
     title: '网球',
-    image: '/src/assets/images/external/unsplash-08.jpg',
+    image: '/portfolio/src/assets/images/external/unsplash-08.jpg',
   },
   {
     title: '游泳',
-    image: '/src/assets/images/external/unsplash-06.jpg',
+    image: '/portfolio/src/assets/images/external/unsplash-06.jpg',
   },
   {
     title: '太鼓达人',
-    image: '/src/assets/images/blog-cover-sports-taiko.webp',
+    image: '/portfolio/src/assets/images/blog-cover-sports-taiko.webp',
   },
   {
     title: '徒步',
-    image: '/src/assets/images/external/unsplash-05.jpg',
+    image: '/portfolio/src/assets/images/external/unsplash-05.jpg',
   },
   {
     title: '铲屎官',
-    image: '/src/assets/images/blog-cover-two-cats.png',
+    image: '/portfolio/src/assets/images/blog-cover-two-cats.png',
   },
   {
     title: '手工房子',
-    image: '/src/assets/images/blog-cover-mini-house.png',
+    image: '/portfolio/src/assets/images/blog-cover-mini-house.png',
   },
   {
     title: '美食',
-    image: '/src/assets/images/external/unsplash-02.jpg',
+    image: '/portfolio/src/assets/images/external/unsplash-02.jpg',
   },
 ];
 

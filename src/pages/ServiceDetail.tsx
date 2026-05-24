@@ -8,25 +8,25 @@ const steps = [
   {
     title: '以用户为中心的架构',
     desc: '我们从绘制用户旅程开始。每一个点击、滚动和交互都有其目的，确保逻辑顺畅并达成转化。我们优先考虑易用性和直观导航，确保每位用户都能轻松上手。',
-    image: '/src/assets/images/service-step-web-design-01.png',
+    image: '/portfolio/src/assets/images/service-step-web-design-01.png',
     features: ['站点规划', '用户画像研究', '原型规划']
   },
   {
     title: '产品视觉与商业身份',
     desc: '您的产品是品牌的数字化面孔。我们打造独特的视觉身份，与您的受众产生共鸣。通过精选排版、配色与图像，讲述超越文字的商业故事。',
-    image: '/src/assets/images/service-step-web-design-02.png',
+    image: '/portfolio/src/assets/images/service-step-web-design-02.png',
     features: ['排版系统', '配色标准', '品牌视觉对齐']
   },
   {
     title: '多端适配与流畅性',
     desc: '在多设备世界中，一致性是关键。我们的设计采用多端协同思维，确保无论是在 PC 端后台还是移动端 App 上，体验依然卓越且连贯。',
-    image: '/src/assets/images/service-step-web-design-03.png',
+    image: '/portfolio/src/assets/images/service-step-web-design-03.png',
     features: ['流式网格布局', '断点优化', '触控交互精准化']
   },
   {
     title: '性能与业务优化',
     desc: '美感不应成为负担。我们优化每一个像素和每一个业务组件，确保极速加载与流畅响应。高性能的产品能留住用户，并显著提升业务转化率。',
-    image: '/src/assets/images/service-step-web-design-04.png',
+    image: '/portfolio/src/assets/images/service-step-web-design-04.png',
     features: ['核心指标关注', '流程效率优化', '数据漏斗监控']
   }
 ];
