@@ -176,9 +176,9 @@ const projects = {
     image: "/portfolio/src/assets/images/project-cover-growth-hacker.png",
   },
   "ai-apps": {
-    title: "APP/网页",
-    category: "AI Product / 多端协同",
-    desc: "使用Copilot、AI studio、Figma等工具Vibe Coding制作网页及App。",
+    title: "AI APP/网页",
+    category: "Vibe Coding / AI Product",
+    desc: "使用Copilot、AI studio、Figma等工具Vibe Coding制作App及网页。",
     content:
       "该项目集成了两款核心 AI 应用：一款是基于表格化交互的自律工具，通过 AI 行为模式识别为用户提供个性化建议；另一款是 AI 心理辅导工具，结合 CBT 疗法为用户提供即时的情感疏导与心理支持。",
     impact: [
@@ -3402,11 +3402,10 @@ export default function ProjectDetail() {
 
                         <div className="space-y-3">
                           <h3 className="text-2xl font-bold text-white tracking-tight">
-                            AI 心理辅导情绪聊愈平台
+                            心理辅导情绪自愈平台
                           </h3>
                           <p className="text-gray-400 text-sm leading-relaxed">
-                            本情绪辅助平台正在基于全新智能对话流在 Google Stitch
-                            环境中进行闭环测试。通过融入标准认知行为疗法（CBT）架构，构建智能化情绪共鸣与即时情感疏导，保障匿名私密性。
+                            独立设计、开发的心理工具App。本情绪辅助平台正在进行闭环测试。平台通过融入标准认知行为疗法（CBT）架构，帮助用户自我治疗反刍问题。
                           </p>
                         </div>
 
@@ -3477,17 +3476,17 @@ export default function ProjectDetail() {
                             状态：已上线
                           </span>
                           <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">
-                            电脑端/网页开发协同平台
+                            电脑端/网页个人在线简历
                           </span>
                         </div>
 
                         <div className="space-y-3">
                           <h3 className="text-2xl font-bold text-white tracking-tight">
-                            AI 辅助全栈网页开发云平台
+                            AI 个人网站
                           </h3>
                           <p className="text-gray-400 text-sm leading-relaxed">
-                            主导设计的智能 Web 协同平台。深度融合 AI Studio
-                            快速集成链路，极大释放了云端部署与轻量化代码测试能力，支持团队通过敏捷迭代和可视化节点在云端实现高质量极速敏捷拼装。
+                            耗时一周，独立设计、开发并上线的个人网站。将简历变成更丰富、可交互的在线简历，展示了个人项目的核心成果和技术细节。
+                            {/* 快速集成链路，极大释放了云端部署与轻量化代码测试能力，支持团队通过敏捷迭代和可视化节点在云端实现高质量极速敏捷拼装。 */}
                           </p>
                         </div>
 

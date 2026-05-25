@@ -6,31 +6,31 @@ import { resolveAssetUrl } from '../assetUrl';
 const projects = [
   {
     id: 'ai-apps',
-    title: 'APP/网页',
+    title: 'AI APP/网页',
     category: 'Vibe Coding / 应用',
     image: '/portfolio/src/assets/images/external/unsplash-01.jpg',
-    desc: '包含 AI 习惯追踪工具与心理健康辅助平台，探索人工智能在个人成长与情绪健康领域的深度应用。'
+    desc: '包含习惯追踪工具、心理健康辅助平台、个人网站。'
   },
   {
     id: 'ai-agent',
-    title: 'Agent',
+    title: 'AI Agent',
     category: 'Coze / 智能体',
     image: '/portfolio/src/assets/images/external/unsplash-10.jpg',
-    desc: '定制化的 AI 智能体，能够理解复杂指令并自主完成跨平台的特定任务流。'
+    desc: '定制化的 AI 智能体，能够理解复杂指令并自主完成特定任务流。'
   },
   {
     id: 'ai-skills',
     title: 'Skills/Prompt',
     category: 'AI Logic / 结构化能力',
     image: '/portfolio/src/assets/images/external/unsplash-04.jpg',
-    desc: '基于 AI 大模型能力构建结构化 Prompt / Skills 能力库，进行提示词与 Skills 的收集、设计、调优及场景化封装，能够结合业务需求持续迭代 AI 工作流，提升内容生成质量、输出稳定性与使用效率。'
+    desc: '基于 AI 大模型能力构建结构化 Prompt / Skills 能力库。'
   },
   {
     id: 'ai-image',
     title: 'AI图片',
     category: 'Generative AI / 图像生成',
     image: '/portfolio/src/assets/images/external/unsplash-03.jpg',
-    desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作，可独立完成文章配图、宣传海报、社交头像等设计制作，具备良好的审美能力与创意表达能力。'
+    desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作。'
   }
 ];
 
