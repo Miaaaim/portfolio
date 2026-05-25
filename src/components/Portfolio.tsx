@@ -7,14 +7,14 @@ const projects = [
   {
     id: 'ai-apps',
     title: 'APP/网页',
-    category: 'AI Product / 多端协同',
+    category: 'Vibe Coding / 应用',
     image: '/portfolio/src/assets/images/external/unsplash-01.jpg',
     desc: '包含 AI 习惯追踪工具与心理健康辅助平台，探索人工智能在个人成长与情绪健康领域的深度应用。'
   },
   {
     id: 'ai-agent',
     title: 'Agent',
-    category: 'AI Automation / 智能体',
+    category: 'Coze / 智能体',
     image: '/portfolio/src/assets/images/external/unsplash-10.jpg',
     desc: '定制化的 AI 智能体，能够理解复杂指令并自主完成跨平台的特定任务流。'
   },
@@ -27,7 +27,7 @@ const projects = [
   },
   {
     id: 'ai-image',
-    title: '图片',
+    title: 'AI图片',
     category: 'Generative AI / 图像生成',
     image: '/portfolio/src/assets/images/external/unsplash-03.jpg',
     desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作，可独立完成文章配图、宣传海报、社交头像等设计制作，具备良好的审美能力与创意表达能力。'

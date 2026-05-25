@@ -89,7 +89,7 @@ export default function Experience() {
                         {exp.title}
                       </h4>
                       <span className="text-brand-orange font-bold text-sm tracking-widest uppercase flex items-center gap-1 hover:gap-2 transition-all shrink-0">
-                        查看更多 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        查看详情 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                       </span>
                     </div>
                     <p className="text-gray-500 text-base md:text-lg leading-relaxed w-full">
