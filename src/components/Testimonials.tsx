@@ -3,6 +3,8 @@ import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
 import { resolveAssetUrl } from '../assetUrl';
 
+const MOBILE_MEDIA_QUERY = '(max-width: 767px)';
+
 const testimonials = [
   {
     name: '潘同学',
@@ -45,6 +47,11 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia(MOBILE_MEDIA_QUERY).matches;
+  });
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -55,10 +62,44 @@ export default function Testimonials() {
   }, []);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+    const handleChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+
+    setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || isMobile) return;
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [next, isPaused]);
+  }, [next, isPaused, isMobile]);
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.changedTouches[0]?.clientX ?? null);
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) return;
+
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX;
+    const deltaX = touchStartX - touchEndX;
+
+    setTouchStartX(null);
+
+    if (Math.abs(deltaX) < 40) return;
+
+    if (deltaX > 0) {
+      next();
+      return;
+    }
+
+    prev();
+  };
 
   return (
     <section className="py-24 px-6 bg-brand-dark text-white rounded-[4rem] mx-4 mb-20 overflow-hidden relative">
@@ -82,6 +123,8 @@ export default function Testimonials() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               className="bg-zinc-900/50 backdrop-blur border border-white/5 p-8 md:p-12 rounded-[3rem] text-left space-y-8 relative group hover:border-brand-orange/30 transition-all w-full"
             >
               <Quote className="absolute top-8 right-8 text-brand-orange opacity-20" size={60} />
