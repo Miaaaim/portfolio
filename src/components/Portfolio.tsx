@@ -7,7 +7,7 @@ const projects = [
   {
     id: 'ai-apps',
     title: 'AI APP/网页',
-    category: 'Vibe Coding / 应用',
+    category: 'Vibe Coding / AI product',
     image: '/portfolio/src/assets/images/external/unsplash-01.jpg',
     desc: '包含习惯追踪工具、心理健康辅助平台、个人网站。'
   },
@@ -28,7 +28,7 @@ const projects = [
   {
     id: 'ai-image',
     title: 'AI图片',
-    category: 'Generative AI / 图像生成',
+    category: 'Generative Image / 图像生成',
     image: '/portfolio/src/assets/images/external/unsplash-03.jpg',
     desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作。'
   }
