@@ -27,6 +27,36 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useModal } from "../context/ModalContext";
 
+const createLinkBadge = (
+  label: string,
+  backgroundColor: string,
+  textColor = "#FFFFFF"
+) =>
+  `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="36" viewBox="0 0 160 36" fill="none">
+      <rect width="160" height="36" rx="8" fill="${backgroundColor}"/>
+      <text x="80" y="23" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="700" fill="${textColor}">${label}</text>
+    </svg>
+  `)}`;
+
+const habitAppLinks = [
+  {
+    name: "App Store",
+    href: "https://apps.apple.com/cn/app/%E6%A1%8C%E4%B8%8A%E4%B9%A0%E6%83%AF/id6744886469",
+    src: createLinkBadge("App Store", "#52525B"),
+  },
+  {
+    name: "Google Play",
+    href: "https://play.google.com/store/apps/details?id=io.github.friesi23.mhabit&hl=zh",
+    src: createLinkBadge("Google Play", "#52525B"),
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/FriesI23/mhabit",
+    src: createLinkBadge("GitHub", "#52525B"),
+  },
+];
+
 const projects = {
   "growth-hacker": {
     title: "增长黑客",
@@ -3259,9 +3289,30 @@ export default function ProjectDetail() {
                               size={16}
                               className="text-brand-orange shrink-0 mt-0.5"
                             />
-                            <p className="text-xs text-gray-300 leading-relaxed font-semibold">
-                              项目上线，可至应用商店下载体验。
-                            </p>
+                            <div className="space-y-3">
+                              <p className="text-xs text-gray-300 leading-relaxed font-semibold">
+                                项目上线，可至应用商店下载体验。
+                              </p>
+                              <div className="flex flex-wrap gap-3">
+                                {habitAppLinks.map((link) => (
+                                  <a
+                                    key={link.name}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    aria-label={link.name}
+                                    className="transition-transform duration-200 hover:-translate-y-0.5"
+                                  >
+                                    <img
+                                      src={link.src}
+                                      alt={link.name}
+                                      className="h-8 rounded-md shadow-sm"
+                                      loading="lazy"
+                                    />
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
