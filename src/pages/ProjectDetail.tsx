@@ -148,7 +148,7 @@ const projects = {
   "ai-apps": {
     title: "APP/网页",
     category: "AI Product / 多端协同",
-    desc: "包含 AI 习惯追踪工具与心理健康辅助平台，探索人工智能在个人成长与情绪健康领域的深度应用。",
+    desc: "使用Copilot、AI studio、Figma等工具Vibe Coding制作网页及App。",
     content:
       "该项目集成了两款核心 AI 应用：一款是基于表格化交互的自律工具，通过 AI 行为模式识别为用户提供个性化建议；另一款是 AI 心理辅导工具，结合 CBT 疗法为用户提供即时的情感疏导与心理支持。",
     impact: [
@@ -3099,9 +3099,9 @@ export default function ProjectDetail() {
                       <div className="h-0.5 flex-1 bg-white/10 hidden md:block" />
                     </h2>
                     <p className="text-gray-400 text-sm max-w-2xl leading-relaxed">
-                      以下展示了我所主导研发的多端 AI
+                      {/* 以下展示了我所主导研发的多端 AI
                       应用产品。所有作品深度集成了 AI
-                      自动化流和智能交互引擎，视频演示部分目前通过高真实度模拟框架进行交互展示。
+                      自动化流和智能交互引擎，视频演示部分目前通过高真实度模拟框架进行交互展示。 */}
                     </p>
                   </div>
 
@@ -3189,10 +3189,10 @@ export default function ProjectDetail() {
 
                         <div className="space-y-3">
                           <h3 className="text-2xl font-bold text-white tracking-tight">
-                            AI 行为模式识别自律习惯 App
+                            自律习惯 App
                           </h3>
                           <p className="text-gray-400 text-sm leading-relaxed">
-                            该习惯追踪工具能精细地评估、建立并反馈用户的日常习惯模型。基于人工智能算法的分析，工具可以识别用户潜在的退化模式，并用温和、贴心的方法引导其实现习惯复盘。
+                            该习惯追踪工具能精准记录并反馈用户的日常习惯。基于极简打卡，工具可以帮助用户养成良好习惯，并用数据统计的方法引导其实现习惯复盘。
                           </p>
                         </div>
 
@@ -3214,7 +3214,7 @@ export default function ProjectDetail() {
                         {/* Key stats / Achievements */}
                         <div className="pt-6 border-t border-white/5 space-y-4">
                           <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">
-                            开源社区技术成果 / Metrics
+                            开源社区技术成果
                           </span>
                           <div className="grid grid-cols-3 gap-4">
                             <div className="bg-zinc-900/40 p-4 rounded-2xl border border-white/5 text-center">
@@ -3260,9 +3260,7 @@ export default function ProjectDetail() {
                               className="text-brand-orange shrink-0 mt-0.5"
                             />
                             <p className="text-xs text-gray-300 leading-relaxed font-semibold">
-                              项目已获 GitHub Star 1.3k+、贡献者 40+，F-Droid
-                              下载量达
-                              14w+，并在开源社区形成稳定口碑与用户推荐。
+                              项目上线，可至应用商店下载体验。
                             </p>
                           </div>
                         </div>
