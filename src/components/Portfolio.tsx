@@ -8,28 +8,28 @@ const projects = [
     id: 'ai-apps',
     title: 'AI APP/网页',
     category: 'Vibe Coding / AI product',
-    image: '/portfolio/src/assets/images/external/code-editor-closeup.jpg',
+    image: '/portfolio/src/assets/images/external/code-editor-closeup.png',
     desc: '包含习惯追踪工具、心理健康辅助平台、个人网站。'
   },
   {
     id: 'ai-agent',
     title: 'AI Agent',
     category: 'Coze / 智能体',
-    image: '/portfolio/src/assets/images/external/ai-letters-installation.jpg',
+    image: '/portfolio/src/assets/images/external/ai-letters-installation.png',
     desc: '定制化的 AI 智能体，能够理解复杂指令并自主完成特定任务流。'
   },
   {
     id: 'ai-skills',
     title: 'Skills/Prompt',
     category: 'AI Logic / 结构化能力',
-    image: '/portfolio/src/assets/images/external/circuit-board-blueprint.jpg',
+    image: '/portfolio/src/assets/images/external/circuit-board-blueprint.png',
     desc: '基于 AI 大模型能力构建结构化 Prompt / Skills 能力库。'
   },
   {
     id: 'ai-image',
     title: 'AI图片',
     category: 'Generative Image / 图像生成',
-    image: '/portfolio/src/assets/images/external/laptop-work-in-bed.jpg',
+    image: '/portfolio/src/assets/images/external/laptop-work-in-bed.png',
     desc: '使用 Image2、Stable Diffusion（SD）等 AI 绘图工具进行视觉内容创作。'
   }
 ];
