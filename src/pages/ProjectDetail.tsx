@@ -442,7 +442,7 @@ const projects = {
       },
     ],
     image:
-      "/portfolio/src/assets/images/external/unsplash-10.jpg",
+      "/portfolio/src/assets/images/external/ai-letters-installation.jpg",
   },
   "ai-skills": {
     title: "Skills/Prompt",
@@ -1139,7 +1139,7 @@ description: 面向大学生的一对一求职规划与咨询技能。基于职�
       },
     ],
     image:
-      "/portfolio/src/assets/images/external/unsplash-04.jpg",
+      "/portfolio/src/assets/images/external/circuit-board-blueprint.jpg",
   },
   "ai-image": {
     title: "AI图片",
@@ -1154,7 +1154,7 @@ description: 面向大学生的一对一求职规划与咨询技能。基于职�
     ],
     features: ["高精风格化迁移", "智能无损扩图", "提示词自动优化"],
     image:
-      "/portfolio/src/assets/images/external/unsplash-07.jpg",
+      "/portfolio/src/assets/images/external/abstract-gradient-waves.jpg",
     gallery: [
       {
         url: "/portfolio/src/assets/images/ai_gen_1.png",

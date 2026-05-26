@@ -4,15 +4,15 @@ import { resolveAssetUrl } from '../assetUrl';
 const posts = [
   {
     title: '羽毛球',
-    image: '/portfolio/src/assets/images/external/unsplash-09.jpg',
+    image: '/portfolio/src/assets/images/external/badminton-jump-smash.jpg',
   },
   {
     title: '网球',
-    image: '/portfolio/src/assets/images/external/unsplash-08.jpg',
+    image: '/portfolio/src/assets/images/external/tennis-court-forehand.jpg',
   },
   {
     title: '游泳',
-    image: '/portfolio/src/assets/images/external/unsplash-06.jpg',
+    image: '/portfolio/src/assets/images/external/swimming-pool-dive.jpg',
   },
   {
     title: '太鼓达人',
@@ -20,7 +20,7 @@ const posts = [
   },
   {
     title: '徒步',
-    image: '/portfolio/src/assets/images/external/unsplash-05.jpg',
+    image: '/portfolio/src/assets/images/external/mountain-hiking-trail.jpg',
   },
   {
     title: '铲屎官',
@@ -32,7 +32,7 @@ const posts = [
   },
   {
     title: '美食',
-    image: '/portfolio/src/assets/images/external/unsplash-02.jpg',
+    image: '/portfolio/src/assets/images/external/fresh-salad-ingredients.jpg',
   },
 ];
 
