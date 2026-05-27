@@ -43,7 +43,7 @@ export default function Portfolio() {
             我的 <span className="text-brand-orange">AI项目</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl">
-            深耕 AI 教育与 B 端增长领域，致力于通过数据驱动与技术创新解决真实业务痛点。
+            掌握多种AI工具，真实落地AI作品。
           </p>
         </div>
       </div>
