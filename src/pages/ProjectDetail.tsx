@@ -57,6 +57,34 @@ const habitAppLinks = [
   },
 ];
 
+const aiAppsMoreVideos = [
+  {
+    title: "运营后台",
+    src: "/src/assets/images/ai-apps-demo-01-v1.mp4",
+    poster: "",
+  },
+  {
+    title: "ERP资源管理系统",
+    src: "/src/assets/images/ai-apps-demo-02-v1.mp4",
+    poster: "",
+  },
+  {
+    title: "个人资产管理系统",
+    src: "/src/assets/images/ai-apps-demo-03-v1.mp4",
+    poster: "",
+  },
+  {
+    title: "HR招聘系统",
+    src: "/src/assets/images/ai-apps-demo-04-v1.mp4",
+    poster: "",
+  },
+  {
+    title: "个人作品集",
+    src: "/src/assets/images/ai-apps-demo-05-v1.mp4",
+    poster: "",
+  },
+];
+
 const projects = {
   "growth-hacker": {
     title: "增长黑客",
@@ -3509,6 +3537,50 @@ export default function ProjectDetail() {
                         </div>
                       </div>
                     </motion.div>
+
+                    <section className="space-y-6 rounded-[3rem] border border-white/10 bg-zinc-900/30 p-8 md:p-10">
+                      <div className="space-y-3">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white">
+                          更多Vibe Coding作品展示
+                        </h3>
+                        {/* <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-3xl">
+                          该区域用于集中展示更多项目录屏与版本迭代片段，保持轻量浏览体验。后续新增视频可直接按卡片形式持续补充。
+                        </p> */}
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                        {aiAppsMoreVideos.map((item, index) => (
+                          <article
+                            key={`${item.title}-${index}`}
+                            className="rounded-[1.5rem] border border-white/10 bg-zinc-950/60 overflow-hidden"
+                          >
+                            <div className="aspect-video bg-zinc-900/80 border-b border-white/5">
+                              {item.src ? (
+                                <video
+                                  src={resolveAssetUrl(item.src)}
+                                  poster={item.poster ? resolveAssetUrl(item.poster) : undefined}
+                                  autoPlay
+                                  loop
+                                  muted
+                                  playsInline
+                                  preload="metadata"
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="h-full w-full flex items-center justify-center text-xs tracking-widest font-bold uppercase text-gray-500">
+                                  Video Slot
+                                </div>
+                              )}
+                            </div>
+                            <div className="px-4 py-3">
+                              <p className="text-sm text-gray-200 font-semibold">
+                                {item.title}
+                              </p>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </section>
                   </div>
                 </div>
               )}
