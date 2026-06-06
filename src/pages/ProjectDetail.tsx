@@ -26,6 +26,11 @@ import { resolveAssetUrl } from "../assetUrl";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useModal } from "../context/ModalContext";
+import aiAppsDemo01V1 from "../assets/images/ai-apps-demo-01-v1.mp4";
+import aiAppsDemo02V1 from "../assets/images/ai-apps-demo-02-v1.mp4";
+import aiAppsDemo03V1 from "../assets/images/ai-apps-demo-03-v1.mp4";
+import aiAppsDemo04V1 from "../assets/images/ai-apps-demo-04-v1.mp4";
+import aiAppsDemo05V1 from "../assets/images/ai-apps-demo-05-v1.mp4";
 
 const createLinkBadge = (
   label: string,
@@ -60,27 +65,27 @@ const habitAppLinks = [
 const aiAppsMoreVideos = [
   {
     title: "运营后台",
-    src: "/src/assets/images/ai-apps-demo-01-v1.mp4",
+    src: aiAppsDemo01V1,
     poster: "",
   },
   {
     title: "ERP资源管理系统",
-    src: "/src/assets/images/ai-apps-demo-02-v1.mp4",
+    src: aiAppsDemo02V1,
     poster: "",
   },
   {
     title: "个人资产管理系统",
-    src: "/src/assets/images/ai-apps-demo-03-v1.mp4",
+    src: aiAppsDemo03V1,
     poster: "",
   },
   {
     title: "HR招聘系统",
-    src: "/src/assets/images/ai-apps-demo-04-v1.mp4",
+    src: aiAppsDemo04V1,
     poster: "",
   },
   {
     title: "个人作品集",
-    src: "/src/assets/images/ai-apps-demo-05-v1.mp4",
+    src: aiAppsDemo05V1,
     poster: "",
   },
 ];
