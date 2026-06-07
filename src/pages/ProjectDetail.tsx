@@ -2252,7 +2252,7 @@ export default function ProjectDetail() {
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6 mb-12">
           <Link
-            to="/#portfolio"
+            to="/?section=portfolio"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group"
           >
             <ArrowLeft

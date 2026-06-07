@@ -28,19 +28,25 @@ export default function Header() {
         
         <ul className="hidden md:flex items-center gap-8">
           {navItems.map((item) => {
-            const anchor = `#${item.id}`;
+            const sectionTarget = `/?section=${item.id}`;
             return (
               <li key={item.id}>
                 {isHome ? (
-                  <a 
-                    href={anchor} 
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const element = document.getElementById(item.id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                     className="text-sm font-medium hover:text-brand-orange transition-colors"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 ) : (
                   <Link 
-                    to={`/${anchor}`}
+                    to={sectionTarget}
                     className="text-sm font-medium hover:text-brand-orange transition-colors"
                   >
                     {item.label}

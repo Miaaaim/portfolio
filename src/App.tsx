@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import ExperienceDetail from './pages/ExperienceDetail';
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <ModalProvider>
-      <BrowserRouter basename={routerBase}>
+      <HashRouter basename={routerBase}>
         <ScrollToTop />
         <ContactModal />
         <Routes>
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/experience/:id" element={<ExperienceDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ModalProvider>
   );
 }

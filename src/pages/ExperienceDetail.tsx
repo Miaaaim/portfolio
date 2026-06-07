@@ -393,7 +393,7 @@ export default function ExperienceDetail() {
       
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6 mb-12">
-          <Link to="/#resume" className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group">
+          <Link to="/?section=resume" className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group">
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             返回经验列表
           </Link>

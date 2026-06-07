@@ -70,12 +70,18 @@ git push -u gitee main
 在 EdgeOne 控制台：
 
 1. 创建 Pages/静态站点项目。
-2. 连接 GitHub 仓库。
+2. 连接 GitHub 仓库（代码源仓库固定为：`portfolio`）。
 3. 选择分支 `main`。
 4. 构建命令：`npm run build`
 5. 输出目录：`dist`
 6. Node 版本：`20`
 7. 若预览域名带子路径（如 `/portfolio/`），新增环境变量：`VITE_BASE_PATH=/portfolio/`
+
+补充说明（本项目已确认）：
+
+1. 发布源使用主仓库 `portfolio`。
+2. `dist` 目录是构建产物，不作为 EdgeOne 代码源仓库。
+3. 若本地存在独立的 `dist` 仓库，也不需要将其作为线上发布入口。
 
 预期结果：
 
