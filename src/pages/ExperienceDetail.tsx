@@ -155,7 +155,7 @@ const experiences: Record<string, WorkExperience> = {
     skills: ['增长黑客', 'A/B测试', 'CRM系统', '用户运营', '数据驱动']
   },
   'jielibang': {
-    company: '接力棒科技',
+    company: '瑞思英语',
     date: '2018.11 – 2021.08',
     title: '产品经理',
     location: '杭州',
@@ -494,7 +494,7 @@ export default function ExperienceDetail() {
                       />
                     </motion.div>
                   )}
-                    {exp.company === '接力棒科技' && (
+                    {exp.company === '瑞思英语' && (
                       <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
