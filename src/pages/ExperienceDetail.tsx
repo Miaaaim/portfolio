@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowLeft, CheckCircle2, Calendar, MapPin, Building2, Sparkles } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { resolveAssetUrl } from '../assetUrl';
+import jlbPlatformImage from '../assets/images/JLB_platform.png';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useModal } from '../context/ModalContext';
@@ -501,7 +502,7 @@ export default function ExperienceDetail() {
                         className="mt-8 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg"
                       >
                         <img 
-                          src={resolveAssetUrl('src/assets/images/JLB_platform.png')} 
+                          src={jlbPlatformImage} 
                           alt="接力棒 CRM 与增长平台" 
                           className="w-full h-auto"
                         />
