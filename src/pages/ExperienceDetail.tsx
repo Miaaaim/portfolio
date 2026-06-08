@@ -242,7 +242,7 @@ const experiences: Record<string, WorkExperience> = {
   'eleme': {
     company: '饿了么',
     date: '2015.07 – 2018.10',
-    title: '产品运营',
+    title: '产品经理',
     location: '上海',
     desc: '物流侧骑手管理与履约体系。主导定位系统的全链路优化机制，建立骑手端管理规范与调度策略优化体系，实现履约质量与运营效率双向提升。',
     sections: [

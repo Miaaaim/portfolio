@@ -4,7 +4,7 @@ import { resolveAssetUrl } from '../assetUrl';
 import { useModal } from '../context/ModalContext';
 import { useEffect, useState } from 'react';
 
-const TYPING_TEXTS = ['产品经理', '产品运营', 'vibe coder'];
+const TYPING_TEXTS = ['产品经理', 'AI Builder', 'Vibe Coder'];
 
 export default function Hero() {
   const { openModal } = useModal();

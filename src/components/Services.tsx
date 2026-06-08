@@ -7,29 +7,34 @@ import { resolveAssetUrl } from '../assetUrl';
 const serviceGroups = [
   [
     {
-      title: '增长黑客',
+      title: '客户增长管理平台',
+      description: 'B端客户经营｜转化率提升｜CRM',
       image: '/portfolio/src/assets/images/project-cover-growth-hacker.png',
       link: '/project/growth-hacker',
     },
     {
-      title: '运动APP/小程序',
+      title: '学生运动平台',
+      description: 'C端用户产品｜APP & 小程序｜AI报告｜AI运动',
       image: '/portfolio/src/assets/images/project-cover-sports-app-mini-program.png',
       link: '/project/sports-app',
     },
     {
-      title: 'CRM系统',
+      title: '教培机构SaaS平台（CRM）',
+      description: '招生转化｜客户管理｜营销活动',
       image: '/portfolio/src/assets/images/project-cover-crm-system.png',
       link: '/project/crm-system',
     },
   ],
   [
     {
-      title: '校园SaaS平台',
+      title: '校园体育SaaS平台',
+      description: '教育信息化｜学校管理｜数据治理',
       image: '/portfolio/src/assets/images/project-cover-campus-saas-platform.png',
       link: '/project/saas-system',
     },
     {
       title: '骑手APP',
+      description: '即时配送｜履约效率｜骑手运营',
       image: '/portfolio/src/assets/images/project-cover-rider-app.png',
       link: '/project/rider-app',
     },
@@ -86,7 +91,10 @@ export default function Services() {
 
                 const Content = (
                   <>
-                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-bold">{service.title}</h3>
+                      <p className="text-gray-400 text-sm">{service.description}</p>
+                    </div>
                     <div className="relative aspect-[16/10] bg-zinc-100 rounded-3xl overflow-hidden shadow-2xl">
                       <img 
                         src={resolveAssetUrl(service.image)} 
