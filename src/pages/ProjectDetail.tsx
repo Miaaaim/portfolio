@@ -3593,6 +3593,7 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                             <video
                               src={resolveAssetUrl("/src/assets/images/ai-apps-demo-01-v1.mp4")}
                               poster={resolveAssetUrl("/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png")}
+                              controls
                               autoPlay
                               loop
                               muted
