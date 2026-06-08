@@ -57,7 +57,7 @@ export default function Portfolio() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <Link to={`/project/${project.id}`} className="block group">
+            <Link to={`/ai-project/${project.id}`} className="block group">
               <div className="space-y-4">
                 <div className="relative rounded-[2rem] overflow-hidden shadow-md border border-gray-100 aspect-[4/3]">
                   <img 

@@ -24,7 +24,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/service/web-design" element={<ServiceDetail />} />
           <Route path="/experience/:id" element={<ExperienceDetail />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/project/:id" element={<ProjectDetail pageType="experience" />} />
+          <Route path="/ai-project/:id" element={<ProjectDetail pageType="ai" />} />
         </Routes>
       </HashRouter>
     </ModalProvider>

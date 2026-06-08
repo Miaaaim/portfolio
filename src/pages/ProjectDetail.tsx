@@ -1917,6 +1917,20 @@ Image A 是用户上传的主食物参考图，也是本次海报的核心主视
   },
 };
 
+const projectGroups = {
+  experience: [
+    "saas-system",
+    "crm-system",
+    "growth-hacker",
+    "sports-app",
+    "rider-app",
+  ],
+  ai: ["ai-apps", "ai-agent", "ai-skills", "ai-image"],
+} as const;
+
+const experienceProjectIdSet = new Set<string>(projectGroups.experience);
+const aiProjectIdSet = new Set<string>(projectGroups.ai);
+
 type ProductDemoItem = {
   src: string;
   alt: string;
@@ -2071,17 +2085,28 @@ const groupChallengesByCategory = (challenges: any[]) => {
   return grouped;
 };
 
-export default function ProjectDetail() {
+type ProjectDetailPageType = "experience" | "ai";
+
+type ProjectDetailProps = {
+  pageType?: ProjectDetailPageType;
+};
+
+export default function ProjectDetail({ pageType }: ProjectDetailProps) {
   const { openModal, openAgentModal } = useModal();
   const { id } = useParams();
-  const project = projects[id as keyof typeof projects];
-  const productDemoSection = id
-    ? productDemoSections[id as keyof typeof productDemoSections]
+  const projectId = id ?? "";
+  const isExperienceProject = experienceProjectIdSet.has(projectId);
+  const isAiProject = aiProjectIdSet.has(projectId);
+  const isAiWideLayoutProject =
+    projectId === "ai-skills" || projectId === "ai-apps" || projectId === "ai-image";
+  const project = projects[projectId as keyof typeof projects];
+  const productDemoSection = projectId
+    ? productDemoSections[projectId as keyof typeof productDemoSections]
     : undefined;
   const [activeTag, setActiveTag] = useState<any>(null);
   const [activeMethodology, setActiveMethodology] = useState<any>(null);
   const [expandedFeature, setExpandedFeature] = useState<number | null>(
-    id === "ai-agent" ? 0 : null,
+    projectId === "ai-agent" ? 0 : null,
   );
   const [expandedDesignItem, setExpandedDesignItem] = useState<number | null>(
     null,
@@ -2149,8 +2174,8 @@ export default function ProjectDetail() {
   }, [playAiAgentDemo]);
 
   useEffect(() => {
-    setExpandedFeature(id === "ai-agent" ? 0 : null);
-  }, [id]);
+    setExpandedFeature(projectId === "ai-agent" ? 0 : null);
+  }, [projectId]);
 
   const rawChallenges = (project as any)?.challengeAndGoals?.challenges || [];
   const useGroupedChallenges = rawChallenges.some((item: any) =>
@@ -2160,7 +2185,14 @@ export default function ProjectDetail() {
     ? groupChallengesByCategory((project as any).challengeAndGoals.challenges)
     : [];
 
-  if (!project)
+  const matchedByPageType =
+    pageType === "experience"
+      ? isExperienceProject
+      : pageType === "ai"
+        ? isAiProject
+        : isExperienceProject || isAiProject;
+
+  if (!project || !matchedByPageType)
     return (
       <div className="text-center py-40 font-bold text-2xl">未找到相关项目</div>
     );
@@ -2252,14 +2284,16 @@ export default function ProjectDetail() {
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6 mb-12">
           <Link
-            to="/?section=portfolio"
+            to={`/?section=${pageType === "ai" || (pageType !== "experience" && isAiProject) ? "portfolio" : "service"}`}
             className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group"
           >
             <ArrowLeft
               size={20}
               className="group-hover:-translate-x-1 transition-transform"
             />
-            返回我的AI项目
+            {pageType === "ai" || (pageType !== "experience" && isAiProject)
+              ? "返回我的AI项目"
+              : "返回我的项目经验"}
           </Link>
         </div>
 
@@ -2269,7 +2303,7 @@ export default function ProjectDetail() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`${id === "ai-skills" || id === "ai-apps" || id === "ai-image" ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
+              className={`${isAiWideLayoutProject ? "lg:col-span-12" : "lg:col-span-8"} space-y-16`}
             >
               <div className="space-y-6">
                 <div className="inline-block bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
