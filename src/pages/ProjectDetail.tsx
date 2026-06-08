@@ -3577,6 +3577,79 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                       </div>
                     </motion.div>
 
+                    {/* Item 4: AI 项目介绍模块 */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-zinc-900/20 p-8 rounded-[3rem] border border-white/5 hover:border-brand-orange/20 transition-all duration-300"
+                    >
+                      {/* Left: visual */}
+                      <div className="lg:col-span-7">
+                        <div className="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl shadow-black/40">
+                          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10 bg-zinc-900/80">
+                            <span className="w-3 h-3 rounded-full bg-red-400" />
+                            <span className="w-3 h-3 rounded-full bg-yellow-400" />
+                            <span className="w-3 h-3 rounded-full bg-green-400" />
+                            <div className="ml-4 flex-1 h-5 rounded-md bg-zinc-800/80 border border-white/5" />
+                          </div>
+                          <div className="relative aspect-video">
+                            <video
+                              src={resolveAssetUrl("/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4")}
+                              poster={resolveAssetUrl("/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png")}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              preload="metadata"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right: content */}
+                      <div className="lg:col-span-5 space-y-6">
+                        <div className="flex flex-wrap items-center gap-4">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 shadow-sm shadow-emerald-500/5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            状态：已上线
+                          </span>
+                          <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">
+                            Item 4
+                          </span>
+                        </div>
+
+                        <div className="space-y-3">
+                          <h3 className="text-2xl font-bold text-white tracking-tight">
+                            AI 个人网站
+                          </h3>
+                          <p className="text-gray-400 text-sm leading-relaxed">
+                            耗时一周，独立设计、开发并上线的个人网站。将简历变成更丰富、可交互的在线简历，展示了个人项目的核心成果和技术细节。
+                          </p>
+                        </div>
+
+                        {/* Tools list */}
+                        <div className="space-y-2">
+                          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">
+                            设计与开发工具
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                              figma
+                            </span>
+                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                              AIstudio
+                            </span>
+                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                              copilot
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+
                     <section className="space-y-6 rounded-[3rem] border border-white/10 bg-zinc-900/30 p-8 md:p-10">
                       <div className="space-y-3">
                         <h3 className="text-2xl md:text-3xl font-bold text-white">
