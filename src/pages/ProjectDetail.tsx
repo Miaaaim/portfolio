@@ -3512,7 +3512,7 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
                             </div>
                             <div className="bg-zinc-950 text-[8px] text-gray-500 px-6 py-0.5 rounded-md border border-white/5 tracking-wider font-mono">
-                              https://aistudio.deployment
+                              https://mia-portfolio.cn
                             </div>
                             <div className="w-10" />
                           </div>
@@ -3596,7 +3596,7 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                           </div>
                           <div className="relative aspect-video">
                             <video
-                              src={resolveAssetUrl("/src/assets/images/ai-apps-personal-portfolio-cover-v1.mp4")}
+                              src={resolveAssetUrl("/src/assets/images/ai-apps-demo-01-v1.mp4")}
                               poster={resolveAssetUrl("/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png")}
                               autoPlay
                               loop
@@ -3617,16 +3617,16 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                             状态：已上线
                           </span>
                           <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">
-                            Item 4
+                            网页/PC后台
                           </span>
                         </div>
 
                         <div className="space-y-3">
                           <h3 className="text-2xl font-bold text-white tracking-tight">
-                            AI 个人网站
+                            运营后台
                           </h3>
                           <p className="text-gray-400 text-sm leading-relaxed">
-                            耗时一周，独立设计、开发并上线的个人网站。将简历变成更丰富、可交互的在线简历，展示了个人项目的核心成果和技术细节。
+                            耗时一周，独立分析需求、设计、开发并上线的运营后台。围绕运营工作内容设计运营后台，实现了工作总览、运营指标管理、客户管理、内容管理、需求管理等功能。
                           </p>
                         </div>
 
@@ -3637,14 +3637,14 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                           </span>
                           <div className="flex flex-wrap gap-2">
                             <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
-                              figma
+                              秒悟
                             </span>
-                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                            {/* <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
                               AIstudio
                             </span>
                             <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
                               copilot
-                            </span>
+                            </span> */}
                           </div>
                         </div>
                       </div>
