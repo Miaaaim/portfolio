@@ -64,11 +64,6 @@ const habitAppLinks = [
 
 const aiAppsMoreVideos = [
   {
-    title: "运营后台",
-    src: aiAppsDemo01V1,
-    poster: "",
-  },
-  {
     title: "ERP资源管理系统",
     src: aiAppsDemo02V1,
     poster: "",
