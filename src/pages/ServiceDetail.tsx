@@ -40,9 +40,9 @@ export default function ServiceDetail() {
       <main className="pt-32 pb-20 overflow-hidden">
         {/* Breadcrumb / Back Button */}
         <div className="max-w-7xl mx-auto px-6 mb-12">
-          <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group">
+          <Link to="/?section=service" className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-orange font-medium transition-colors group">
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            返回首页
+            返回我的服务
           </Link>
         </div>
 

@@ -7,28 +7,28 @@ import { resolveAssetUrl } from '../assetUrl';
 const serviceGroups = [
   [
     {
-      title: '客户增长管理平台',
-      description: 'B端客户经营｜转化率提升｜CRM',
-      image: '/portfolio/src/assets/images/project-cover-growth-hacker.png',
-      link: '/project/growth-hacker',
-    },
-    {
       title: '学生运动平台',
-      description: 'C端用户产品｜APP & 小程序｜AI报告｜AI运动',
+      description: 'AI报告｜AI运动｜电商',
       image: '/portfolio/src/assets/images/project-cover-sports-app-mini-program.png',
       link: '/project/sports-app',
     },
     {
-      title: '教培机构SaaS平台（CRM）',
-      description: '招生转化｜客户管理｜营销活动',
+      title: 'CRM SaaS平台',
+      description: '客户管理｜营销活动｜销售转化',
       image: '/portfolio/src/assets/images/project-cover-crm-system.png',
       link: '/project/crm-system',
+    },
+    {
+      title: 'CRM增长',
+      description: 'B端客户｜转化率提升｜运营工具',
+      image: '/portfolio/src/assets/images/project-cover-growth-hacker.png',
+      link: '/project/growth-hacker',
     },
   ],
   [
     {
-      title: '校园体育SaaS平台',
-      description: '教育信息化｜学校管理｜数据治理',
+      title: '校园SaaS平台',
+      description: '教育信息化｜学校管理｜数据大屏',
       image: '/portfolio/src/assets/images/project-cover-campus-saas-platform.png',
       link: '/project/saas-system',
     },
@@ -50,7 +50,7 @@ export default function Services() {
     
     const timer = setInterval(() => {
       setActiveGroup((prev) => (prev + 1) % serviceGroups.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [isPaused]);
 
