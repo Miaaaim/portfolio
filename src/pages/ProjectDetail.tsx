@@ -3380,114 +3380,6 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                       </div>
                     </motion.div>
 
-                    {/* Item 2: Mobile App Pending */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.1 }}
-                      viewport={{ once: true }}
-                      className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-zinc-900/20 p-8 rounded-[3rem] border border-white/5 hover:border-brand-orange/20 transition-all duration-300"
-                    >
-                      {/* Left side: iPhone frame mock preview */}
-                      <div className="lg:col-span-5 flex justify-center">
-                        <div className="relative w-full max-w-[280px] aspect-[9/19.5] bg-zinc-950 rounded-[3rem] border-[8px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
-                          {/* Notch / Dynamic Island */}
-                          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-center">
-                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 absolute right-4" />
-                          </div>
-
-                          {/* Screen Video */}
-                          <div className="absolute inset-0 bg-zinc-950">
-                            <video
-                              ref={aiAppsWebDemoRef}
-                              src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4')}
-                              controls={playAiAppsWebDemo}
-                              autoPlay={playAiAppsWebDemo}
-                              muted
-                              className="w-full h-full object-cover"
-                              loop
-                              playsInline
-                              preload="metadata"
-                              poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-cover-v1.png')}
-                            />
-                          </div>
-
-                          {!playAiAppsWebDemo && (
-                            <button
-                              type="button"
-                              aria-label="播放手机端演示录屏"
-                              onClick={handlePlayAiAppsWebDemo}
-                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
-                            >
-                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
-                                <Play
-                                  size={20}
-                                  fill="currentColor"
-                                  className="ml-0.5"
-                                />
-                              </div>
-                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest">
-                                播放内部演示录屏
-                              </span>
-                            </button>
-                          )}
-
-                          {/* Hover overlay before playing */}
-                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30 pointer-events-none">
-                            <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                              <Play
-                                size={20}
-                                fill="currentColor"
-                                className="ml-0.5"
-                              />
-                            </div>
-                            <span className="text-[10px] text-white font-bold opacity-80 uppercase tracking-widest">
-                              播放内部演示录屏
-                            </span>
-                          </div>
-
-                          <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
-                        </div>
-                      </div>
-
-                      {/* Right side: Detailed descriptions */}
-                      <div className="lg:col-span-7 space-y-6">
-                        <div className="flex flex-wrap items-center gap-4">
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20 shadow-sm shadow-amber-500/5">
-                            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                            状态：待上线
-                          </span>
-                          <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">
-                            手机端心理健康辅助平台
-                          </span>
-                        </div>
-
-                        <div className="space-y-3">
-                          <h3 className="text-2xl font-bold text-white tracking-tight">
-                            心理辅导情绪自愈平台
-                          </h3>
-                          <p className="text-gray-400 text-sm leading-relaxed">
-                            独立设计、开发的心理工具App。本情绪辅助平台正在进行闭环测试。平台通过融入标准认知行为疗法（CBT）架构，帮助用户自我治疗反刍问题。
-                          </p>
-                        </div>
-
-                        {/* Tools list */}
-                        <div className="space-y-2">
-                          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">
-                            设计与开发工具
-                          </span>
-                          <div className="flex flex-wrap gap-2">
-                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
-                              google stitch
-                            </span>
-                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
-                              copilot
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-
                     {/* Item 3: Desktop/Web Online */}
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
@@ -3593,7 +3485,6 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                             <video
                               src={resolveAssetUrl("/src/assets/images/ai-apps-demo-01-v1.mp4")}
                               poster={resolveAssetUrl("/src/assets/images/ai-apps-fullstack-web-cloud-cover-v2.png")}
-                              controls
                               autoPlay
                               loop
                               muted
@@ -3641,6 +3532,114 @@ export default function ProjectDetail({ pageType }: ProjectDetailProps) {
                             <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
                               copilot
                             </span> */}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Item 2: Mobile App Pending */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      viewport={{ once: true }}
+                      className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-zinc-900/20 p-8 rounded-[3rem] border border-white/5 hover:border-brand-orange/20 transition-all duration-300"
+                    >
+                      {/* Left side: iPhone frame mock preview */}
+                      <div className="lg:col-span-5 flex justify-center">
+                        <div className="relative w-full max-w-[280px] aspect-[9/19.5] bg-zinc-950 rounded-[3rem] border-[8px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 group cursor-pointer animate-none">
+                          {/* Notch / Dynamic Island */}
+                          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 flex items-center justify-center">
+                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 absolute right-4" />
+                          </div>
+
+                          {/* Screen Video */}
+                          <div className="absolute inset-0 bg-zinc-950">
+                            <video
+                              ref={aiAppsWebDemoRef}
+                              src={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-demo-v1.mp4')}
+                              controls={playAiAppsWebDemo}
+                              autoPlay={playAiAppsWebDemo}
+                              muted
+                              className="w-full h-full object-cover"
+                              loop
+                              playsInline
+                              preload="metadata"
+                              poster={resolveAssetUrl('/portfolio/src/assets/images/ai-apps-emotion-healing-mobile-cover-v1.png')}
+                            />
+                          </div>
+
+                          {!playAiAppsWebDemo && (
+                            <button
+                              type="button"
+                              aria-label="播放手机端演示录屏"
+                              onClick={handlePlayAiAppsWebDemo}
+                              className="absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30"
+                            >
+                              <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-100 transition-transform duration-300">
+                                <Play
+                                  size={20}
+                                  fill="currentColor"
+                                  className="ml-0.5"
+                                />
+                              </div>
+                              <span className="text-[10px] text-white font-bold opacity-90 uppercase tracking-widest">
+                                播放内部演示录屏
+                              </span>
+                            </button>
+                          )}
+
+                          {/* Hover overlay before playing */}
+                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-30 pointer-events-none">
+                            <div className="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                              <Play
+                                size={20}
+                                fill="currentColor"
+                                className="ml-0.5"
+                              />
+                            </div>
+                            <span className="text-[10px] text-white font-bold opacity-80 uppercase tracking-widest">
+                              播放内部演示录屏
+                            </span>
+                          </div>
+
+                          <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
+                        </div>
+                      </div>
+
+                      {/* Right side: Detailed descriptions */}
+                      <div className="lg:col-span-7 space-y-6">
+                        <div className="flex flex-wrap items-center gap-4">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20 shadow-sm shadow-amber-500/5">
+                            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                            状态：待上线
+                          </span>
+                          <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">
+                            手机端心理健康辅助平台
+                          </span>
+                        </div>
+
+                        <div className="space-y-3">
+                          <h3 className="text-2xl font-bold text-white tracking-tight">
+                            心理辅导情绪自愈平台
+                          </h3>
+                          <p className="text-gray-400 text-sm leading-relaxed">
+                            独立设计、开发的心理工具App。本情绪辅助平台正在进行闭环测试。平台通过融入标准认知行为疗法（CBT）架构，帮助用户自我治疗反刍问题。
+                          </p>
+                        </div>
+
+                        {/* Tools list */}
+                        <div className="space-y-2">
+                          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">
+                            设计与开发工具
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                              google stitch
+                            </span>
+                            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-300 font-semibold">
+                              copilot
+                            </span>
                           </div>
                         </div>
                       </div>
