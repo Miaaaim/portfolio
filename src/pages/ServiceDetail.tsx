@@ -20,7 +20,7 @@ const steps = [
   },
   {
     title: '多端适配与流畅性',
-    desc: '在多设备世界中，一致性是关键。我们的设计采用多端协同思维，确保无论是在 PC 端后台还是移动端 App 上，体验依然卓越且连贯。',
+    desc: '在多设备世界中，一致性是关键。设计采用多端协同思维，确保无论是在 PC 端后台还是移动端 App 上，体验依然卓越且连贯。',
     image: '/portfolio/src/assets/images/service-step-web-design-03.png',
     features: ['流式网格布局', '断点优化', '触控交互精准化']
   },
